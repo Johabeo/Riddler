@@ -50,6 +50,7 @@ class OnboardActivity : AppCompatActivity() {
                         findViewById<View>(R.id.browser_sign_in_btn).visibility = View.GONE
                         findViewById<View>(R.id.logout_btn).visibility = View.VISIBLE
                     }
+
                 } else if (status == AuthorizationStatus.SIGNED_OUT) {
                     // this only clears the browser session.
                     logger.info("Sign out success")

@@ -22,22 +22,24 @@ class AuthClient(context: Context) {
 
     fun getWebAuthClient(context: Context?): WebAuthClient? {
 
-      val config = OIDCConfig.Builder()
-        .withJsonFile(context, R.raw.okta_oidc_config)
-        .create()
+      if(webAuthClient == null) {
+        val config = OIDCConfig.Builder()
+          .withJsonFile(context, R.raw.okta_oidc_config)
+          .create()
 
-      webAuthClient = WebAuthBuilder()
-        .withConfig(config)
-        .withContext(context)
-        .withStorage(SharedPreferenceStorage(context))
-        .withCallbackExecutor(Executors.newSingleThreadExecutor())
-        .withTabColor(Color.BLUE)
-        .supportedBrowsers(
-          CHROME_BROWSER,
-          FIRE_FOX
-        )
-        .setRequireHardwareBackedKeyStore(false) // required for emulators
-        .create()
+        webAuthClient = WebAuthBuilder()
+          .withConfig(config)
+          .withContext(context)
+          .withStorage(SharedPreferenceStorage(context))
+          .withCallbackExecutor(Executors.newSingleThreadExecutor())
+          .withTabColor(Color.BLUE)
+          .supportedBrowsers(
+            CHROME_BROWSER,
+            FIRE_FOX
+          )
+          .setRequireHardwareBackedKeyStore(false) // required for emulators
+          .create()
+      }
 
       if (INSTANCE == null) {
         INSTANCE = AuthClient(context!!)
