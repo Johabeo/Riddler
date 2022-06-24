@@ -3,7 +3,6 @@ plugins {
     id 'kotlin-kapt'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
-    id 'kotlin-kapt'
 }
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
