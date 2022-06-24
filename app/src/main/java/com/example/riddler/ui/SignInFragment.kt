@@ -28,7 +28,10 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
         view.findViewById<Button>(R.id.onboarding_signin_signinButon).setOnClickListener {
             val email = emailText.text.toString()
             val password = passwordText.text.toString()
-            signIn(email, password)
+            if(validate(email, password))
+                signIn(email, password)
+            else
+                Toast.makeText(context, "Invalid email or short password", Toast.LENGTH_LONG).show()
         }
 
         view.findViewById<Button>(R.id.onboard_signin_signupButton).setOnClickListener {
@@ -36,6 +39,19 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
         }
 
         return view
+    }
+
+    fun validate(email : String, password : String) : Boolean{
+
+        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            return false
+        }
+        //firebase will perform a check on password strength, but for now we'll check the length
+        if(password.length < 5){
+            return false
+        }
+
+        return true
     }
 
 }

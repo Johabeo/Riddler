@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.example.riddler.R
 
 
@@ -26,7 +27,10 @@ class SignUpFragment(val signUp : (String, String) -> Unit) : Fragment() {
         view.findViewById<Button>(R.id.onboarding_signup_signupButon).setOnClickListener {
             val email = emailText.text.toString()
             val password = passwordText.text.toString()
-            signUp(email,password)
+            if(validate(email, password))
+                signUp(email,password)
+            else
+                Toast.makeText(context, "Invalid email or short password", Toast.LENGTH_LONG).show()
         }
 
         view.findViewById<Button>(R.id.onboard_signin_backButton).setOnClickListener {
@@ -36,5 +40,18 @@ class SignUpFragment(val signUp : (String, String) -> Unit) : Fragment() {
 
 
         return view
+    }
+
+    fun validate(email : String, password : String) : Boolean{
+
+        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            return false
+        }
+        //firebase will perform a check on password strength, but for now we'll check the length
+        if(password.length < 5){
+            return false
+        }
+
+        return true
     }
 }
