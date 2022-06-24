@@ -2,6 +2,25 @@ package com.example.riddler.data.repo
 
 import com.example.riddler.data.model.Quiz
 
+/*
+* Repository is hard to test because it has two complicated dependencies
+* Local datasource(Room) and  the database  for the test repo
+* running the risks of having a flaky test due to fails in the intermingling of
+* network code and local code
+* flaky tests result in inconsistent test results
+*
+*
+* to avoid the above issues, we are creating test doubles using 'Fake' and 'Mock'
+*
+* 'Fake' has a 'working' implementation of the class. It is suitable for the
+* test but not for production
+*
+* 'Mock' is a test double that tracs which of its methods are called and passes
+* or fails depending on whether the methods were called correctly
+*
+*
+* */
+
 class FakeRepository:MainRepo {
     override fun insertQuiz(quiz: Quiz) {
         db.collection("quizzes")
