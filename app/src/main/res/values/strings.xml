@@ -2,6 +2,9 @@
     <string name="app_name">Riddler</string>
     <string name="sign_in_btn">Sign in</string>
     <string name="sign_out_btn">Sign out</string>
-    <string name="have_account">Have an account?</string>
+    <string name="have_account">Have an account? Need an account?</string>
     <string name="welcome_user">Welcome </string>
+    <string name="need_account">Sign up</string>
+    <string name="back">Back</string>
+    <string name="signup_text">Sign up with email and password</string>
 </resources>

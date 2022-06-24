@@ -46,10 +46,10 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    
+
     // Card View
     implementation "androidx.cardview:cardview:1.0.0"
-    
+
     //roomDB
     def room_version = "2.4.2"
     implementation "androidx.room:room-runtime:$room_version"
@@ -57,13 +57,13 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-rxjava3:$room_version"
-    
+
     // ViewModel & LiveData
     def lifecycle_version = "2.5.0-rc01"
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
-    
+
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
 
@@ -73,7 +73,7 @@ dependencies {
     // GJSON
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    
+
     //firebase
     implementation platform('com.google.firebase:firebase-bom:30.1.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
@@ -89,7 +89,9 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
-    
+    // Declare the dependency for the Firebase Authentication library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-auth-ktx'
 
     //RxKotlin
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
