@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "858171545430",
-    "project_id": "riddler-58172",
-    "storage_bucket": "riddler-58172.appspot.com"
+    "project_number": "472830377042",
+    "project_id": "riddler-66035",
+    "storage_bucket": "riddler-66035.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:858171545430:android:fc4f97ff1b7bd1018a68f7",
+        "mobilesdk_app_id": "1:472830377042:android:03ba8aeb3936e26e25738b",
         "android_client_info": {
           "package_name": "com.example.riddler"
         }
       },
       "oauth_client": [
         {
-          "client_id": "858171545430-vl2bofeegkj56k994m23cmv8venbu0tj.apps.googleusercontent.com",
+          "client_id": "472830377042-7uvs5ccpi9e0nvuohim3os4ogp58fumg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCRmV5GbCF1E2CpQPwH8USc2pNG2P0nyqs"
+          "current_key": "AIzaSyDhc_ssLe--SA41qYDtA9ehS_IuXN7alSQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "858171545430-vl2bofeegkj56k994m23cmv8venbu0tj.apps.googleusercontent.com",
+              "client_id": "472830377042-7uvs5ccpi9e0nvuohim3os4ogp58fumg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
