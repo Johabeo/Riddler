@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         //uncomment if you want to open NewTriviaActivity immediately
         //startActivity(intent)
 
+        //throw RuntimeException("testing crashlytics")
+
     }
 
 }
