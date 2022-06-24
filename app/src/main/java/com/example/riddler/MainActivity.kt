@@ -28,41 +28,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val dao = AppDatabase.getInstance(this)?.quizDao()!!
-        val repo = QuizRepository(dao)
-
-        val sampleQuiz = Quiz(1,1,"test", "sample algebra questions", "math")
-        val favoriteQuiz = FavoriteQuiz(1,1,1)
-        val question1 = Questions(1,1,"1+1","1","2","3","4","2")
-        val question2 = Questions(2,1,"1+2","1","2","3","4","3")
-        AppDatabase.clearTable()
-
-        //just testing, no vm for now
-        repo.insertQuiz(sampleQuiz)
-        repo.insertFavoriteQuiz(favoriteQuiz)
-        repo.insertQuestions(question1)
-        repo.insertQuestions(question2)
-        repo.getFavoriteQuizzes(1)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy(
-                onNext = {
-                    println(it)
-                },
-            )
-
-
-
-
-
-
-//        val db = FirebaseFirestore.getInstance()
-//        val question1 = Questions("1+1","1","2","3","4","2")
-//        val question2 = Questions("1+2","1","2","3","4","3")
-//        val sampleQuiz = Quiz("test", "xuan", "sample algebra questions", "math", listOf(question1, question2))
-//        val fr = FirestoreRepository()
-//        fr.insertQuiz(sampleQuiz)
-//        println(fr.getAllQuizByUser("xuan"))
 
     }
 
