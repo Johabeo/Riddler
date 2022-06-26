@@ -105,4 +105,9 @@ dependencies {
     def fragment_version = "1.4.1"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //tests mockk
+    testImplementation "io.mockk:mockk:1.12.4"
+
+
 }
