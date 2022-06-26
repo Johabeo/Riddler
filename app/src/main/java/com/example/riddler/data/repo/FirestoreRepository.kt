@@ -38,4 +38,37 @@ class FirestoreRepository() {
 
         return quizList
     }
+
+    //TODO use rxkotlin and validation
+    fun getAllQuiz() : List<Quiz> {
+        var quizList : ArrayList<Quiz> = ArrayList<Quiz>()
+
+        db.collection("quizzes")
+            .whereEqualTo("id",1)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    println(document.data)
+                }
+            }
+            .addOnFailureListener {
+                println("failed in getting quizzes from ") //change it later
+            }
+
+        return quizList
+    }
+    fun getQuiz() {
+        val docRef = db.collection("quizzes").document("101349")
+        docRef.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                return@addSnapshotListener
+            }
+
+            if (snapshot != null && snapshot.exists()) {
+                println(snapshot.data)
+            } else {
+            }
+        }
+
+    }
 }
