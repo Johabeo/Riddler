@@ -102,5 +102,7 @@ dependencies {
     //Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
-
+    def fragment_version = "1.4.1"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
