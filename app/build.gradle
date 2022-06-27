@@ -3,10 +3,34 @@ plugins {
     id 'kotlin-kapt'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
+    id 'org.sonarqube'
 }
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "Riddler"
+        property "sonar.projectKey", "Riddler"
+        property "sonar.sources", "src"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.tests", ["src/test/java"]
+        property "sonar.test.inclusions", "**/*Test*/**"
+        property "sonar.exclusions", '**/.gradle/**,' +
+                "**/androidTest/**," +
+                "**/R.class," +
+                "**/BuildConfig.*," +
+                "**/Manifest*.*," +
+                "**/android/databinding/*," +
+                "**/androidx/databinding/*," +
+                "**/*MapperImpl*.*," +
+                "**/BuildConfig.*," +
+                "**/Manifest*.*," +
+                "**/google-services.json"
+    }
+}
+
 
 android {
     compileSdk 32
@@ -105,4 +129,5 @@ dependencies {
     def fragment_version = "1.4.1"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
 }
