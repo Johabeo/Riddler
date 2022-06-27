@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.riddler.R
 import com.example.riddler.data.repo.GameRepository
+import com.example.riddler.ui.viewmodel.HostViewModel
 import com.example.riddler.ui.viewmodel.PlayerViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -13,12 +14,12 @@ class HostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_host)
 
-
+        var fm = supportFragmentManager
+        var ft = fm.beginTransaction()
+        ft.replace(R.id.hostContainer, HostLobbyFragment())
+        ft.commit()
 
 
     }
 
-    fun createRoom() {
-
-    }
 }
