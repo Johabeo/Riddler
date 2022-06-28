@@ -25,9 +25,10 @@ class HostViewModel  : ViewModel() {
     var gameState = MutableLiveData<QuizGame>()
     lateinit var lobbyListener: ListenerRegistration
     lateinit var gameListener: ListenerRegistration
-    fun callCreateLobby(id: Int) {
+
+    fun callCreateLobby(id: Int, lobbySize: Int) {
         // [START call_add_numbers]
-        repo.createLobby(id)
+        repo.createLobby(id, lobbySize)
             .addOnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     val e = task.exception
@@ -57,12 +58,9 @@ class HostViewModel  : ViewModel() {
             }
 
             if (snapshot != null && snapshot.exists()) {
-                lobbyState.value = Util.mapToLobby(snapshot.data!!)
-            } else {
-                println(2)
+                lobbyState.value = snapshot.data?.toDataClass()
             }
         }
-        //lobbyListener.remove()
     }
     fun callStartGame(gameId: String) {
 
@@ -108,8 +106,6 @@ class HostViewModel  : ViewModel() {
 
             if (snapshot != null && snapshot.exists()) {
                 gameState.value = snapshot.data?.toDataClass()
-            } else {
-                println(2)
             }
         }
 

@@ -52,6 +52,7 @@ class PlayerGameFragment : Fragment() {
         val answer3 = view.findViewById<TextView>(R.id.playerAnswer3Text)
         val answer4 = view.findViewById<TextView>(R.id.playerAnswer4Text)
         val timerText = view.findViewById<TextView>(R.id.timer)
+
         vm.gameState.observe(viewLifecycleOwner) {
             question.text = it.question?.question
             answer1.text = it.question?.firstAnswer
@@ -68,6 +69,36 @@ class PlayerGameFragment : Fragment() {
                 timerText.text = "0"
             }
         }.start()
+
+        answer1.setOnClickListener {
+            vm.submitAnswer(answer1.text.toString()) { isCorrect -> moveToResult(isCorrect) }
+        }
+        answer2.setOnClickListener {
+            vm.submitAnswer(answer2.text.toString()) { isCorrect -> moveToResult(isCorrect) }
+        }
+        answer3.setOnClickListener {
+            vm.submitAnswer(answer3.text.toString()) { isCorrect -> moveToResult(isCorrect) }
+        }
+        answer4.setOnClickListener {
+            vm.submitAnswer(answer4.text.toString()) { isCorrect -> moveToResult(isCorrect) }
+        }
     }
+
+    fun moveToResult(isCorrect: Boolean) {
+        println("outside" + isCorrect)
+        if (isCorrect) {
+            println("inside" + isCorrect)
+            parentFragmentManager.beginTransaction()
+                .add(R.id.playerContainer, PlayerCorrectFragment())
+                .addToBackStack(null)
+                .commit()
+        } else {
+            parentFragmentManager.beginTransaction()
+                .add(R.id.playerContainer, PlayerIncorrectFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+    }
+
 
 }
