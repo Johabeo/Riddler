@@ -30,7 +30,9 @@ class MainActivity : AppCompatActivity() {
 //        val intent = Intent(this, HostActivity::class.java)
 ////        //uncomment if you want to open NewTriviaActivity immediately
 //        startActivity(intent)
-
+        val gr = GameRepository()
+        //gr.startGame("QWYuoR2qmbFMMUimLp07")
+        //gr.submitAnswer("QWYuoR2qmbFMMUimLp07",1,"2",30)
         val menuBar : BottomNavigationView = findViewById(R.id.bottom_navigation)
         val mOnNavigationItemSelectedListener=
             NavigationBarView.OnItemSelectedListener { item ->

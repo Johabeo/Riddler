@@ -2,6 +2,7 @@ package com.example.riddler.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.riddler.Global
 import com.example.riddler.Util
 import com.example.riddler.Util.Companion.toDataClass
 import com.example.riddler.data.model.Lobby
@@ -19,43 +20,53 @@ class PlayerViewModel : ViewModel() {
     var pin = MutableLiveData<String>()
     var lobbyState = MutableLiveData<Lobby>()
     var gameState = MutableLiveData<QuizGame>()
+    var totalScore = MutableLiveData<Int>()
     lateinit var lobbyListener: ListenerRegistration
     lateinit var gameListener: ListenerRegistration
-    fun callJoinLobby(gameId: String, playerId: Int, playerName: String, joinLobby: (String) -> Unit) {
-        // [START call_add_numbers]
-        repo.joinLobby(gameId, playerId, playerName)
-            .addOnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    val e = task.exception
-                    if (e is FirebaseFunctionsException) {
 
-                        // Function error code, will be INTERNAL if the failure
-                        // was not handled properly in the function call.
-                        val code = e.code
+    init {
+        totalScore.value = 0
+    }
 
-                        // Arbitrary error details passed back from the function,
-                        // usually a Map<String, Any>.
-                        val details = e.details
+    fun callJoinLobby(gameId: String, playerName: String, joinLobby: (String) -> Unit) {
+        try {
+            repo.joinLobby(gameId, Global.userId, playerName)
+                .addOnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        val e = task.exception
+                        if (e is FirebaseFunctionsException) {
+
+                            // Function error code, will be INTERNAL if the failure
+                            // was not handled properly in the function call.
+                            val code = e.code
+
+                            // Arbitrary error details passed back from the function,
+                            // usually a Map<String, Any>.
+                            val details = e.details
+                        }
+                    } else {
+                        joinLobby(gameId)
                     }
-                } else {
-                    joinLobby(gameId)
                 }
-            }
-        // [END call_add_numbers]
+        } catch (e: Exception) {
+            println(e)
+        }
     }
     fun playerLobby(gameId: String) {
         pin.value = gameId
-        val docRef = FirebaseFirestore.getInstance().collection("lobby").document(gameId)
-        lobbyListener = docRef.addSnapshotListener { snapshot, e ->
-            if (e != null) {
-                return@addSnapshotListener
-            }
+        try {
+            val docRef = FirebaseFirestore.getInstance().collection("lobby").document(gameId)
+            lobbyListener = docRef.addSnapshotListener { snapshot, e ->
+                if (e != null) {
+                    return@addSnapshotListener
+                }
 
-            if (snapshot != null && snapshot.exists()) {
-                lobbyState.value = Util.mapToLobby(snapshot.data!!)
-            } else {
-                println(2)
+                if (snapshot != null && snapshot.exists()) {
+                    lobbyState.value = snapshot.data?.toDataClass()
+                }
             }
+        } catch (e: Exception) {
+            println(e)
         }
     }
 
@@ -70,9 +81,32 @@ class PlayerViewModel : ViewModel() {
 
             if (snapshot != null && snapshot.exists()) {
                 gameState.value = snapshot.data?.toDataClass()
-            } else {
-                println(2)
             }
         }
+    }
+
+    fun submitAnswer(answer: String, moveToResultFragment: (Boolean)-> Unit) {
+        repo.submitAnswer(pin.value!!, Global.userId, answer)
+            .addOnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    val e = task.exception
+                    if (e is FirebaseFunctionsException) {
+
+                        // Function error code, will be INTERNAL if the failure
+                        // was not handled properly in the function call.
+                        val code = e.code
+
+                        // Arbitrary error details passed back from the function,
+                        // usually a Map<String, Any>.
+                        val details = e.details
+                    }
+                } else {
+                    val result = task.result
+                    val isCorrect = result["isAnswerCorrect"] as Boolean
+                    totalScore.value = result["totalScore"] as Int
+                    moveToResultFragment(isCorrect)
+                }
+            }
+
     }
 }

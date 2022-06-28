@@ -30,7 +30,7 @@ class Util {
             } catch (e: Exception) {
                 println(e)
             }
-            return Lobby(host, pin, gameStarted, playerList)
+            return Lobby(host, pin, 16, gameStarted, playerList)
         }
 
         //convert a data class to a map

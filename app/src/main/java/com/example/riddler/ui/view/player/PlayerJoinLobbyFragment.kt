@@ -50,7 +50,7 @@ class PlayerJoinLobbyFragment : Fragment() {
         val vm = ViewModelProvider(requireActivity()).get(PlayerViewModel::class.java)
 
         joinLobbyButton.setOnClickListener {
-            vm.callJoinLobby(gamePinText.text.toString(), 1,
+            vm.callJoinLobby(gamePinText.text.toString(),
                 playerNameText.text.toString()) { gameId -> joinLobby(gameId) }
         }
     }
