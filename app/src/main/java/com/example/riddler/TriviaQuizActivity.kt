@@ -6,6 +6,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class TriviaQuizActivity : AppCompatActivity() {
+    /*
+    So far, the following gets passed to tis activity:
+    data class Quiz(
+        val id: Int?,
+        val owner: Int, //user token from authentication
+        val name: String? = null,
+        val description: String? = null,
+        val type: String? = null)
+
+    The data should be updated to fetch a quiz from Firebase, and it will probably have a similar structure,
+    except that it will have a list of questions as well.
+    Firebase uses JSON, so you might load questions from there.
+
+     */
 
     lateinit var vm: ApiViewModel
     var amount: Int = 0 //10

@@ -3,6 +3,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity
 data class Quiz(
@@ -11,7 +12,7 @@ data class Quiz(
     val name: String? = null,
     val description: String? = null,
     val type: String? = null
-)
+) : Serializable
 
 
 @Entity(
