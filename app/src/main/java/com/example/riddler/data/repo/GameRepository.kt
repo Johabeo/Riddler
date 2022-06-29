@@ -32,7 +32,7 @@ class GameRepository() {
     }
 
 
-    fun joinLobby(gameId: String, playerId: Int, playerName: String): Task<String> {
+    fun joinLobby(gameId: String, playerId: Int, playerName: String): Task<Boolean> {
         // Create the arguments to the callable function.
         val data = hashMapOf(
             "gameId" to gameId,
@@ -47,7 +47,7 @@ class GameRepository() {
                 // This continuation runs on either success or failure, but if the task
                 // has failed then result will throw an Exception which will be
                 // propagated down.
-                val result = task.result?.data as String
+                val result = task.result?.data as Boolean
                 result
             }
     }
@@ -89,5 +89,37 @@ class GameRepository() {
                 val result = task.result?.data as HashMap<String,Any>
                 result
             }
+    }
+    fun nextQuestion(gameId: String): Task<Boolean> {
+        var question = Questions(1,1,"What is 2+2?","2",
+            "3","4","5","2")
+        return nextQuestion(gameId,question)
+    }
+    fun nextQuestion(gameId: String, question: Questions): Task<Boolean> {
+        var qMap = question.serializeToMap()
+        val data = hashMapOf(
+            "gameId" to gameId,
+            "question" to qMap
+        )
+
+        return functions
+            .getHttpsCallable("nextQuestion")
+            .call(data)
+            .continueWith { task ->
+                // This continuation runs on either success or failure, but if the task
+                // has failed then result will throw an Exception which will be
+                // propagated down.
+                val result = task.result?.data as Boolean
+                result
+            }
+    }
+
+    fun displayLeaderboard(gameId: String) {
+        val data = hashMapOf(
+            "gameId" to gameId
+        )
+        functions
+            .getHttpsCallable("displayLeaderboard")
+            .call(data)
     }
 }

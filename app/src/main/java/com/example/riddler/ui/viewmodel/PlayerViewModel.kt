@@ -45,7 +45,10 @@ class PlayerViewModel : ViewModel() {
                             val details = e.details
                         }
                     } else {
-                        joinLobby(gameId)
+                        if (task.result)
+                            joinLobby(gameId)
+                        else
+                            println("Lobby does not exist")
                     }
                 }
         } catch (e: Exception) {

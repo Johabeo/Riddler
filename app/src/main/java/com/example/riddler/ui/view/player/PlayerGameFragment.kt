@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import com.example.riddler.R
@@ -26,6 +27,11 @@ class PlayerGameFragment : Fragment() {
     private var param2: String? = null
     private val TIME_LIMIT = 30
     private val vm: PlayerViewModel by activityViewModels()
+    private lateinit var answer1: TextView
+    private lateinit var answer2: TextView
+    private lateinit var answer3: TextView
+    private lateinit var answer4: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +53,12 @@ class PlayerGameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val question = view.findViewById<TextView>(R.id.playerQuestions)
-        val answer1 = view.findViewById<TextView>(R.id.playerAnswer1Text)
-        val answer2 = view.findViewById<TextView>(R.id.playerAnswer2Text)
-        val answer3 = view.findViewById<TextView>(R.id.playerAnswer3Text)
-        val answer4 = view.findViewById<TextView>(R.id.playerAnswer4Text)
+        answer1 = view.findViewById<TextView>(R.id.playerAnswer1Text)
+        answer2 = view.findViewById<TextView>(R.id.playerAnswer2Text)
+        answer3 = view.findViewById<TextView>(R.id.playerAnswer3Text)
+        answer4 = view.findViewById<TextView>(R.id.playerAnswer4Text)
         val timerText = view.findViewById<TextView>(R.id.timer)
+        disableAnswerClick()
 
         vm.gameState.observe(viewLifecycleOwner) {
             question.text = it.question?.question
@@ -59,6 +66,7 @@ class PlayerGameFragment : Fragment() {
             answer2.text = it.question?.secondAnswer
             answer3.text = it.question?.thirdAnswer
             answer4.text = it.question?.fourthAnswer
+            enableAnswerClick()
         }
         val timerT = object: CountDownTimer(30000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -72,15 +80,19 @@ class PlayerGameFragment : Fragment() {
 
         answer1.setOnClickListener {
             vm.submitAnswer(answer1.text.toString()) { isCorrect -> moveToResult(isCorrect) }
+            disableAnswerClick()
         }
         answer2.setOnClickListener {
             vm.submitAnswer(answer2.text.toString()) { isCorrect -> moveToResult(isCorrect) }
+            disableAnswerClick()
         }
         answer3.setOnClickListener {
             vm.submitAnswer(answer3.text.toString()) { isCorrect -> moveToResult(isCorrect) }
+            disableAnswerClick()
         }
         answer4.setOnClickListener {
             vm.submitAnswer(answer4.text.toString()) { isCorrect -> moveToResult(isCorrect) }
+            disableAnswerClick()
         }
     }
 
@@ -98,6 +110,20 @@ class PlayerGameFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+    }
+
+    fun disableAnswerClick() {
+        answer1.isClickable = false
+        answer2.isClickable = false
+        answer3.isClickable = false
+        answer3.isClickable = false
+    }
+
+    fun enableAnswerClick() {
+        answer1.isClickable = true
+        answer2.isClickable = true
+        answer3.isClickable = true
+        answer4.isClickable = true
     }
 
 

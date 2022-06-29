@@ -46,7 +46,6 @@ class HostViewModel  : ViewModel() {
                     hostLobby(task.result)
                 }
             }
-        // [END call_add_numbers]
     }
 
     fun hostLobby(gameId: String) {
@@ -109,5 +108,30 @@ class HostViewModel  : ViewModel() {
             }
         }
 
+    }
+
+    fun callNextQuestion(nextFragment: () -> Unit) {
+        repo.nextQuestion(pin.value!!)
+            .addOnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    val e = task.exception
+                    if (e is FirebaseFunctionsException) {
+
+                        // Function error code, will be INTERNAL if the failure
+                        // was not handled properly in the function call.
+                        val code = e.code
+
+                        // Arbitrary error details passed back from the function,
+                        // usually a Map<String, Any>.
+                        val details = e.details
+                    }
+                } else {
+                    nextFragment()
+                }
+            }
+    }
+
+    fun displayLeaderboard() {
+        repo.displayLeaderboard(pin.value!!)
     }
 }
