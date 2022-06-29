@@ -73,8 +73,10 @@ class DashboardActivity : AppCompatActivity() {
                 .setView(input)
                 .setPositiveButton("OK") { dialog, which ->
                     m_Text = input.text.toString()
-                    if (!m_Text.isEmpty())
+                    if (!m_Text.isEmpty()) {
+                        intent.putExtra("pin", m_Text)
                         startActivity(intent)
+                    }
                     else
                         Toast.makeText(this, "Please enter the game PIN", Toast.LENGTH_LONG).show()
                 }
