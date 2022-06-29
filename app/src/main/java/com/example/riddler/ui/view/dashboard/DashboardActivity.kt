@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.riddler.MainActivity
 import com.example.riddler.NewTriviaActivity
 import com.example.riddler.OnboardActivity
 import com.example.riddler.R
