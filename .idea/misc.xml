@@ -23,7 +23,13 @@
         <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/activity_onboard.xml" value="0.36666666666666664" />
         <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/fragment_sign_in.xml" value="0.32708333333333334" />
+<<<<<<< HEAD
         <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/fragment_sign_up.xml" value="0.31302083333333336" />
+=======
+        <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/listitem_quiz_dashboard.xml" value="0.33" />
+        <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/trivia_list_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/prog/Android/Riddler/app/src/main/res/menu/toolbar_menu.xml" value="0.36666666666666664" />
+>>>>>>> eb24e5b7bcf3284d5272d32876dab0322b6bb23f
       </map>
     </option>
   </component>

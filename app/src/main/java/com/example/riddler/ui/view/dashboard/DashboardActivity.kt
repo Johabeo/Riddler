@@ -7,12 +7,16 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.riddler.MainActivity
 import com.example.riddler.NewTriviaActivity
+import com.example.riddler.OnboardActivity
 import com.example.riddler.R
 import com.example.riddler.TriviaQuizActivity
 import com.example.riddler.data.model.Quiz
@@ -21,16 +25,28 @@ import com.example.riddler.ui.view.host.HostActivity
 import com.example.riddler.ui.view.player.PlayerActivity
 import com.example.riddler.ui.view.settings.SettingsActivity
 import com.example.riddler.ui.viewmodel.DashboardViewModel
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import timber.log.Timber
 
 class DashboardActivity : AppCompatActivity() {
     lateinit var data : ArrayList<Quiz>
     lateinit var adapter: DashboardQuizListAdapter
+    val auth = Firebase.auth
+
+    lateinit var vm : DashboardViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard2)
 
-        val vm = DashboardViewModel()
+        vm = DashboardViewModel()
+
+        if(auth.currentUser == null) {
+            Toast.makeText(this, "No users are signed in, redirecting to Log On screen...", Toast.LENGTH_LONG).show()
+            signOut()
+        }
 
         data = vm.quizList
 
@@ -75,11 +91,13 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        vm.userProfile.observe(this) {
+            println("it.email")
+            if(it != null)
+                findViewById<TextView>(R.id.dash_welcome).setText("Welcome, ${it.firstName} ${it.lastName}!")
+        }
 
-        val intent = Intent(this, MainActivity::class.java)
-        //uncomment if you want to open NewTriviaActivity immediately
-        startActivity(intent)
-
+        vm.fetchUserProfileInfo()
 
     }
 
@@ -91,10 +109,20 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.toolbar_settings){
+        /*if(item.itemId == R.id.toolbar_settings){
             intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
+        }*/
+        when (item.itemId){
+            R.id.toolbar_settings -> {
+                intent = Intent(this, SettingsActivity::class.java)
+                startForResult.launch(intent)
+            }
+            R.id.toolbar_logout -> {
+                signOut()
+            }
         }
+
         return true
     }
 
@@ -102,5 +130,19 @@ class DashboardActivity : AppCompatActivity() {
         val intent = Intent(this, TriviaQuizActivity::class.java)
         intent.putExtra("quiz", data.get(index))
         startActivity(intent)
+    }
+
+    fun signOut(){
+        auth.signOut()
+        intent = Intent(this, OnboardActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result: ActivityResult ->
+        if (result.resultCode == RESULT_OK) {
+            vm.fetchUserProfileInfo()
+        }
     }
 }
