@@ -21,11 +21,11 @@
         <activity
             android:name=".ui.view.dashboard.DashboardActivity"
             android:exported="true">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".ui.view.host.HostActivity"
@@ -43,13 +43,11 @@
             android:name=".OnboardActivity"
             android:exported="true">
 
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
         <activity
             android:name=".MainActivity"
