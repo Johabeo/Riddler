@@ -7,4 +7,9 @@
         android:title="Settings"
         app:showAsAction="ifRoom"
         android:id="@+id/toolbar_settings"/>
+    <item
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="Log Out"
+        app:showAsAction="ifRoom"
+        android:id="@+id/toolbar_logout"/>
 </menu>
