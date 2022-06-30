@@ -21,6 +21,7 @@ class PlayerViewModel : ViewModel() {
     var lobbyState = MutableLiveData<Lobby>()
     var gameState = MutableLiveData<QuizGame>()
     var totalScore = MutableLiveData<Int>()
+    var currentQuestionNumber = 0
     lateinit var lobbyListener: ListenerRegistration
     lateinit var gameListener: ListenerRegistration
 
@@ -111,5 +112,14 @@ class PlayerViewModel : ViewModel() {
                 }
             }
 
+    }
+
+    fun checkQuestion(updatedQuestionNumber: Int): Boolean{
+        if (updatedQuestionNumber > currentQuestionNumber) {
+            currentQuestionNumber = updatedQuestionNumber
+            return true
+        } else {
+            return false
+        }
     }
 }

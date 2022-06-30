@@ -7,9 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.riddler.Util
 import com.example.riddler.Util.Companion.serializeToMap
 import com.example.riddler.Util.Companion.toDataClass
-import com.example.riddler.data.model.Lobby
-import com.example.riddler.data.model.LobbyPlayers
-import com.example.riddler.data.model.QuizGame
+import com.example.riddler.data.model.*
 import com.example.riddler.data.repo.GameRepository
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,6 +19,8 @@ import java.lang.Exception
 class HostViewModel  : ViewModel() {
     val repo = GameRepository()
     var pin = MutableLiveData<String>()
+    lateinit var questionList: List<Questions>
+    var currentQuestion = 0
     var lobbyState = MutableLiveData<Lobby>()
     var gameState = MutableLiveData<QuizGame>()
     lateinit var lobbyListener: ListenerRegistration
@@ -71,7 +71,7 @@ class HostViewModel  : ViewModel() {
             return
         }
         try {
-            repo.startGame(gameId)
+            repo.startGame(gameId, questionList.get(0))
                 .addOnCompleteListener { task ->
                     if (!task.isSuccessful) {
                         val e = task.exception
@@ -111,27 +111,41 @@ class HostViewModel  : ViewModel() {
     }
 
     fun callNextQuestion(nextFragment: () -> Unit) {
-        repo.nextQuestion(pin.value!!)
-            .addOnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    val e = task.exception
-                    if (e is FirebaseFunctionsException) {
-
-                        // Function error code, will be INTERNAL if the failure
-                        // was not handled properly in the function call.
-                        val code = e.code
-
-                        // Arbitrary error details passed back from the function,
-                        // usually a Map<String, Any>.
-                        val details = e.details
-                    }
-                } else {
-                    nextFragment()
-                }
+        try {
+            val qNumber = gameState.value!!.currentQuestion!!
+            if (qNumber >= questionList.size){
+                //TODO display final leaderboard/move this somewhere else
+                return
             }
+            repo.nextQuestion(pin.value!!, questionList.get(qNumber))
+                .addOnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        val e = task.exception
+                        if (e is FirebaseFunctionsException) {
+
+                            // Function error code, will be INTERNAL if the failure
+                            // was not handled properly in the function call.
+                            val code = e.code
+
+                            // Arbitrary error details passed back from the function,
+                            // usually a Map<String, Any>.
+                            val details = e.details
+                        }
+                    } else {
+                        nextFragment()
+                    }
+                }
+        } catch (e: Exception) {
+
+        }
     }
 
     fun displayLeaderboard() {
         repo.displayLeaderboard(pin.value!!)
+    }
+
+    fun setCurrentQuestions(_questionList: List<Questions>) {
+        questionList = _questionList
+        println(questionList)
     }
 }
