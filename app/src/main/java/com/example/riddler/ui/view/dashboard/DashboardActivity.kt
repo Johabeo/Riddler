@@ -40,8 +40,6 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard2)
 
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
 
         vm = DashboardViewModel()
 
