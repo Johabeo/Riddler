@@ -16,17 +16,11 @@ class ApiViewModelTest {
         repo = repo,
     )
 
-
-
     @Test
-    fun getAllTriviaQuestions() {
-        val repo = mockk<TriviaRepo>()
-        val underTest = ApiViewModel(
-            repo = repo,
-        )
+    fun testGetAllTriviaQuestions() {
 
+        coEvery { underTest.getAllTriviaQuestions(1,1,"Hard", "Coding") } just Runs
     }
-
 }
 
 private infix fun Unit.Just(runs: Runs) {
