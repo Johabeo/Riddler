@@ -17,11 +17,13 @@ interface QuizDao {
     @Query("select * from Quiz where owner = :user")
     fun getMyQuizzes(user: Int): Observable<List<Quiz>>
 
-    @Query("select * from Questions where quizId = :quizId")
-    fun getQuizQuestions(quizId: Int): Observable<List<Questions>>
+    @Query("select * from Quiz limit :limit offset :offset")
+    fun getQuizzes(limit: Int, offset: Int): Observable<List<Quiz>>
 
+    @Query("select * from Questions where quizId = :quizId")
+    fun getQuizQuestions(quizId: Int): List<Questions>
     @Insert
-    fun insertQuiz(quiz: Quiz)
+    fun insertQuiz(quiz: Quiz): Long
 
     @Insert
     fun insertFavoriteQuiz(favoriteQuiz: FavoriteQuiz)

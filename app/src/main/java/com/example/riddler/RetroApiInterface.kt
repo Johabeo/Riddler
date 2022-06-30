@@ -15,7 +15,7 @@ interface RetroApiInterface {
 
     @GET("api.php")
     suspend fun getAllTriviaQuestions(@Query("amount") amount:Int, @Query("category") category:Int,
-                                      @Query("difficulty") difficulty:String, @Query("type") type:String): Response<TriviaQuestions>
+                                      @Query("difficulty") difficulty:String, @Query("type") type:String="multiple"): Response<TriviaQuestions>
 
     companion object {
         var BASE_URL = "https://opentdb.com/"

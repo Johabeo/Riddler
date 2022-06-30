@@ -1,12 +1,16 @@
 package com.example.riddler.ui.view.host
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.setFragmentResultListener
 import com.example.riddler.R
+import com.example.riddler.data.model.Quiz
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,16 +23,16 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class HostCreateLobbyFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    lateinit var createLobby : Button
+    private var quizName: String? = null
+    private var quizId: Int? = null
+    lateinit var createLobby: Button
+    lateinit var quiz: Quiz
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            quizName = it.getString("quizName")
+            quizId = it.getInt("quizId")
         }
     }
 
@@ -37,32 +41,22 @@ class HostCreateLobbyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         var myView = inflater.inflate(R.layout.fragment_host_create_lobby, container, false)
-        createLobby = myView.findViewById<Button>(R.id.createLobbyButton)
-        createLobby.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.container, HostLobbyFragment())
-                .commit()
-        }
         return myView
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HostCreateLobbyFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HostCreateLobbyFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        createLobby = view.findViewById<Button>(R.id.createLobbyButton)
+        val quizNameText = view.findViewById<TextView>(R.id.hostCreateQuizName)
+        println(quizName)
+        quizNameText.text = quizName
+
+        createLobby.setOnClickListener {
+            val intent = Intent(getActivity(), HostActivity::class.java)
+            intent.putExtra("quizId", quizId)
+            activity?.startActivity(intent)
+            activity?.finish()
+        }
+
     }
 }

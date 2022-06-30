@@ -1,6 +1,7 @@
 package com.example.riddler.ui
 
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,7 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
 
         val emailText = view.findViewById<EditText>(R.id.onboarding_signin_email)
         val passwordText = view.findViewById<EditText>(R.id.onboarding_signin_password)
+        passwordText.transformationMethod = PasswordTransformationMethod.getInstance()
 
         view.findViewById<Button>(R.id.onboarding_signin_signinButon).setOnClickListener {
             val email = emailText.text.toString()

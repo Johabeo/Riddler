@@ -3,14 +3,16 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity
 data class Quiz(
-    @PrimaryKey(autoGenerate = true) val id: Int?,
-    val owner: Int, //user token from authentication
+    val owner: String? = null, //user token from authentication
     val name: String? = null,
     val description: String? = null,
-    val type: String? = null
+    val type: String? = null,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0
 )
 
 
