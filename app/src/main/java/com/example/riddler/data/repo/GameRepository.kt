@@ -51,11 +51,11 @@ class GameRepository() {
                 result
             }
     }
-    fun startGame(gameId: String): Task<String> {
-        var question = Questions(1,1,"What is 1+1?","2",
-            "3","4","5","2")
-        return startGame(gameId,question)
-    }
+//    fun startGame(gameId: String): Task<String> {
+//        var question = Questions(1,1,"What is 1+1?","2",
+//            "3","4","5","2")
+//        return startGame(gameId,question)
+//    }
     fun startGame(gameId: String, question: Questions): Task<String>  {
         var qMap = question.serializeToMap()
         val data = hashMapOf(
@@ -90,11 +90,11 @@ class GameRepository() {
                 result
             }
     }
-    fun nextQuestion(gameId: String): Task<Boolean> {
-        var question = Questions(1,1,"What is 2+2?","2",
-            "3","4","5","2")
-        return nextQuestion(gameId,question)
-    }
+//    fun nextQuestion(gameId: String): Task<Boolean> {
+//        var question = Questions(1,1,"What is 2+2?","2",
+//            "3","4","5","2")
+//        return nextQuestion(gameId,question)
+//    }
     fun nextQuestion(gameId: String, question: Questions): Task<Boolean> {
         var qMap = question.serializeToMap()
         val data = hashMapOf(

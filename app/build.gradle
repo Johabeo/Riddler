@@ -4,6 +4,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
     id 'org.sonarqube'
+    id 'dagger.hilt.android.plugin'
 }
 
 sonarqube {
@@ -160,4 +161,8 @@ dependencies {
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
     androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'
 
+    // Dagger Hilt
+    implementation 'com.google.dagger:hilt-android:2.42'
+    kapt 'com.google.dagger:hilt-compiler:2.42'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
 }

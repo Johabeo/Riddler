@@ -4,10 +4,11 @@ import android.app.Application
 import android.util.Log
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.HiltAndroidApp
 import org.jetbrains.annotations.NotNull
 import timber.log.Timber
 
-
+@HiltAndroidApp
 class App : Application() {
     //all singletons should be here
     override fun onCreate() {

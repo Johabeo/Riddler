@@ -14,20 +14,19 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.riddler.MainActivity
 import com.example.riddler.NewTriviaActivity
 import com.example.riddler.OnboardActivity
 import com.example.riddler.R
 import com.example.riddler.TriviaQuizActivity
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.ui.adapters.DashboardQuizListAdapter
+import com.example.riddler.ui.view.MainActivity
 import com.example.riddler.ui.view.host.HostActivity
 import com.example.riddler.ui.view.player.PlayerActivity
 import com.example.riddler.ui.view.settings.SettingsActivity
 import com.example.riddler.ui.viewmodel.DashboardViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import timber.log.Timber
 
 class DashboardActivity : AppCompatActivity() {
     lateinit var data : ArrayList<Quiz>
@@ -40,6 +39,9 @@ class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard2)
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
 
         vm = DashboardViewModel()
 
@@ -128,7 +130,7 @@ class DashboardActivity : AppCompatActivity() {
 
     val onQuizItemClick = fun(index : Int) {
         val intent = Intent(this, TriviaQuizActivity::class.java)
-        intent.putExtra("quiz", data.get(index))
+        //intent.putExtra("quiz", data.get(index))
         startActivity(intent)
     }
 

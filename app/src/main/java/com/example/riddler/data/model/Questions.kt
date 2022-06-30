@@ -17,12 +17,12 @@ import androidx.room.PrimaryKey
     ]
 )
 data class Questions(
-    @PrimaryKey(autoGenerate = true) val id: Int?,
     val quizId: Int,
     val question: String? = null,
     val firstAnswer: String? = null,
     val secondAnswer: String? = null,
     val thirdAnswer: String? = null,
     val fourthAnswer: String? = null,
-    val correctAnswer: String? = null
+    val correctAnswer: String? = null,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0
 )
