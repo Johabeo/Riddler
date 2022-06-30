@@ -43,8 +43,8 @@ class QuizRepositoryTest() {
         val underTest = QuizRepository(
             dao = dao,
         )
-       every { underTest.insertQuiz(quiz = Quiz(1,1,"test1",
-           "test to insert quiz","regular")) } just Runs
+       every { underTest.insertQuiz(quiz = Quiz("G1","Our Team","test1",
+           "test to insert quiz",1)) } just Runs
     }
 
     @Test
@@ -65,9 +65,9 @@ class QuizRepositoryTest() {
             dao = dao,
         )
         every { underTest.insertQuestions(questions = Questions(
-            1,1,"whats your group"
-            ,"G1","G2","G3"
-            ,"G4","G1")) } just Runs
+            1,"whats your group","G1"
+            ,"G2","G3","Dont know"
+            ,"G1",1)) } just Runs
 
     }
 }
