@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.riddler.RetroApiInterface
 import com.example.riddler.data.dao.QuizDao
 import com.example.riddler.data.database.AppDatabase
+import com.example.riddler.data.repo.FirestoreRepository
 import com.example.riddler.data.repo.QuizRepository
 import dagger.Module
 import dagger.Provides
@@ -36,5 +37,11 @@ class AppModule {
     @Provides
     fun getRetroApi(): RetroApiInterface{
         return RetroApiInterface.create()
+    }
+
+    @Singleton
+    @Provides
+    fun getFirestoreRepository() : FirestoreRepository{
+        return FirestoreRepository()
     }
 }

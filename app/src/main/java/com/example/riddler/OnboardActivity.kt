@@ -11,21 +11,23 @@ import com.example.riddler.data.model.UserProfile
 import com.example.riddler.data.repo.FirestoreRepository
 import com.example.riddler.ui.SignInFragment
 import com.example.riddler.ui.SignUpFragment
+import com.example.riddler.ui.view.MainActivity
 import com.example.riddler.ui.view.dashboard.DashboardActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import javax.inject.Inject
 
 
 class OnboardActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
 
+    @Inject
     lateinit var repo : FirestoreRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboard)
-        repo = FirestoreRepository()
 
         auth = Firebase.auth
 
@@ -48,7 +50,7 @@ class OnboardActivity : AppCompatActivity() {
 
     fun openMainActivity(){
         Log.d("firebase auth", "inside openMainActivity")
-        intent = Intent(this, DashboardActivity::class.java)
+        intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
