@@ -8,11 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.example.riddler.R
-
+import com.google.android.material.textfield.TextInputLayout
+import kotlinx.android.synthetic.main.fragment_sign_in.*
 
 class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragment : () -> Unit) : Fragment() {
+
+    lateinit var inputPassword : TextInputLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +31,8 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
         val passwordText = view.findViewById<EditText>(R.id.onboarding_signin_password)
         passwordText.transformationMethod = PasswordTransformationMethod.getInstance()
 
+        inputPassword = view.findViewById(R.id.onboarding_signup_passwordInputLayout)
+
         view.findViewById<Button>(R.id.onboarding_signin_signinButon).setOnClickListener {
             val email = emailText.text.toString()
             val password = passwordText.text.toString()
@@ -36,7 +42,7 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
                 Toast.makeText(context, "Invalid email or short password", Toast.LENGTH_LONG).show()
         }
 
-        view.findViewById<Button>(R.id.onboard_signin_signupButton).setOnClickListener {
+        view.findViewById<TextView>(R.id.onboard_signin_signupButton).setOnClickListener {
             setSignUpFragment()
         }
 
@@ -50,6 +56,7 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
         }
         //firebase will perform a check on password strength, but for now we'll check the length
         if(password.length < 5){
+         //inputPassword.error("Password Invalid")
             return false
         }
 
