@@ -1,0 +1,33 @@
+Index: app/src/test/java/com/example/riddler/data/repo/QuizRepositoryTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.riddler.data.repo\r\n\r\nimport com.example.riddler.data.dao.QuizDao\r\nimport io.mockk.impl.annotations.RelaxedMockK\r\nimport io.mockk.mockk\r\nimport org.junit.Assert.*\r\n\r\nimport org.junit.Test\r\n@RelaxedMockK\r\nclass QuizRepositoryTest {\r\n    val dao = mockk<QuizDao>(relaxed = true)\r\n    val underTest = QuizRepository(\r\n        dao = dao,\r\n    )\r\n\r\n\r\n    @Test\r\n    fun getQuizQuestion() {\r\n    }\r\n\r\n    @Test\r\n    fun insertQuiz() {\r\n    }\r\n\r\n    @Test\r\n    fun insertFavoriteQuiz() {\r\n    }\r\n\r\n    @Test\r\n    fun insertQuestions() {\r\n    }\r\n}
+===================================================================
+diff --git a/app/src/test/java/com/example/riddler/data/repo/QuizRepositoryTest.kt b/app/src/test/java/com/example/riddler/data/repo/QuizRepositoryTest.kt
+--- a/app/src/test/java/com/example/riddler/data/repo/QuizRepositoryTest.kt	
++++ b/app/src/test/java/com/example/riddler/data/repo/QuizRepositoryTest.kt	
+@@ -1,8 +1,10 @@
+ package com.example.riddler.data.repo
+ 
+ import com.example.riddler.data.dao.QuizDao
++import io.mockk.called
+ import io.mockk.impl.annotations.RelaxedMockK
+ import io.mockk.mockk
++import io.mockk.verify
+ import org.junit.Assert.*
+ 
+ import org.junit.Test
+@@ -14,9 +16,11 @@
+     )
+ 
+ 
+-    @Test
++    /*@Test
+     fun getQuizQuestion() {
+-    }
++        val underTest = getQuizQuestion()
++        verify { getQuizQuestion().wasNot(called) }
++    }*/
+ 
+     @Test
+     fun insertQuiz() {
