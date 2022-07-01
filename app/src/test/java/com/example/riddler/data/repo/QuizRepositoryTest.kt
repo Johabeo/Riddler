@@ -53,8 +53,9 @@ class QuizRepositoryTest() {
         val underTest = QuizRepository(
             dao = dao,
         )
-        every { underTest.insertFavoriteQuiz(favoriteQuiz = FavoriteQuiz(
-            1,1,1))}just Runs
+
+        every { underTest.insertFavoriteQuiz(FavoriteQuiz(
+            1,1,1))}returns Unit
 
     }
 
@@ -67,7 +68,11 @@ class QuizRepositoryTest() {
         every { underTest.insertQuestions(questions = Questions(
             1,"whats your group","G1"
             ,"G2","G3","Dont know"
-            ,"G1",1)) } just Runs
+            ,"G1",1)) } returns Unit
+        every { underTest.insertQuestions(questions = Questions(
+            1,"whats your group","G1"
+            ,"G2","G3","Dont know"
+            ,"G1",1)) }
 
     }
 }
