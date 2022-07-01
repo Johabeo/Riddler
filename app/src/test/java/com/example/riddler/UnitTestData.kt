@@ -23,7 +23,7 @@ import org.junit.Assert.*
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class UnitTestDataTest {
+class UnitTestData {
 
     //Dao
     val quizDao = mockk<QuizDao>()
