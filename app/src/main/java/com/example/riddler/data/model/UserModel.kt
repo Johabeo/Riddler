@@ -7,6 +7,7 @@ class UserProfile ()
     var email: String = ""
     var firstName: String = ""
     var lastName: String = ""
+    var profilePic: Int = 1
 
     override fun toString(): String {
         return "$firstName $lastName"

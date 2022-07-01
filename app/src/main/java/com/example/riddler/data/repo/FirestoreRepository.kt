@@ -75,6 +75,7 @@ class FirestoreRepository() {
                     //update["email"] = userProfile.email
                     update["firstName"] = userProfile.firstName
                     update["lastName"] = userProfile.lastName
+                    update["profilePic"] = userProfile.profilePic
                     db.collection("users").document(doc.id).set(update, SetOptions.merge())
                     //update live data if any changes
                     fetchUserProfileInfo()
