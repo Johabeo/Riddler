@@ -55,7 +55,6 @@ sonarqube {
     }
 }
 
-//
 android {
     compileSdk 32
 
@@ -76,8 +75,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -85,7 +84,6 @@ android {
 }
 
 dependencies {
-    // Core
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
@@ -170,3 +168,5 @@ dependencies {
     // Custom Bottom Navigation
 
 }
+
+
