@@ -71,7 +71,6 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
                 }
             }
         }
-
         return view
     }
 

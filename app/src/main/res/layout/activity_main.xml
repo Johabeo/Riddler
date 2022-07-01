@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.view.MainActivity">
 
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -14,11 +13,12 @@
         android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"/>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,19 +35,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
 
-<!--    <com.etebarian.meowbottomnavigation.MeowBottomNavigation-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:mbn_circleColor="#ffffff"-->
-<!--        app:mbn_backgroundBottomColor="#ffffff"-->
-<!--        app:mbn_countBackgroundColor="#ff6f00"-->
-<!--        app:mbn_countTextColor="#ffffff"-->
-<!--        app:mbn_countTypeface="fonts/SourceSansPro-Regular.ttf"-->
-<!--        app:mbn_defaultIconColor="#90a4ae"-->
-<!--        app:mbn_rippleColor="#2f424242"-->
-<!--        app:mbn_selectedIconColor="#3c415e"-->
-<!--        app:mbn_shadowColor="#1f212121"-->
-<!--        app:mbn_hasAnimation="true"-->
-<!--        />-->
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
