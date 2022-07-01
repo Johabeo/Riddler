@@ -61,7 +61,7 @@ class HostLobbyFragment : Fragment() {
         val gamePin = view.findViewById<TextView>(R.id.lobbyGamePin)
         val startGame = view.findViewById<Button>(R.id.lobbyStartGame)
         val vm = ViewModelProvider(requireActivity()).get(HostViewModel::class.java)
-        vm.callCreateLobby(123,16)
+        vm.callCreateLobby(16)
         vm.lobbyState.observe(viewLifecycleOwner) {
             try {
                 println("players:" + it.players)

@@ -1,7 +1,6 @@
 package com.example.riddler.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.riddler.Global
 import com.example.riddler.TriviaQuestions
 import com.example.riddler.TriviaRepo
 import com.example.riddler.data.model.Questions
@@ -10,7 +9,6 @@ import com.example.riddler.data.repo.QuizRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,9 +17,11 @@ class QuizViewModel @Inject constructor(val repo: TriviaRepo, val quizRepo: Quiz
 
 
 
-    fun createQuizFromApi(amount: Int, category: Int, difficulty: String, quiz: Quiz) {
+    fun createQuizFromApi(amount: Int, categoryNum: Int, categoryName: String, difficulty: String,
+                          quizName: String, quizDescription: String){
+        val quiz = Quiz("asdfas",quizName, quizDescription, categoryName, difficulty)
         CoroutineScope(Dispatchers.IO).launch {
-            var res= repo.getAllTriviaQuestions(amount, category, difficulty)
+            var res= repo.getAllTriviaQuestions(amount, categoryNum, difficulty.lowercase())
             if (res.isSuccessful) {
                res.body()?.results?.let {
                    insertQuestions(it, quiz)
