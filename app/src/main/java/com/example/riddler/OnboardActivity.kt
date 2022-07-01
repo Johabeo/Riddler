@@ -70,6 +70,7 @@ class OnboardActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("firebase auth: ", "signInWithEmail:success")
                     val user = auth.currentUser
+                    Toast.makeText(this, "Sign In Successful", Toast.LENGTH_LONG).show()
                     openMainActivity()
 
 
@@ -96,6 +97,7 @@ class OnboardActivity : AppCompatActivity() {
                         userProfile.lastName = lastName
                         userProfile.email = email
                         repo.insertUserProfileInfo(userProfile)
+                        Toast.makeText(this, "*Account Created, Welcome Aboard", Toast.LENGTH_LONG).show()
                         openMainActivity()
                     } else {
                         //throw RuntimeException("OnboardActivity.signUp: signed up, but user is invalid")

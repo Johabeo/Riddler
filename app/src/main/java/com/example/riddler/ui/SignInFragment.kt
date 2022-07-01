@@ -35,13 +35,15 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
         inputPassword = view.findViewById(R.id.password_layout)
         inputEmail = view.findViewById(R.id.onboarding_signup_emailInputLayout)
 
+
         view.findViewById<Button>(R.id.onboarding_signin_signinButon).setOnClickListener {
             val email = emailText.text.toString()
             val password = passwordText.text.toString()
-            if(validate(email, password))
+            if(validate(email, password)){
                 signIn(email, password)
+            }
             else
-                Toast.makeText(context, "Invalid email or password", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Invalid Email/Password Combination", Toast.LENGTH_LONG).show()
         }
 
         view.findViewById<TextView>(R.id.onboard_signin_signupButton).setOnClickListener {
@@ -49,24 +51,24 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
         }
 
         passwordText.setOnFocusChangeListener { _, focused ->
-            if(!focused && inputPassword.helperText == null)
-            {
-                inputPassword.helperText = "*Email Required"
-            }
-            else
-            {
-                inputPassword.helperText = null
+            val password = passwordText.text.toString()
+            if(!focused) {
+                if (password.isEmpty()) {
+                    inputPassword.helperText = "*Password Required"
+                } else {
+                    inputPassword.helperText = ""
+                }
             }
         }
 
         emailText.setOnFocusChangeListener { _, focused ->
-            if(!focused && inputEmail.helperText == null)
-            {
-                inputEmail.helperText = "*Password Required"
-            }
-            else
-            {
-                inputEmail.helperText = null
+            val email = emailText.text.toString()
+            if(!focused) {
+                if (email.isEmpty()) {
+                    inputEmail.helperText = "*Email Required"
+                } else {
+                    inputEmail.helperText = ""
+                }
             }
         }
 
@@ -74,18 +76,31 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
     }
 
     fun validate(email : String, password : String) : Boolean{
-
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            inputEmail.helperText = "*Invalid Email Address"
+            inputEmail.helperText = "*Please Enter a Valid Email"
             return false
         }
         //firebase will perform a check on password strength, but for now we'll check the length
-        if(password.length < 5){
-         //inputPassword.error("Password Invalid")
-            inputPassword.helperText = "*Minimum 5 Character Password"
+        else if (password.length < 8) {
+            inputPassword.helperText = "Minimum 8 Character Password"
             return false
         }
-
+        else if (!password.matches(".*[A-Z].*".toRegex())) {
+            inputPassword.helperText = "*Must Contain 1 Upper-case Character"
+            return false
+        }
+        else if (!password.matches(".*[a-z].*".toRegex())) {
+            inputPassword.helperText = "*Must Contain 1 Lower-case Character"
+            return false
+        }
+        else if (!password.matches(".*[@#\$%^$+=].*".toRegex())) {
+            inputPassword.helperText = "*Must Contain 1 Special Character (@#\$%^\$+=)"
+            return false
+        }
+        else if (password.length < 8) {
+            inputPassword.helperText = "Minimum 8 Character Password"
+            return false
+        }
         return true
     }
 }
