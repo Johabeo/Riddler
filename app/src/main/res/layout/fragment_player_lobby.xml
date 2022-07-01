@@ -7,6 +7,22 @@
     tools:context=".ui.view.host.HostLobbyFragment">
 
     <TextView
+        android:id="@+id/Header"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:background="#2196F3"
+        android:text="GAME PIN"
+        android:textIsSelectable="true"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textSize="36dp"
+        app:layout_constraintBottom_toTopOf="@id/playerLobbyGamePin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <TextView
         android:id="@+id/playerLobbyGamePin"
         android:layout_width="match_parent"
         android:layout_height="96dp"

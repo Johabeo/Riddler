@@ -11,4 +11,5 @@
     <color name="alternativeText">#3F1FBE</color>
     <color name="queryErrorText">#BA1B1B</color>
     <color name="buttonColor">#006D32</color>
+    <color name="hintColor">#006D32</color>
 </resources>
