@@ -32,8 +32,6 @@ class HostActivity : AppCompatActivity() {
         var ft = fm.beginTransaction()
         ft.replace(R.id.hostContainer, HostLobbyFragment())
         ft.commit()
-
-
     }
 
 }

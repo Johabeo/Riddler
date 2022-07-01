@@ -10,6 +10,6 @@ data class Lobby(
 
 
 data class LobbyPlayers(
-    val playerId: Long,
+    val playerId: String,
     val playerName: String
 )

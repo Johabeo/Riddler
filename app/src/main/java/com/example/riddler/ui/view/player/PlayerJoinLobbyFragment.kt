@@ -50,15 +50,20 @@ class PlayerJoinLobbyFragment : Fragment() {
         val vm = ViewModelProvider(requireActivity()).get(PlayerViewModel::class.java)
         val inputPin : TextInputLayout = view.findViewById(R.id.game_pin_layout)
 
-        gamePinText.setOnFocusChangeListener { _, focused ->
-            val password = gamePinText.text.toString()
-            if(!focused) {
-                if (password.isEmpty()) {
-                    inputPin.helperText = "*Game Pin Required"
-                } else {
-                    inputPin.helperText = ""
-                }
-            }
+
+//        gamePinText.setOnFocusChangeListener { _, focused ->
+//            val password = gamePinText.text.toString()
+//            if(!focused) {
+//                if (password.isEmpty()) {
+//                    inputPin.helperText = "*Game Pin Required"
+//                } else {
+//                    inputPin.helperText = ""
+//                }
+//            }
+
+        joinLobbyButton.setOnClickListener {
+            vm.callJoinLobby(gamePinText.text.toString()) { gameId -> joinLobby(gameId) }
+
         }
 
 //        joinLobbyButton.setOnClickListener {

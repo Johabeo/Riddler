@@ -24,7 +24,9 @@ import com.example.riddler.ui.view.settings.SettingsActivity
 import com.example.riddler.ui.viewmodel.QuizViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.functions.FirebaseFunctions
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        println(Firebase.auth.uid)
         setFragment(DiscoverFragment())
         val gr = GameRepository()
         //gr.startGame("QWYuoR2qmbFMMUimLp07")
@@ -50,21 +52,22 @@ class MainActivity : AppCompatActivity() {
             NavigationBarView.OnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.play -> {
+                        item.isChecked = true
                         setFragment(PlayerJoinLobbyFragment())
                     }
-
                     R.id.create -> {
+                        item.isChecked = true
                         setFragment(CreateQuizFragment())
                     }
 
                     R.id.discover -> {
+                        item.isChecked = true
                         setFragment(DiscoverFragment())
                     }
                 }
                 false
             }
         menuBar.setOnItemSelectedListener(mOnNavigationItemSelectedListener)
-
         //println(TriviaRepo(RetroApiInterface.create()).getAllTriviaQuestions(10,1,"hard"))
     }
 

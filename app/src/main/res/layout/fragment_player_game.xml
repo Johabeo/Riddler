@@ -11,17 +11,19 @@
         android:layout_height="300dp"
         android:layout_marginBottom="584dp"
         android:background="#FFD180"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:textAlignment="center"
         android:gravity="center"
         android:textSize="30sp"
-        android:text="@string/hello_blank_fragment"
+        android:text="How many Questions can i fit on a stick?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
 
     <TextView
         android:id="@+id/timer"
@@ -44,8 +46,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="@android:color/transparent"
         android:backgroundTint="#F50057"
         app:cardCornerRadius="16dp"
+        app:cardPreventCornerOverlap="true"
         app:layout_constraintBottom_toTopOf="@id/playerAnswer3"
         app:layout_constraintEnd_toStartOf="@+id/playerAnswer2"
         app:layout_constraintHorizontal_bias="0.0"
@@ -58,10 +62,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="pizza is so great because its a circle and a you need circles for "
+            android:text="mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
             android:textAlignment="center"
             android:textSize="24sp" />
-
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -85,9 +88,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Test"
+            android:text="there should be a 32 character limit"
             android:textAlignment="center"
             android:textSize="24sp" />
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView

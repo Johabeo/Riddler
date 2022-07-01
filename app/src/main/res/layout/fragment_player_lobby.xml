@@ -14,7 +14,6 @@
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         android:src="@drawable/ic_game_logo"
-        app:helperTextTextColor="@color/queryErrorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +39,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/lobbyGamePin"
+                android:id="@+id/playerLobbyGamePin"
                 android:layout_width="match_parent"
                 android:layout_height="96dp"
                 android:background="#2196F3"
@@ -49,20 +48,21 @@
                 android:text="Quiz Title"
                 android:textAlignment="center"
                 android:textIsSelectable="true"
-                android:textSize="36dp"
+                android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="id/card_layout" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/mini_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Quiz:"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="id/card_layout"
-                app:layout_constraintTop_toTopOf="id/card_layout" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/header"
@@ -92,7 +92,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/header" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/playerList"
+                android:id="@+id/playerLobbyList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
