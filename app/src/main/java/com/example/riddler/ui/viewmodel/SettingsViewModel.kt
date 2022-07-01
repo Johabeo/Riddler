@@ -2,6 +2,7 @@ package com.example.riddler.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.riddler.R
 import com.example.riddler.data.model.UserProfile
 import com.example.riddler.data.repo.FirestoreRepository
 import javax.inject.Inject

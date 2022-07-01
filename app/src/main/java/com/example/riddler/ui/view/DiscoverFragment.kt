@@ -1,6 +1,7 @@
 package com.example.riddler.ui.view
 
 import android.content.Intent
+import android.content.res.TypedArray
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,31 +29,19 @@ import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DiscoverFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 @AndroidEntryPoint
 class DiscoverFragment : Fragment() {
 
     @Inject
     lateinit var vm : DiscoverViewModel
-    private var param1: String? = null
-    private var param2: String? = null
     var quizList = ArrayList<Quiz>()
     lateinit var adapter : DashboardQuizListAdapter
+
+    lateinit var avatars : TypedArray
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        avatars = resources.obtainTypedArray(R.array.avatars)
     }
 
     override fun onCreateView(
@@ -82,6 +71,16 @@ class DiscoverFragment : Fragment() {
 
                 }
             )
+
+        vm.userProfile.observe(requireActivity()) {
+            val str = "${resources.getString(R.string.welcome_user)}, $it!"
+            userImage.setImageResource(avatars.getResourceId(it.profilePic, 1))
+            welcomeTextView.setText(str)
+        }
+
+        vm.fetchUserProfileInfo()
+
+        //todo: fetch user's quizzes in case email changes
     }
 
     val onQuizItemClick = fun(index : Int) {

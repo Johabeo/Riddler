@@ -28,4 +28,8 @@ class DiscoverViewModel @Inject constructor (val quizRepo: QuizRepository,
     fun isUserLoggedIn() : Boolean {
         return firebaseRepository.isUserLoggedIn()
     }
+
+    fun fetchUserProfileInfo(){
+        firebaseRepository.fetchUserProfileInfo()
+    }
 }
