@@ -15,11 +15,11 @@ class DashboardViewModel : ViewModel() {
     init{
         //todo: livedata
         quizList = arrayListOf(
-            Quiz( "1", "A Math Quiz", "A simple quiz on derivatives", "Math"),
-            Quiz( "1", "A History Quiz", "Battle of Schrute Farms", "History"),
-            Quiz( "1", "A Programming Quiz", "Pointers, system calls, interrupts", "Computer Science"),
-            Quiz( "1", "A Politics Quiz", "Revolution 101", "Politics"),
-            Quiz( "1", "A Bonus Quiz", "Linux fundamentals", "Computer Science")
+            Quiz( "1", "A Math Quiz", "A simple quiz on derivatives", "Math","easy"),
+            Quiz( "1", "A History Quiz", "Battle of Schrute Farms", "History","easy"),
+            Quiz( "1", "A Programming Quiz", "Pointers, system calls, interrupts", "Computer Science","easy"),
+            Quiz( "1", "A Politics Quiz", "Revolution 101", "Politics","easy"),
+            Quiz( "1", "A Bonus Quiz", "Linux fundamentals", "Computer Science","easy")
         )
         repo = FirestoreRepository()
         userProfile = repo.userProfile

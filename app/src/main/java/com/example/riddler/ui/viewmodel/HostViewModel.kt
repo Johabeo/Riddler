@@ -27,9 +27,9 @@ class HostViewModel  : ViewModel() {
     lateinit var lobbyListener: ListenerRegistration
     lateinit var gameListener: ListenerRegistration
 
-    fun callCreateLobby(id: Int, lobbySize: Int) {
+    fun callCreateLobby(lobbySize: Int) {
         // [START call_add_numbers]
-        repo.createLobby(id, lobbySize)
+        repo.createLobby(lobbySize)
             .addOnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     val e = task.exception
@@ -52,9 +52,6 @@ class HostViewModel  : ViewModel() {
                 lobbyState.value = snapshot.data?.toDataClass()
             }
         }
-    }
-    fun callStartGame(gameId: String) {
-
     }
 
     suspend fun startGame(loadGame: () -> Unit) {

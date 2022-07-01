@@ -46,12 +46,10 @@ class PlayerJoinLobbyFragment : Fragment() {
 
         val joinLobbyButton = view.findViewById<Button>(R.id.joinGameButton)
         val gamePinText = view.findViewById<TextView>(R.id.gamePinText)
-        val playerNameText = view.findViewById<TextView>(R.id.playerNameText)
         val vm = ViewModelProvider(requireActivity()).get(PlayerViewModel::class.java)
 
         joinLobbyButton.setOnClickListener {
-            vm.callJoinLobby(gamePinText.text.toString(),
-                playerNameText.text.toString()) { gameId -> joinLobby(gameId) }
+            vm.callJoinLobby(gamePinText.text.toString()) { gameId -> joinLobby(gameId) }
         }
     }
 
