@@ -1,6 +1,5 @@
 package com.example.riddler
 
-import androidx.test.core.R
 import io.mockk.*
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.runBlocking
@@ -14,7 +13,7 @@ class TriviaRepoTest{
         inter = inter,
     )
     @Test
-    fun testGetAllTriviaQuestionsFromRepo(){
+    fun toGetAllTriviaQuestionsFromRepo(){
         coEvery { underTest.getAllTriviaQuestions(1,1,"Hard") } just Runs
 
     }
