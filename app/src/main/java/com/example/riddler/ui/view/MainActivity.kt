@@ -1,5 +1,6 @@
 package com.example.riddler.ui.view
 
+import android.content.res.Configuration
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,12 +12,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.riddler.OnboardActivity
 import com.example.riddler.R
-import com.example.riddler.RetroApiInterface
-import com.example.riddler.TriviaRepo
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.data.repo.FirestoreRepository
 import com.example.riddler.data.repo.GameRepository
-import com.example.riddler.ui.view.host.HostCreateLobbyFragment
 import com.example.riddler.ui.view.player.PlayerJoinLobbyFragment
 import com.example.riddler.ui.view.settings.SettingsActivity
 import com.example.riddler.ui.viewmodel.QuizViewModel
@@ -25,7 +23,6 @@ import com.google.android.material.navigation.NavigationBarView
 import com.google.firebase.functions.FirebaseFunctions
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
