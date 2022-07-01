@@ -18,8 +18,9 @@ class TriviaRepoTest{
 
     }
     @Test
-    fun testGetAllTriviaQuestionsFromApiInterface(){
+     fun testGetAllTriviaQuestionsFromApiInterface(){
         coEvery { inter.getAllTriviaQuestions(1,1,"Hard") } just Runs
+
     }
 
     @Test
