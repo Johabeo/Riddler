@@ -26,17 +26,15 @@ class PlayerViewModel : ViewModel() {
         totalScore.value = 0
     }
 
-    fun callJoinLobby(gameId: String, joinLobby: (String) -> Unit) {
+    fun callJoinLobby(gameId: String, joinLobby: (String, Boolean) -> Unit) {
         repo.joinLobby(gameId)
             .addOnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     val e = task.exception
                     Timber.d(e)
+                    joinLobby(gameId,false)
                 } else {
-                    if (task.result)
-                        joinLobby(gameId)
-                    else
-                        println("Lobby does not exist")
+                    joinLobby(gameId,task.result)
                 }
             }
     }

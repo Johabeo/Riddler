@@ -27,9 +27,12 @@ class PlayerActivity : AppCompatActivity() {
         switchFragment(PlayerLobbyFragment())
 
         vm.gameState.observe(this) {
+            when(it.finished) {
+                true ->  { switchFragment(PlayerFinalLeaderboardFragment())}
+                else -> {}
+            }
             when(it.displayingLeaderboard) {
                 true -> { switchFragment(PlayerLeaderboardFragment())}
-                false -> {}
                 else -> {}
             }
             it.currentQuestion?.let {
