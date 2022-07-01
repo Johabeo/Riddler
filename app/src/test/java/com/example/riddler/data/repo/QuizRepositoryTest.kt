@@ -3,6 +3,7 @@ package com.example.riddler.data.repo
 import androidx.lifecycle.LiveData
 import com.example.riddler.data.dao.QuizDao
 import com.example.riddler.data.model.FavoriteQuiz
+import com.example.riddler.data.model.Questions
 import com.example.riddler.data.model.Quiz
 import io.mockk.*
 import io.mockk.impl.annotations.RelaxedMockK
@@ -23,8 +24,7 @@ class QuizRepositoryTest() {
         val underTest = QuizRepository(
             dao = dao,
         )
-        every { underTest.getFavoriteQuizzes(1) } returnsMany listOf()
-
+        coEvery {  underTest.getFavoriteQuizzes(1) } returnsMany listOf()
 
     }
 
@@ -35,8 +35,6 @@ class QuizRepositoryTest() {
             dao = dao,
         )
         every { underTest.getQuizQuestion(1) } just Runs
-
-
     }
 
     @Test
@@ -45,8 +43,8 @@ class QuizRepositoryTest() {
         val underTest = QuizRepository(
             dao = dao,
         )
-       every { underTest.insertQuiz(quiz = Quiz(1,1,"test1",
-           "test to insert quiz","regular")) } just Runs
+       every { underTest.insertQuiz(quiz = Quiz("G1","Our Team","test1",
+           "test to insert quiz",1)) } just Runs
     }
 
     @Test
@@ -55,6 +53,8 @@ class QuizRepositoryTest() {
         val underTest = QuizRepository(
             dao = dao,
         )
+        every { underTest.insertFavoriteQuiz(favoriteQuiz = FavoriteQuiz(
+            1,1,1))}just Runs
 
     }
 
@@ -64,7 +64,10 @@ class QuizRepositoryTest() {
         val underTest = QuizRepository(
             dao = dao,
         )
-        every { dao.getFavoriteQuizzes(more(1)) }
+        every { underTest.insertQuestions(questions = Questions(
+            1,"whats your group","G1"
+            ,"G2","G3","Dont know"
+            ,"G1",1)) } just Runs
 
     }
 }
