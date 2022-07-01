@@ -9,8 +9,12 @@ import android.widget.Toast
 import com.example.riddler.R
 import com.example.riddler.data.model.UserProfile
 import com.example.riddler.ui.viewmodel.SettingsViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SettingsActivity : AppCompatActivity() {
+    @Inject
     lateinit var vm : SettingsViewModel
 
     //class-level because I might need them elsewhere idk
@@ -28,8 +32,6 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        vm = SettingsViewModel()
 
         firstNameEditText = findViewById(R.id.set_firstNameEditText)
         lastNameEditText = findViewById(R.id.set_lastNameEditText)

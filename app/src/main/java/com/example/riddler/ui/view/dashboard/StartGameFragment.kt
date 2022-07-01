@@ -62,7 +62,7 @@ class StartGameFragment : Fragment() {
 
         var joinButton = view.findViewById<Button>(R.id.dash_joinGameButton)
         joinButton.setOnClickListener {
-            val intent = Intent(activity, PlayerActivity::class.java)
+            val intent = Intent(activity, PlayerJoinLobbyFragment::class.java)
             startActivity(intent)
         }
     }

@@ -6,7 +6,7 @@
     <item
         android:id="@+id/play"
         android:enabled="true"
-        android:title="Host"/>
+        android:title="Play"/>
     <item
         android:id="@+id/create"
         android:enabled="true"

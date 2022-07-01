@@ -2,16 +2,16 @@ package com.example.riddler.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.riddler.R
 import com.example.riddler.data.model.UserProfile
 import com.example.riddler.data.repo.FirestoreRepository
+import javax.inject.Inject
 
-class SettingsViewModel : ViewModel(){
-    val repo : FirestoreRepository
+class SettingsViewModel @Inject constructor(val repo: FirestoreRepository) : ViewModel(){
+
     val userProfile : MutableLiveData<UserProfile>
-    //todo: dependency injection instead of instantiating repo
 
     init{
-        repo = FirestoreRepository()
         userProfile = repo.userProfile
     }
 

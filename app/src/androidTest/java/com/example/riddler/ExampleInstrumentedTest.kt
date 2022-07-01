@@ -23,3 +23,11 @@ class ExampleInstrumentedTest {
         assertEquals("com.example.riddler", appContext.packageName)
     }
 }
+/*
+*
+* add dependencies
+* ANNOTATIONS
+* VERY BASIC EXAMPLE (get reference to the view, perform action and verify/assert)
+*
+*
+* */

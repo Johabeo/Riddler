@@ -16,17 +16,18 @@ import com.example.riddler.ui.view.dashboard.DashboardActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import javax.inject.Inject
 
 
 class OnboardActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
 
+    @Inject
     lateinit var repo : FirestoreRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboard)
-        repo = FirestoreRepository()
 
         auth = Firebase.auth
 

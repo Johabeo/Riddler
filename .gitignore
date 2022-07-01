@@ -83,8 +83,5 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
-<<<<<<< HEAD
 /.idea/.name
 /.idea/discord.xml
-=======
->>>>>>> 3a80ede8e9252d3c797359a9c0b90d2ce0d759c2
