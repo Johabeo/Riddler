@@ -14,6 +14,7 @@ import com.example.riddler.data.repo.GameRepository
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.gson.Gson
+import timber.log.Timber
 
 class PlayerViewModel : ViewModel() {
     val repo = GameRepository()
@@ -30,47 +31,31 @@ class PlayerViewModel : ViewModel() {
     }
 
     fun callJoinLobby(gameId: String, playerName: String, joinLobby: (String) -> Unit) {
-        try {
-            repo.joinLobby(gameId, Global.userId, playerName)
-                .addOnCompleteListener { task ->
-                    if (!task.isSuccessful) {
-                        val e = task.exception
-                        if (e is FirebaseFunctionsException) {
 
-                            // Function error code, will be INTERNAL if the failure
-                            // was not handled properly in the function call.
-                            val code = e.code
-
-                            // Arbitrary error details passed back from the function,
-                            // usually a Map<String, Any>.
-                            val details = e.details
-                        }
-                    } else {
-                        if (task.result)
-                            joinLobby(gameId)
-                        else
-                            println("Lobby does not exist")
-                    }
+        repo.joinLobby(gameId, Global.userId, playerName)
+            .addOnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    val e = task.exception
+                    Timber.d(e)
+                } else {
+                    if (task.result)
+                        joinLobby(gameId)
+                    else
+                        println("Lobby does not exist")
                 }
-        } catch (e: Exception) {
-            println(e)
-        }
+            }
     }
     fun playerLobby(gameId: String) {
         pin.value = gameId
-        try {
-            val docRef = FirebaseFirestore.getInstance().collection("lobby").document(gameId)
-            lobbyListener = docRef.addSnapshotListener { snapshot, e ->
-                if (e != null) {
-                    return@addSnapshotListener
-                }
-
-                if (snapshot != null && snapshot.exists()) {
-                    lobbyState.value = snapshot.data?.toDataClass()
-                }
+        val docRef = FirebaseFirestore.getInstance().collection("lobby").document(gameId)
+        lobbyListener = docRef.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Timber.d(e)
             }
-        } catch (e: Exception) {
-            println(e)
+
+            if (snapshot != null && snapshot.exists()) {
+                lobbyState.value = snapshot.data?.toDataClass()
+            }
         }
     }
 
@@ -80,7 +65,7 @@ class PlayerViewModel : ViewModel() {
         val docRef = FirebaseFirestore.getInstance().collection("game").document(pin.value!!)
         gameListener = docRef.addSnapshotListener { snapshot, e ->
             if (e != null) {
-                return@addSnapshotListener
+                Timber.d(e)
             }
 
             if (snapshot != null && snapshot.exists()) {
@@ -94,16 +79,7 @@ class PlayerViewModel : ViewModel() {
             .addOnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     val e = task.exception
-                    if (e is FirebaseFunctionsException) {
-
-                        // Function error code, will be INTERNAL if the failure
-                        // was not handled properly in the function call.
-                        val code = e.code
-
-                        // Arbitrary error details passed back from the function,
-                        // usually a Map<String, Any>.
-                        val details = e.details
-                    }
+                    Timber.d(e)
                 } else {
                     val result = task.result
                     val isCorrect = result["isAnswerCorrect"] as Boolean

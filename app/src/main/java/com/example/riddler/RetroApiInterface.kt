@@ -3,6 +3,7 @@ package com.example.riddler
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -17,14 +18,5 @@ interface RetroApiInterface {
     suspend fun getAllTriviaQuestions(@Query("amount") amount:Int, @Query("category") category:Int,
                                       @Query("difficulty") difficulty:String, @Query("type") type:String="multiple"): Response<TriviaQuestions>
 
-    companion object {
-        var BASE_URL = "https://opentdb.com/"
-        fun create(): RetroApiInterface {
-            val retrofit = Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(BASE_URL)
-                .build()
-            return retrofit.create(RetroApiInterface::class.java)
-        }
-    }
+
 }
