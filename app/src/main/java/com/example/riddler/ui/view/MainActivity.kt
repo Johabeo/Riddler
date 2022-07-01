@@ -1,5 +1,6 @@
 package com.example.riddler.ui.view
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,10 @@ import androidx.fragment.app.Fragment
 import com.example.riddler.R
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.data.repo.GameRepository
+import com.example.riddler.ui.view.dashboard.StartGameFragment
+import com.example.riddler.ui.view.host.HostActivity
+import com.example.riddler.ui.view.host.HostLobbyFragment
+import com.example.riddler.ui.view.player.PlayerActivity
 import com.example.riddler.ui.view.player.PlayerJoinLobbyFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
@@ -38,8 +43,8 @@ class MainActivity : AppCompatActivity() {
         val mOnNavigationItemSelectedListener=
             NavigationBarView.OnItemSelectedListener { item ->
                 when (item.itemId) {
-                    R.id.join -> {
-                        setFragment(PlayerJoinLobbyFragment())
+                    R.id.play -> {
+                        setFragment(StartGameFragment())
                     }
                     R.id.create -> {
                         setFragment(CreateQuizFragment())
@@ -60,6 +65,18 @@ class MainActivity : AppCompatActivity() {
         ft.replace(R.id.container, fragment)
         ft.commit()
 
+    }
+
+    fun openHostActivity(){
+        intent = Intent(this, HostActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun openPlayerActivity(){
+        intent = Intent(this, PlayerActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

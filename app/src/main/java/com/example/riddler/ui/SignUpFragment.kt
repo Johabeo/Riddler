@@ -109,7 +109,7 @@ class SignUpFragment(val signUp : (String, String, String, String) -> Unit) : Fr
             inputPassword.helperText = "*Must Contain 1 Lower-case Character"
             return false
         }
-        else if (!password.matches(".*[@#\$%^$+=].*".toRegex())) {
+        else if (!password.matches(".*[@#\$%^$+=!].*".toRegex())) {
             inputPassword.helperText = "*Must Contain 1 Special Character (@#\$%^\$+=)"
             return false
         }

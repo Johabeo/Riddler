@@ -23,7 +23,7 @@
         android:id="@+id/playerNameText"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:hint="Enter Name"
+        android:hint="Enter Username"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/joinGameButton"
         app:layout_constraintEnd_toEndOf="parent"

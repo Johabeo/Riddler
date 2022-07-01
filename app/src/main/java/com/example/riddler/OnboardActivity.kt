@@ -11,6 +11,7 @@ import com.example.riddler.data.model.UserProfile
 import com.example.riddler.data.repo.FirestoreRepository
 import com.example.riddler.ui.SignInFragment
 import com.example.riddler.ui.SignUpFragment
+import com.example.riddler.ui.view.MainActivity
 import com.example.riddler.ui.view.dashboard.DashboardActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -48,7 +49,7 @@ class OnboardActivity : AppCompatActivity() {
 
     fun openMainActivity(){
         Log.d("firebase auth", "inside openMainActivity")
-        intent = Intent(this, DashboardActivity::class.java)
+        intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -97,7 +98,7 @@ class OnboardActivity : AppCompatActivity() {
                         userProfile.lastName = lastName
                         userProfile.email = email
                         repo.insertUserProfileInfo(userProfile)
-                        Toast.makeText(this, "*Account Created, Welcome Aboard", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "Account Created, Welcome Aboard", Toast.LENGTH_LONG).show()
                         openMainActivity()
                     } else {
                         //throw RuntimeException("OnboardActivity.signUp: signed up, but user is invalid")

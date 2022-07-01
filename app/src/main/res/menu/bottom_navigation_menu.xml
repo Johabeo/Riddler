@@ -4,9 +4,9 @@
         android:enabled="true"
         android:title="@string/discover"/>
     <item
-        android:id="@+id/join"
+        android:id="@+id/play"
         android:enabled="true"
-        android:title="@string/join"/>
+        android:title="Host"/>
     <item
         android:id="@+id/create"
         android:enabled="true"
