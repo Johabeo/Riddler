@@ -1,28 +1,31 @@
 package com.example.riddler
 
 import com.example.riddler.data.model.Questions
+import com.example.riddler.data.model.Quiz
 import io.mockk.*
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 
 import org.junit.Test
 @RelaxedMockK
 class ApiViewModelTest {
     val repo = mockk<TriviaRepo>()
-    val Tq = mockk<TriviaQuestions>()
+    val tQ = mockk<TriviaQuestions>()
     val underTest = ApiViewModel(
         repo = repo,
     )
+    val quiz1 = Quiz("Joe", "Best Quize", "people Around the World", "General", 23)
+    val triviaQuestions1 = TriviaQuestions(1, listOf())
 
     @Test
-    fun testGetAllTriviaQuestions() {
+    fun toGetTrivia() {
+        val repo = mockk<TriviaRepo>()
+        val underTest = ApiViewModel(
+            repo = repo,
+        )
 
-        coEvery { underTest.getAllTriviaQuestions(1,1,"Hard", "Coding") } just Runs
     }
-}
-
-private infix fun Unit.Just(runs: Runs) {
-
 }
