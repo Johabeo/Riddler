@@ -44,26 +44,24 @@ class SignUpFragment(val signUp : (String, String, String, String) -> Unit) : Fr
                 parentFragmentManager.popBackStack()
         }
 
-
         return view
     }
 
     fun validate(email : String, password : String, firstName : String) : Boolean{
 
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            Toast.makeText(context, "Invalid email", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "*Invalid Email", Toast.LENGTH_LONG).show()
             return false
         }
         //firebase will perform a check on password strength, but for now we'll check the length
         if(password.length < 5){
-            Toast.makeText(context, "Password is too short", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "*5 Character Minimum", Toast.LENGTH_LONG).show()
             return false
         }
         if(firstName.isEmpty()){
-            Toast.makeText(context, "Please enter a first name or a nickname", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "*Please Enter a Name", Toast.LENGTH_LONG).show()
             return false
         }
-
         return true
     }
 }

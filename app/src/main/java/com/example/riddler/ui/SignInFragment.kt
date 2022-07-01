@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_sign_in.*
 class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragment : () -> Unit) : Fragment() {
 
     lateinit var inputPassword : TextInputLayout
+    lateinit var inputEmail : TextInputLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,8 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
         val passwordText = view.findViewById<EditText>(R.id.onboarding_signin_password)
         passwordText.transformationMethod = PasswordTransformationMethod.getInstance()
 
-        inputPassword = view.findViewById(R.id.onboarding_signup_passwordInputLayout)
+        inputPassword = view.findViewById(R.id.password_layout)
+        inputEmail = view.findViewById(R.id.onboarding_signup_emailInputLayout)
 
         view.findViewById<Button>(R.id.onboarding_signin_signinButon).setOnClickListener {
             val email = emailText.text.toString()
@@ -39,11 +41,33 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
             if(validate(email, password))
                 signIn(email, password)
             else
-                Toast.makeText(context, "Invalid email or short password", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Invalid email or password", Toast.LENGTH_LONG).show()
         }
 
         view.findViewById<TextView>(R.id.onboard_signin_signupButton).setOnClickListener {
             setSignUpFragment()
+        }
+
+        passwordText.setOnFocusChangeListener { _, focused ->
+            if(!focused && inputPassword.helperText == null)
+            {
+                inputPassword.helperText = "*Email Required"
+            }
+            else
+            {
+                inputPassword.helperText = null
+            }
+        }
+
+        emailText.setOnFocusChangeListener { _, focused ->
+            if(!focused && inputEmail.helperText == null)
+            {
+                inputEmail.helperText = "*Password Required"
+            }
+            else
+            {
+                inputEmail.helperText = null
+            }
         }
 
         return view
@@ -52,15 +76,16 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
     fun validate(email : String, password : String) : Boolean{
 
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            inputEmail.helperText = "*Invalid Email Address"
             return false
         }
         //firebase will perform a check on password strength, but for now we'll check the length
         if(password.length < 5){
          //inputPassword.error("Password Invalid")
+            inputPassword.helperText = "*Minimum 5 Character Password"
             return false
         }
 
         return true
     }
-
 }

@@ -40,11 +40,11 @@
         <activity
             android:name=".NewTriviaActivity"
             android:exported="false"
-            android:configChanges="orientation|screenSize|screenLayout"/>
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
         <activity
             android:name=".OnboardActivity"
             android:exported="true"
-            android:configChanges="orientation|screenSize|screenLayout">
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +54,7 @@
         </activity>
         <activity
             android:name=".ui.view.MainActivity"
-            android:configChanges="orientation|screenSize|screenLayout"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:exported="true" />
     </application>
 
