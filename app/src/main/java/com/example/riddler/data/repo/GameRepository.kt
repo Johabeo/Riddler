@@ -31,7 +31,6 @@ class GameRepository() {
             }
     }
 
-
     fun joinLobby(gameId: String, playerId: Int, playerName: String): Task<Boolean> {
         // Create the arguments to the callable function.
         val data = hashMapOf(
@@ -51,11 +50,7 @@ class GameRepository() {
                 result
             }
     }
-//    fun startGame(gameId: String): Task<String> {
-//        var question = Questions(1,1,"What is 1+1?","2",
-//            "3","4","5","2")
-//        return startGame(gameId,question)
-//    }
+
     fun startGame(gameId: String, question: Questions): Task<String>  {
         var qMap = question.serializeToMap()
         val data = hashMapOf(
@@ -73,6 +68,7 @@ class GameRepository() {
                 result
             }
     }
+
     fun submitAnswer(gameId: String, playerId: Int, answer: String): Task<HashMap<String,Any>>  {
         val data = hashMapOf(
             "gameId" to gameId,
@@ -90,11 +86,7 @@ class GameRepository() {
                 result
             }
     }
-//    fun nextQuestion(gameId: String): Task<Boolean> {
-//        var question = Questions(1,1,"What is 2+2?","2",
-//            "3","4","5","2")
-//        return nextQuestion(gameId,question)
-//    }
+
     fun nextQuestion(gameId: String, question: Questions): Task<Boolean> {
         var qMap = question.serializeToMap()
         val data = hashMapOf(
@@ -118,6 +110,7 @@ class GameRepository() {
         val data = hashMapOf(
             "gameId" to gameId
         )
+
         functions
             .getHttpsCallable("displayLeaderboard")
             .call(data)
