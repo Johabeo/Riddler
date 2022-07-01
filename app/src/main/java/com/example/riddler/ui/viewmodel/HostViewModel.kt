@@ -14,7 +14,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.gson.Gson
-import java.lang.Exception
+import timber.log.Timber
+import kotlin.Exception
 
 class HostViewModel  : ViewModel() {
     val repo = GameRepository()
@@ -32,16 +33,7 @@ class HostViewModel  : ViewModel() {
             .addOnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     val e = task.exception
-                    if (e is FirebaseFunctionsException) {
-
-                        // Function error code, will be INTERNAL if the failure
-                        // was not handled properly in the function call.
-                        val code = e.code
-
-                        // Arbitrary error details passed back from the function,
-                        // usually a Map<String, Any>.
-                        val details = e.details
-                    }
+                    Timber.d(e)
                 } else {
                     hostLobby(task.result)
                 }
@@ -75,22 +67,13 @@ class HostViewModel  : ViewModel() {
                 .addOnCompleteListener { task ->
                     if (!task.isSuccessful) {
                         val e = task.exception
-                        if (e is FirebaseFunctionsException) {
-
-                            // Function error code, will be INTERNAL if the failure
-                            // was not handled properly in the function call.
-                            val code = e.code
-
-                            // Arbitrary error details passed back from the function,
-                            // usually a Map<String, Any>.
-                            val details = e.details
-                        }
+                        Timber.d(e)
                     }
                     createGameInstance()
                     loadGame()
                 }
         }catch (e : Exception) {
-            println(e)
+            Timber.d(e)
         }
     }
 
@@ -113,30 +96,22 @@ class HostViewModel  : ViewModel() {
     fun callNextQuestion(nextFragment: () -> Unit) {
         try {
             val qNumber = gameState.value!!.currentQuestion!!
-            if (qNumber >= questionList.size){
+            if (qNumber >= questionList.size) {
                 //TODO display final leaderboard/move this somewhere else
                 return
             }
+
             repo.nextQuestion(pin.value!!, questionList.get(qNumber))
                 .addOnCompleteListener { task ->
                     if (!task.isSuccessful) {
                         val e = task.exception
-                        if (e is FirebaseFunctionsException) {
-
-                            // Function error code, will be INTERNAL if the failure
-                            // was not handled properly in the function call.
-                            val code = e.code
-
-                            // Arbitrary error details passed back from the function,
-                            // usually a Map<String, Any>.
-                            val details = e.details
-                        }
+                        Timber.d(e)
                     } else {
                         nextFragment()
                     }
                 }
         } catch (e: Exception) {
-
+            Timber.d(e)
         }
     }
 

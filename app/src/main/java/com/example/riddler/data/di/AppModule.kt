@@ -4,11 +4,14 @@ import android.app.Application
 import com.example.riddler.RetroApiInterface
 import com.example.riddler.data.dao.QuizDao
 import com.example.riddler.data.database.AppDatabase
+import com.example.riddler.data.repo.FirestoreRepository
 import com.example.riddler.data.repo.QuizRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -35,6 +38,16 @@ class AppModule {
     @Singleton
     @Provides
     fun getRetroApi(): RetroApiInterface{
-        return RetroApiInterface.create()
+        return  Retrofit.Builder()
+            .addConverterFactory(MoshiConverterFactory.create())
+            .baseUrl("https://opentdb.com/")
+            .build()
+            .create(RetroApiInterface::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun getFirestoreRepository() : FirestoreRepository{
+        return FirestoreRepository()
     }
 }
