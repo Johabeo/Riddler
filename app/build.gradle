@@ -180,12 +180,24 @@ dependencies {
     kapt 'com.google.dagger:hilt-compiler:2.42'
     kapt 'androidx.hilt:hilt-compiler:1.0.0'
 
+
+    
+
+
+
+    /*Moshi*/
+    def moshiVersion = "1.13.0"
+    implementation "com.squareup.moshi:moshi-adapters:$moshiVersion"
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
+
+
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     androidTestImplementation 'androidx.fragment:fragment-testing:1.4.1'
     androidTestImplementation 'io.mockk:mockk-android:1.10.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
-
-
 }

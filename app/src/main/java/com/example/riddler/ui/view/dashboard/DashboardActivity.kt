@@ -41,6 +41,8 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dashboard2)
 
 
+
+
         vm = DashboardViewModel()
 
         if(auth.currentUser == null) {
