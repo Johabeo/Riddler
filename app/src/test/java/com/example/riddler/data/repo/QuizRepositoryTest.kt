@@ -13,6 +13,9 @@ import org.junit.Assert.*
 import org.junit.Test
 @RelaxedMockK
 class QuizRepositoryTest() {
+
+    //    @MockK    Test data ********************
+
     val dao = mockk<QuizDao>(relaxed = true)
     val underTest = QuizRepository(
         dao = dao,
@@ -113,9 +116,9 @@ class QuizRepositoryTest() {
             1,"whats your group","G1"
             ,"G2","G3","Dont know"
             ,"G1",1)
-
-        every { underTest.insertQuestions(questions) } returns 0
-        assertEquals(0,underTest.insertQuestions(questions))
+        every { underTest.insertQuestions(questions) } returns Unit
+        dao.insertQuestions(questions)
+        assertEquals(Unit,underTest.insertQuestions(questions))
 
     }
 }
