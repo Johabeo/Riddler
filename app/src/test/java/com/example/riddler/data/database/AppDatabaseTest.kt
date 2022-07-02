@@ -31,9 +31,9 @@ class AppDatabaseTest {
 
         every { dao.getQuizQuestions(23) } returns listOf(questions1)
 
-    }
-}
+        assertEquals(listOf(questions1),dao.getQuizQuestions(23))
 
-private infix fun <T, B> MockKStubScope<T, B>.just(runs: Runs) {
+
+    }
 
 }
