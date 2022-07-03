@@ -3,142 +3,169 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/background"
     android:layout_height="match_parent"
     tools:context=".ui.view.CreateQuizFragment">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/dash_playerQuizzesCardView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="8dp"
-        app:cardElevation="5dp"
-        app:contentPaddingBottom="16dp"
-        app:contentPaddingTop="16dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Your quizzes"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/dash_addButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="Add"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/dash_recyclerview"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-
-                tools:listitem="@layout/listitem_quiz_dashboard" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
     <TextView
         android:id="@+id/textView5"
+        android:text="Quiz Generator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Generate Quiz"
-        android:textSize="30sp"
+        android:layout_marginTop="72dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/black"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editQuizName"
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editQuizNameLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Quiz Name"
-        android:maxLines="1"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/editDescription"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidth="2dp"
+        app:helperTextEnabled="true"
+        app:helperTextTextColor="@color/queryErrorText"
+        app:hintTextColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/editDescriptionLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="1.0">
 
-    <EditText
-        android:id="@+id/editDescription"
-        android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editQuizName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hind_regular"
+            android:hint="Quiz Name"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:textColor="@color/black"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editDescriptionLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Quiz Description"
-        android:layout_margin="16dp"
-        android:maxLines="1"
-        app:layout_constraintBottom_toTopOf="@+id/editQuizName"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidth="2dp"
+        app:helperTextEnabled="true"
+        app:helperTextTextColor="@color/queryErrorText"
+        app:hintTextColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/editQuizNameLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNumQuestions"/>
+        app:layout_constraintTop_toBottomOf="@+id/editNumQuestionsLayout">
 
-    <EditText
-        android:id="@+id/editNumQuestions"
-        android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hind_regular"
+            android:hint="Quiz Description"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:textColor="@color/black"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editNumQuestionsLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:digits="0123456789"
-        android:inputType="number"
-        android:hint="Number of Questions"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/categoryDropdown"
+        android:layout_marginStart="32dp"
+
+        android:layout_marginEnd="32dp"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidth="2dp"
+        app:helperTextEnabled="true"
+        app:helperTextTextColor="@color/queryErrorText"
+        app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDescription"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@+id/editDescriptionLayout"
+        app:layout_constraintVertical_chainStyle="packed" >
 
-    <Spinner
-        android:id="@+id/categoryDropdown"
-        android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editNumQuestions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/hind_regular"
+            android:hint="Number of Questions"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/categoryDropdownLayout"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:contentDescription="Any Category"
-        android:layout_margin="16dp"
-        android:minHeight="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidth="2dp"
+        app:helperTextEnabled="true"
+        app:helperTextTextColor="@color/queryErrorText"
         app:layout_constraintBottom_toTopOf="@+id/difficultyDropdown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/editNumQuestionsLayout" >
+        <AutoCompleteTextView
+            android:id="@+id/categoryDropdown"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            android:text="catergoryDropdown"/>
 
-    <Spinner
-        android:id="@+id/difficultyDropdown"
-        android:layout_width="match_parent"
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/difficultyDropdownLayout"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:contentDescription="Any Difficulty"
-        android:layout_margin="16dp"
-        android:minHeight="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryDropdown" />
+        app:layout_constraintTop_toBottomOf="@+id/categoryDropdownLayout" >
+
+        <AutoCompleteTextView
+            android:id="@+id/difficultyDropdown"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            android:text="difficultyDropdown" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/createQuiz"
+        android:text="@string/generate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
-        android:text="@string/generate"
+        android:background="@drawable/button_rounded"
+        app:backgroundTint="@color/buttonColor"
+        android:elevation="8dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

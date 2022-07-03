@@ -30,8 +30,8 @@ class CreateQuizFragment : Fragment() {
 
     lateinit var createQuizButton: Button
     lateinit var editNumQuestions: EditText
-    lateinit var categoryDropdown: Spinner
-    lateinit var difficultyDropdown: Spinner
+    lateinit var categoryDropdown: AutoCompleteTextView
+    lateinit var difficultyDropdown: AutoCompleteTextView
     lateinit var quizName: EditText
     lateinit var quizDescription: EditText
     lateinit var vm: QuizViewModel
@@ -80,21 +80,21 @@ class CreateQuizFragment : Fragment() {
         val category = resources.getStringArray(R.array.category)
 
         val categoryAdapter: ArrayAdapter<String> = ArrayAdapter(requireActivity(),
-            android.R.layout.simple_spinner_dropdown_item, category)
+            R.layout.exposed_drop_item, category)
         val difficultyAdapter: ArrayAdapter<String> = ArrayAdapter(requireActivity(),
-            android.R.layout.simple_spinner_dropdown_item, difficulties)
+            R.layout.exposed_drop_item, difficulties)
 
-        categoryDropdown.adapter = categoryAdapter
-        difficultyDropdown.adapter = difficultyAdapter
+        categoryDropdown.setAdapter(categoryAdapter)
+        difficultyDropdown.setAdapter(difficultyAdapter)
     }
 
     fun createQuiz() {
         var amount :Int = editNumQuestions.text.toString().toInt()
         //println("Question Num is $amount")
-        var categoryNum = categoryDropdown.selectedItemPosition
-        var categoryName = categoryDropdown.selectedItem.toString()
+        var categoryNum = categoryDropdown.listSelection
+        var categoryName = categoryDropdown.listSelection.toString()
         //println("Category Num is $category")
-        var difficulty = difficultyDropdown.selectedItem.toString()
+        var difficulty = difficultyDropdown.listSelection.toString()
         var quizNameText = quizName.text.toString()
         var quizDescriptiontText = quizDescription.text.toString()
         vm.createQuizFromApi(10, categoryNum, categoryName, difficulty, quizNameText, quizDescriptiontText)
@@ -104,8 +104,8 @@ class CreateQuizFragment : Fragment() {
         with (view) {
             createQuizButton = findViewById<Button>(R.id.createQuiz)
             editNumQuestions = findViewById<EditText>(R.id.editNumQuestions)
-            categoryDropdown = findViewById<Spinner>(R.id.categoryDropdown)
-            difficultyDropdown = findViewById<Spinner>(R.id.difficultyDropdown)
+            categoryDropdown = findViewById<AutoCompleteTextView>(R.id.categoryDropdown)
+            difficultyDropdown = findViewById<AutoCompleteTextView>(R.id.difficultyDropdown)
             quizName = findViewById<EditText>(R.id.editQuizName)
             quizDescription = findViewById<EditText>(R.id.editDescription)
         }
