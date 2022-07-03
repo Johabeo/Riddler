@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.riddler.R
 import com.example.riddler.TriviaQuizActivity
+import com.example.riddler.data.model.Avatars
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.ui.adapters.DashboardQuizListAdapter
 import com.example.riddler.ui.view.host.HostCreateLobbyFragment
@@ -37,11 +38,8 @@ class DiscoverFragment : Fragment() {
     var quizList = ArrayList<Quiz>()
     lateinit var adapter : DashboardQuizListAdapter
 
-    lateinit var avatars : TypedArray
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        avatars = resources.obtainTypedArray(R.array.avatars)
     }
 
     override fun onCreateView(
@@ -74,7 +72,7 @@ class DiscoverFragment : Fragment() {
 
         vm.userProfile.observe(requireActivity()) {
             val str = "${resources.getString(R.string.welcome_user)}, $it!"
-            userImage.setImageResource(avatars.getResourceId(it.profilePic, 1))
+            userImage.setImageResource(Avatars.avatarsList.get(it.profilePic))
             welcomeTextView.setText(str)
         }
 

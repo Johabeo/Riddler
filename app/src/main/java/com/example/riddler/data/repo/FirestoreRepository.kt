@@ -3,6 +3,7 @@ package com.example.riddler.data.repo
 import androidx.lifecycle.MutableLiveData
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.data.model.UserProfile
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -96,6 +97,48 @@ class FirestoreRepository() {
         return auth.currentUser != null
     }
 
+    //check user credentials
+    //if successful, updateUserEmail or updateUserPassword will immediately be called
+    //if unsuccessful, an error will be displayed in the change email/password dialog
+    fun verifyCredentials(email: String, password: String) : Boolean{
+        var result = false
+        val credential = EmailAuthProvider.getCredential(email, password)
+        auth.currentUser!!.reauthenticate(credential)
+            .addOnSuccessListener {
+                result = true
+            }
+            .addOnFailureListener {
+                result = false
+            }
+
+        return result
+    }
+
+
+    fun updateUserEmail(newEmail: String) : Boolean{
+        var result = false
+        auth.currentUser!!.updateEmail(newEmail)
+            .addOnSuccessListener {
+                result = true
+                fetchUserProfileInfo()
+            }.addOnFailureListener {
+                result = false
+            }
+        return result
+    }
+
+    fun updateUserPassword(newPassword: String) : Boolean {
+        var result = false
+        auth.currentUser!!.updatePassword(newPassword)
+            .addOnSuccessListener {
+                result = true
+                fetchUserProfileInfo()
+            }
+            .addOnFailureListener {
+                result = false
+            }
+        return result
+    }
 
 
     //TODO use rxkotlin and validation
