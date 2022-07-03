@@ -91,9 +91,14 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.wear.tiles:tiles-material:+'
+    implementation 'androidx.test.ext:junit-ktx:1.1.3'
+    implementation 'com.google.monitoring-client:junit:1.0.2'
 
     // Test
     testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'com.google.monitoring-client:junit:1.0.2'
+    testImplementation 'com.google.monitoring-client:junit:1.0.2'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -101,6 +106,7 @@ dependencies {
 
     // Card View
     implementation "androidx.cardview:cardview:1.0.0"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4-alpha07'
 
     //roomDB
     def room_version = "2.4.2"
@@ -183,9 +189,29 @@ dependencies {
 
 
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
-    androidTestImplementation 'androidx.fragment:fragment-testing:1.4.1'
-    androidTestImplementation 'io.mockk:mockk-android:1.10.5'
+    androidTestImplementation 'androidx.fragment:fragment-testing:1.5.0'
+    androidTestImplementation 'io.mockk:mockk-android:1.12.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-web:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-web-recording:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-web-socket:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-web-view:3.0.2'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-migrations:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-migrations:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+
+
+
 }

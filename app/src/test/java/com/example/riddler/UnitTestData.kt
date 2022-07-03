@@ -14,6 +14,7 @@ import com.example.riddler.ui.view.dashboard.DashboardActivity
 import com.example.riddler.ui.view.host.HostActivity
 import io.mockk.coEvery
 import io.mockk.mockk
+import io.reactivex.rxjava3.core.Observable
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -41,6 +42,7 @@ class UnitTestData {
     val quizGame = mockk<QuizGame>()
     val userModel = mockk<UserProfile>()
 
+
     //repo
     val firestoreRepository = mockk<FirestoreRepository>()
     val gameRepository = mockk<GameRepository>()
@@ -53,6 +55,9 @@ class UnitTestData {
     //view
     val dashboardActivity = mockk<DashboardActivity>()
     val hostActivity = mockk<HostActivity>()
+    val player1 = Player("a",0,false)
+    val player2 = Player("b",0,false)
+
 
 //quiz
     val quiz1 = Quiz("Joe","Best Quize","people Around the World","General",23)
@@ -62,6 +67,26 @@ class UnitTestData {
     val question: TriviaQuestions.Question = TriviaQuestions.Question("Science:Computers"
     ,"Multiple Choice","Easy","what is JVM"
     ,"Java Virtual Machine", listOf("Joint Mechanical Machine", "Java Volatile Memory", "JSON Volume Memory"))
+//TriviaQuestions
+    val triviaQuestions: TriviaQuestions = TriviaQuestions(1,listOf(question))
+
     val lobbyPlayers = mockk<LobbyPlayers>()
     val UserProfile = mockk<UserProfile>()
+    val lobbyPlayersList = listOf(lobbyPlayers)
+    val userProfileList = listOf(UserProfile)
+    val lobbyPlayersList2 = listOf(lobbyPlayers)
+    val userProfileList2 = listOf(UserProfile)
+
+
+
+//Observable
+var fakeList :List<Quiz> = (listOf<Quiz>(
+    Quiz("G1","fromtest","","",1)
+))
+    var observableFakelist = Observable.fromArray((fakeList))
+
+    var fakelist2 : List<Questions> = (listOf<Questions>(Questions(1,"What's your group", "G1","G2","G3","G4","G1")
+    ))
+    var observableFakelist2 = Observable.fromArray((fakelist2))
+
 }
