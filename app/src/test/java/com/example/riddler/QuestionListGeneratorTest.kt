@@ -68,6 +68,10 @@ class QuestionListGeneratorTest {
     @Test
     //getQuestionList()
     fun testForGetQuestionList() {
+        val firestoreRepository = mockk<FirestoreRepository>()
+        val dao = mockk<QuizDao>()
+        var questionList = ArrayList<TriviaQuestions.Question>()
+
     }
     @Test
     fun setQuestionList() {
