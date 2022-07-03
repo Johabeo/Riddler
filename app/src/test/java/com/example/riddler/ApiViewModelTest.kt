@@ -60,12 +60,14 @@ class ApiViewModelTest {
             runBlocking {
                 repo.getAllTriviaQuestions(10,1,"Easy","Computer:general")
             }
+
         }
+
 
     }
 
 }
 
-private infix fun <T, B> MockKStubScope<T, B>.returns(triviaQuestionList: List<TriviaQuestions>) {
+infix fun <T, B> MockKStubScope<T, B>.returns(triviaQuestionList: List<TriviaQuestions>) {
 
 }
