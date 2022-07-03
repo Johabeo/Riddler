@@ -26,6 +26,7 @@ class DiscoverViewModelTest {
     val quizRepo = mockk<QuizRepository>()
     val underTest = DiscoverViewModel(
         quizRepo = quizRepo,
+    firebaseRepository = FirestoreRepository()
     )
 
 
@@ -39,7 +40,7 @@ class DiscoverViewModelTest {
         val quizRepo = mockk<QuizRepository>()
         val underTest = DiscoverViewModel(
             quizRepo = quizRepo,
-        )
+        firebaseRepository = FirestoreRepository())
 
     }
 
