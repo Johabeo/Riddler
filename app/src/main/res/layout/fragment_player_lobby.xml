@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_background_host_lobby"
+    android:padding="16dp"
     tools:context=".ui.view.host.HostLobbyFragment">
 
     <ImageView
         android:id="@+id/background"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:adjustViewBounds="true"
-        android:scaleType="centerInside"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_game_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,18 +22,15 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/game_pin_layout"
-        android:layout_width="400dp"
-        android:layout_height="500dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:contentPadding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toBottomOf="@+id/background">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/card_layout"

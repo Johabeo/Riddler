@@ -4,87 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.player.PlayerJoinLobbyFragment"
-    android:background="@drawable/ic_game_background">
+    android:background="@drawable/ic_game_background"
+    android:padding="16dp"
+    tools:context=".ui.view.player.PlayerJoinLobbyFragment">
 
     <ImageView
         android:id="@+id/background"
-        android:layout_width="419dp"
-        android:layout_height="382dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         android:src="@drawable/ic_game_logo"
         app:helperTextTextColor="@color/queryErrorText"
+        app:layout_constraintBottom_toTopOf="@+id/card_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/dash_multiplayerCardView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="1dp"
-        app:contentPadding="12dp"
-        app:cardElevation="5dp"
+        android:backgroundTint="@color/white"
         app:cardCornerRadius="10dp"
+        app:cardElevation="12dp"
+        app:contentPadding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/game_pin_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:layout_marginStart="6dp"
-            app:boxStrokeColor="@color/black"
-            app:boxStrokeWidth="3dp"
-            app:helperTextTextColor="@color/queryErrorText"
-            app:hintTextColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/card_layout"
-            app:layout_constraintStart_toStartOf="@+id/card_layout"
-            app:layout_constraintBottom_toTopOf="@+id/joinGameButton"
-            app:layout_constraintTop_toTopOf="@+id/card_layout"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/game_pin_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeWidth="3dp"
+                app:helperTextTextColor="@color/queryErrorText"
+                app:hintTextColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/joinGameButton">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/gamePinText"
-                android:layout_width="320dp"
-                android:layout_height="64dp"
-                android:fontFamily="@font/montserrat_semi_bold"
-                android:hint="Enter Game Pin"
-                android:gravity="center"
-                android:imeOptions="actionDone"
-                android:singleLine="true"
-                android:textColor="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/gamePinText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoSizeMaxTextSize="100sp"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeStepGranularity="2sp"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:gravity="center"
+                    android:hint="Enter Game Pin"
+                    android:imeOptions="actionDone"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/joinGameButton"
-                android:layout_width="320dp"
-                android:layout_height="64dp"
-                android:layout_marginTop="12dp"
-                android:text="Submit"
-                android:fontFamily="@font/montserrat_semi_bold"
-                app:backgroundTint="#2F312E"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
                 android:background="@drawable/sharper_corners"
-                app:layout_constraintEnd_toEndOf="@+id/card_layout"
-                app:layout_constraintStart_toStartOf="@+id/card_layout"
-                app:layout_constraintTop_toBottomOf="@+id/game_pin_layout" />
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="Submit"
+                app:backgroundTint="#2F312E"
+                app:layout_constraintBottom_toBottomOf="@+id/game_pin_layout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
