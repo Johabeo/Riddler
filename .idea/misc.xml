@@ -33,16 +33,14 @@
         <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/dialog_pick_avatar.xml" value="0.365625" />
         <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/fragment_discover.xml" value="0.5" />
         <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/fragment_sign_in.xml" value="0.32708333333333334" />
-        <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/fragment_sign_up.xml" value="0.36666666666666664" />
+        <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/fragment_sign_up.xml" value="0.31302083333333336" />
         <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/listitem_quiz_dashboard.xml" value="0.33" />
-        <entry key="..\:/prog/Android/Riddler/app/src/main/res/layout/trivia_list_item.xml" value="0.36666666666666664" />
-        <entry key="..\:/prog/Android/Riddler/app/src/main/res/menu/toolbar_menu.xml" value="0.36666666666666664" />
-        <entry key="..\:/prog/Android/Riddler/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1595" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

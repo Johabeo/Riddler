@@ -2,8 +2,6 @@ package com.example.riddler.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.riddler.Global
-import com.example.riddler.Util
 import com.example.riddler.Util.Companion.toDataClass
 import com.example.riddler.data.model.Lobby
 import com.example.riddler.data.model.QuizGame
@@ -12,8 +10,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 import com.example.riddler.data.repo.GameRepository
 import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.functions.FirebaseFunctionsException
-import com.google.gson.Gson
 import timber.log.Timber
 
 class PlayerViewModel : ViewModel() {
@@ -30,18 +26,15 @@ class PlayerViewModel : ViewModel() {
         totalScore.value = 0
     }
 
-    fun callJoinLobby(gameId: String, playerName: String, joinLobby: (String) -> Unit) {
-
-        repo.joinLobby(gameId, Global.userId, playerName)
+    fun callJoinLobby(gameId: String, joinLobby: (String, Boolean) -> Unit) {
+        repo.joinLobby(gameId)
             .addOnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     val e = task.exception
                     Timber.d(e)
+                    joinLobby(gameId,false)
                 } else {
-                    if (task.result)
-                        joinLobby(gameId)
-                    else
-                        println("Lobby does not exist")
+                    joinLobby(gameId,task.result)
                 }
             }
     }
@@ -75,7 +68,7 @@ class PlayerViewModel : ViewModel() {
     }
 
     fun submitAnswer(answer: String, moveToResultFragment: (Boolean)-> Unit) {
-        repo.submitAnswer(pin.value!!, Global.userId, answer)
+        repo.submitAnswer(pin.value!!, answer)
             .addOnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     val e = task.exception

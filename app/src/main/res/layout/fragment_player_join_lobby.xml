@@ -12,24 +12,12 @@
         android:layout_height="wrap_content"
         android:hint="Enter Game Pin"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/playerNameText"
+        app:layout_constraintBottom_toTopOf="@+id/joinGameButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
-
-    <EditText
-        android:id="@+id/playerNameText"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter Name"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/joinGameButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gamePinText" />
 
     <Button
         android:id="@+id/joinGameButton"
@@ -41,6 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerNameText" />
+        app:layout_constraintTop_toBottomOf="@+id/gamePinText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

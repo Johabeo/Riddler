@@ -27,9 +27,9 @@ class HostViewModel  : ViewModel() {
     lateinit var lobbyListener: ListenerRegistration
     lateinit var gameListener: ListenerRegistration
 
-    fun callCreateLobby(id: Int, lobbySize: Int) {
+    fun callCreateLobby(lobbySize: Int) {
         // [START call_add_numbers]
-        repo.createLobby(id, lobbySize)
+        repo.createLobby(lobbySize)
             .addOnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     val e = task.exception
@@ -52,9 +52,6 @@ class HostViewModel  : ViewModel() {
                 lobbyState.value = snapshot.data?.toDataClass()
             }
         }
-    }
-    fun callStartGame(gameId: String) {
-
     }
 
     suspend fun startGame(loadGame: () -> Unit) {
@@ -97,7 +94,7 @@ class HostViewModel  : ViewModel() {
         try {
             val qNumber = gameState.value!!.currentQuestion!!
             if (qNumber >= questionList.size) {
-                //TODO display final leaderboard/move this somewhere else
+                finishGame()
                 return
             }
 
@@ -114,9 +111,27 @@ class HostViewModel  : ViewModel() {
             Timber.d(e)
         }
     }
-
+    fun moveNext(nextFrag: (Boolean) -> Unit)  {
+        val qNumber = gameState.value?.currentQuestion?.let {
+            if (it >= questionList.size) {
+                finishGame()
+                nextFrag(true)
+                return
+            }
+        }
+        displayLeaderboard()
+        nextFrag(false)
+    }
+    fun finishGame() {
+        pin.value?.let {
+            repo.finishGame(it)
+            gameListener.remove()
+        }
+    }
     fun displayLeaderboard() {
-        repo.displayLeaderboard(pin.value!!)
+        pin.value?.let {
+            repo.displayLeaderboard(it)
+        }
     }
 
     fun setCurrentQuestions(_questionList: List<Questions>) {

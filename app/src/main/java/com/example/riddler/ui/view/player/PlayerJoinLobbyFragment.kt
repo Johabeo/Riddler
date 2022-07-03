@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.riddler.R
 import com.example.riddler.data.repo.GameRepository
@@ -25,6 +26,8 @@ class PlayerJoinLobbyFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var toast: Toast
+    lateinit var joinLobbyButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,28 +41,34 @@ class PlayerJoinLobbyFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_player_join_lobby, container, false)
+        val view = inflater.inflate(R.layout.fragment_player_join_lobby, container, false)
+        joinLobbyButton = view.findViewById<Button>(R.id.joinGameButton)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val joinLobbyButton = view.findViewById<Button>(R.id.joinGameButton)
         val gamePinText = view.findViewById<TextView>(R.id.gamePinText)
-        val playerNameText = view.findViewById<TextView>(R.id.playerNameText)
         val vm = ViewModelProvider(requireActivity()).get(PlayerViewModel::class.java)
 
         joinLobbyButton.setOnClickListener {
-            vm.callJoinLobby(gamePinText.text.toString(),
-                playerNameText.text.toString()) { gameId -> joinLobby(gameId) }
+            joinLobbyButton.visibility = View.GONE
+            vm.callJoinLobby(gamePinText.text.toString()) { gameId, isSuccess -> joinLobby(gameId, isSuccess) }
         }
     }
 
-    fun joinLobby(gameId: String) {
-        val intent = Intent(getActivity(), PlayerActivity::class.java)
-        intent.putExtra("pin", gameId)
-        activity?.startActivity(intent)
-        activity?.finish()
+    fun joinLobby(gameId: String, isSuccess: Boolean) {
+        if (isSuccess) {
+            val intent = Intent(getActivity(), PlayerActivity::class.java)
+            intent.putExtra("pin", gameId)
+            activity?.startActivity(intent)
+            activity?.finish()
+        } else {
+            joinLobbyButton.visibility = View.VISIBLE
+            toast = Toast.makeText(context, "PIN does not exist", Toast.LENGTH_SHORT)
+            toast.show()
+        }
     }
 
 }

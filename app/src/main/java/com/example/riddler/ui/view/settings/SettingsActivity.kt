@@ -64,7 +64,7 @@ class SettingsActivity : AppCompatActivity() {
 
     fun validate() : Boolean {
         if(firstNameEditText.text.toString().isEmpty()){
-            Toast.makeText(this, "Please enter fist name or nickname.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Please enter first name or nickname.", Toast.LENGTH_LONG).show()
             return false
         }
         return true

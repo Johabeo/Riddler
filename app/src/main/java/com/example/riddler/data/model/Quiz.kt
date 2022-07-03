@@ -7,10 +7,11 @@ import java.io.Serializable
 
 @Entity
 data class Quiz(
-    val owner: String? = null, //user token from authentication
-    val name: String? = null,
-    val description: String? = null,
-    val type: String? = null,
+    val owner: String, //user token from authentication
+    val name: String,
+    val description: String,
+    val type: String,
+    val difficulty: String,
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0
 )
