@@ -1,18 +1,20 @@
 package com.example.riddler.ui.view.settings
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.riddler.R
+import com.example.riddler.Util
 import com.example.riddler.data.model.Avatars
 import com.example.riddler.data.model.UserProfile
 import com.example.riddler.ui.adapters.AvatarPickerAdapter
 import com.example.riddler.ui.viewmodel.SettingsViewModel
+import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,6 +29,7 @@ class SettingsActivity : AppCompatActivity() {
     lateinit var emailLabel: TextView
     lateinit var avatarPicture : ImageView
     var profilePic = 0
+    lateinit var preferences: SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +37,8 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        preferences = getSharedPreferences("prefs", MODE_PRIVATE)
 
         firstNameEditText = findViewById(R.id.set_firstNameEditText)
         lastNameEditText = findViewById(R.id.set_lastNameEditText)
@@ -83,11 +88,136 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     fun updateEmail(view: View){
+        var alertDialog: AlertDialog? = null
+
+        val dialogView = layoutInflater.inflate(R.layout.dialog_email_change, null)
+        val newEmailLayout = dialogView.findViewById<TextInputLayout>(R.id.changeEmail_newEmailTextLayout)
+        val passwordLayout = dialogView.findViewById<TextInputLayout>(R.id.changeEmail_currentPasswordTextLayout)
+        val newEmailEditText = dialogView.findViewById<EditText>(R.id.changeEmail_emailEditText)
+        val passwordEditText = dialogView.findViewById<EditText>(R.id.changeEmail_passwordEditText)
+        val updateButton = dialogView.findViewById<Button>(R.id.changeEmail_changeEmailButton)
+        val cancelButton = dialogView.findViewById<Button>(R.id.changeEmail_CancelButton)
+        val oldEmail = emailLabel.text.toString()
+
+        val validateEmail = fun (newEmail: String): Boolean {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(newEmail).matches()
+        }
+        val checkPassword = fun(password: String) : Boolean{
+            val savedPassword = preferences.getString("pwdHash", "")
+            val providedPassword = Util.computeSha256(password)
+            return savedPassword == providedPassword
+        }
+        val commitUpdateEmail = fun(newEmail : String, password: String){
+            vm.updateUserEmail(oldEmail, newEmail, password)
+            Toast.makeText(this, "User email updated", Toast.LENGTH_LONG).show()
+            alertDialog?.dismiss()
+        }
+
+        updateButton.setOnClickListener {
+            val emailStr = newEmailEditText.text.toString()
+            val passwordStr = passwordEditText.text.toString()
+            if(validateEmail(emailStr) && checkPassword(passwordStr)){
+                commitUpdateEmail(emailStr, passwordStr)
+            } else {
+                if(!validateEmail(emailStr)){
+                    newEmailLayout.helperText = "Please enter a valid email"
+                } else {
+                    newEmailLayout.helperText = ""
+                }
+                if(!checkPassword(passwordStr)){
+                    passwordLayout.helperText = "Password doesn't match"
+                } else {
+                    passwordLayout.helperText = ""
+                }
+            }
+        }
+        cancelButton.setOnClickListener {
+            alertDialog?.dismiss()
+        }
+
+        val builder = AlertDialog.Builder(this).apply {
+            setView(dialogView)
+            setCancelable(true)
+        }
+
+        alertDialog = builder.create()
+        alertDialog.show()
 
     }
 
     fun updatePassword(view: View){
+        var alertDialog: AlertDialog? = null
 
+        val dialogView = layoutInflater.inflate(R.layout.dialog_password_change, null)
+        val currentPasswordLayout = dialogView.findViewById<TextInputLayout>(R.id.changePassword_currentPasswordTextLayout)
+        val newPasswordLayout = dialogView.findViewById<TextInputLayout>(R.id.changePassword_newPasswordTextLayout)
+        val confirmPasswordLayout = dialogView.findViewById<TextInputLayout>(R.id.changePassword_confirmPasswordTextLayout)
+        val currentPasswordEditText = dialogView.findViewById<EditText>(R.id.changePassword_currentPasswordEditText)
+        val newPasswordEditText = dialogView.findViewById<EditText>(R.id.changePassword_newPasswordEditText)
+        val confirmPasswordEditText = dialogView.findViewById<EditText>(R.id.changePassword_confirmPasswordEditText)
+        val updateButton = dialogView.findViewById<Button>(R.id.changePassword_changePasswordButton)
+        val cancelButton = dialogView.findViewById<Button>(R.id.changePassword_CancelButton)
+        val email = emailLabel.text.toString()
+
+        val checkPassword = fun(password: String) : Boolean{
+            val savedPassword = preferences.getString("pwdHash", "")
+            val providedPassword = Util.computeSha256(password)
+            return savedPassword == providedPassword
+        }
+
+        val validatePassword = fun(newPassword: String, confirmPassword: String) : Boolean{
+            if (newPassword.length < 8) {
+                newPasswordLayout.helperText = "Minimum 8 Character Password"
+                return false
+            }
+            else if (!newPassword.matches(".*[A-Z].*".toRegex())) {
+                newPasswordLayout.helperText = "*Must Contain 1 Upper-case Character"
+                return false
+            }
+            else if (!newPassword.matches(".*[a-z].*".toRegex())) {
+                newPasswordLayout.helperText = "*Must Contain 1 Lower-case Character"
+                return false
+            }
+            else if (!newPassword.matches(".*[@#\$%^$+=0-9].*".toRegex())) {
+                newPasswordLayout.helperText = "*Must Contain 1 Digit and/or Special Character (@#\$%^\$+=)"
+                return false
+            }
+            else if(newPassword != confirmPassword) {
+                confirmPasswordLayout.helperText = "Passwords do not match"
+                return false
+            }
+            return true
+        }
+
+        val commitUpdatePassword = fun(email : String, oldPassword: String, password: String){
+            vm.updateUserPassword(email, oldPassword, password)
+            Toast.makeText(this, "User password updated", Toast.LENGTH_LONG).show()
+            alertDialog?.dismiss()
+        }
+
+        updateButton.setOnClickListener {
+            val newPassword = newPasswordEditText.text.toString()
+            val oldPassword = currentPasswordEditText.text.toString()
+            val confirmPassword = confirmPasswordEditText.text.toString()
+            if(checkPassword(oldPassword)){
+                if(validatePassword(newPassword, confirmPassword)){
+                    commitUpdatePassword(email, oldPassword, newPassword)
+                }
+            } else {
+                currentPasswordLayout.helperText = "Wrong password!"
+            }
+        }
+        cancelButton.setOnClickListener {
+            alertDialog?.dismiss()
+        }
+
+        val builder = AlertDialog.Builder(this).apply {
+            setView(dialogView)
+            setCancelable(true)
+        }
+
+        alertDialog = builder.create()
+        alertDialog.show()
     }
 
     fun pickAvatarPicture(view: View){

@@ -114,28 +114,50 @@ class FirestoreRepository() {
         return result
     }
 
-
-    fun updateUserEmail(newEmail: String) : Boolean{
+    //reauthenticate, update email, update user profile, refresh user profile
+    fun updateUserEmail(oldEmail: String, newEmail: String, password: String){
         var result = false
-        auth.currentUser!!.updateEmail(newEmail)
+        val credential = EmailAuthProvider.getCredential(oldEmail, password)
+        auth.currentUser!!.reauthenticate(credential)
             .addOnSuccessListener {
-                result = true
-                fetchUserProfileInfo()
-            }.addOnFailureListener {
-                result = false
-            }
-        return result
-    }
-
-    fun updateUserPassword(newPassword: String) : Boolean {
-        var result = false
-        auth.currentUser!!.updatePassword(newPassword)
-            .addOnSuccessListener {
-                result = true
-                fetchUserProfileInfo()
+                auth.currentUser!!.updateEmail(newEmail)
+                    .addOnSuccessListener {
+                        db.collection("users")
+                            .whereEqualTo("email", oldEmail)
+                            .get()
+                            .addOnCompleteListener {
+                                val doc = it.result.documents.firstOrNull()
+                                if (doc != null) {
+                                    val update: MutableMap<String, Any> = HashMap()
+                                    update["email"] = newEmail
+                                    db.collection("users").document(doc.id).set(update, SetOptions.merge())
+                                    fetchUserProfileInfo()
+                                }
+                            }
+                        result = true
+                        //fetchUserProfileInfo()
+                    }.addOnFailureListener {
+                        result = false
+                    }
             }
             .addOnFailureListener {
                 result = false
+            }
+    }
+
+    fun updateUserPassword(email: String, oldPassword: String, newPassword: String) : Boolean {
+        var result = false
+        val credential = EmailAuthProvider.getCredential(email, oldPassword)
+        auth.currentUser!!.reauthenticate(credential)
+            .addOnSuccessListener {
+                auth.currentUser!!.updatePassword(newPassword)
+                    .addOnSuccessListener {
+                        result = true
+                        fetchUserProfileInfo()
+                    }
+                    .addOnFailureListener {
+                        result = false
+                    }
             }
         return result
     }
