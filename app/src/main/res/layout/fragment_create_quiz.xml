@@ -114,16 +114,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/categoryDropdownLayout"
-        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="2dp"
-        app:helperTextEnabled="true"
-        app:helperTextTextColor="@color/queryErrorText"
-        app:layout_constraintBottom_toTopOf="@+id/difficultyDropdown"
+        app:layout_constraintBottom_toTopOf="@+id/difficultyDropdownLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editNumQuestionsLayout" >
@@ -132,17 +130,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="none"
-            android:text="catergoryDropdown"/>
+            android:text="Category"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/difficultyDropdownLayout"
-        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidth="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoryDropdownLayout" >
@@ -152,7 +152,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="none"
-            android:text="difficultyDropdown" />
+            android:text="Difficulty" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,7 +170,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/difficultyDropdown" />
+        app:layout_constraintTop_toBottomOf="@+id/difficultyDropdownLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

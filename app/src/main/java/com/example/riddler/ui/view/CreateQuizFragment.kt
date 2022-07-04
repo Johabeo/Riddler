@@ -70,6 +70,7 @@ class CreateQuizFragment : Fragment() {
 
 
         createQuizButton.setOnClickListener {
+            Toast.makeText(activity, "Quiz Created", Toast.LENGTH_LONG).show()
             createQuiz()
         }
 

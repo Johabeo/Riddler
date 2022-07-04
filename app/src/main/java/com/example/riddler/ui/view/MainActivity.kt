@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -15,7 +16,6 @@ import com.example.riddler.R
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.data.repo.FirestoreRepository
 import com.example.riddler.data.repo.GameRepository
-import com.example.riddler.ui.view.dashboard.StartGameFragment
 import com.example.riddler.ui.view.host.HostActivity
 import com.example.riddler.ui.view.host.HostLobbyFragment
 import com.example.riddler.ui.view.player.PlayerActivity
@@ -28,6 +28,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar))
         println(Firebase.auth.uid)
         setFragment(DiscoverFragment())
         val gr = GameRepository()

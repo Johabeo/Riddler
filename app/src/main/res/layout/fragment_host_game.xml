@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.view.host.HostGameFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <TextView
         android:id="@+id/hostQuestions"
         android:layout_width="match_parent"
@@ -16,8 +14,9 @@
         android:background="#FFD180"
         android:textAlignment="center"
         android:gravity="center"
+        android:fontFamily="@font/montserrat_bold"
         android:textSize="30sp"
-        android:text="@string/hello_blank_fragment"
+        android:text="The Question the players are answering"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,11 +25,25 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_semi_bold"
+        android:text="30"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.915"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.964" />
+
+    <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Waiting for players..."
         android:textSize="36sp"
+        android:fontFamily="@font/montserrat_bold"
         app:layout_constraintBottom_toTopOf="@+id/playersSubmitted"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +55,7 @@
         android:layout_height="wrap_content"
         android:text="0/16"
         android:textSize="24sp"
+        android:fontFamily="@font/montserrat_bold"
         app:layout_constraintBottom_toTopOf="@+id/hostGameNext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +66,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/next"
+        android:fontFamily="@font/montserrat_bold"
+        app:backgroundTint="#2F312E"
+        android:background="@drawable/sharper_corners"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
