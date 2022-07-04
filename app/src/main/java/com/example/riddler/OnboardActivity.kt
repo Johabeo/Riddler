@@ -38,7 +38,7 @@ class OnboardActivity : AppCompatActivity() {
             //==========================this is necessary for password validation to work
             //==========================since a password hash is generated at login time
             //==========================feel free to comment the next line after you sign in at least once
-            //auth.signOut()
+            auth.signOut()
 
 
             println(currentUser.providerData.get(0).email)
