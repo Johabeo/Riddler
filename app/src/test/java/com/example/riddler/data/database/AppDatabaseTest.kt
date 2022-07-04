@@ -21,7 +21,7 @@ class AppDatabaseTest {
     val questions = mockk<Questions>()
     val quiz = mockk<Quiz>()
     val quizList = mockk<List<Quiz>>()
-    val fakeList : List<Quiz> = listOf<Quiz>(Quiz("G1", "fromTest","quiq for testing","general",1))
+    val fakeList : List<Quiz> = listOf<Quiz>(Quiz("G1", "fromTest","quiq for testing","general","Easy"))
 
     val fakeQuestions : List<Questions> = listOf<Questions>(Questions(1, "fromTest","G3","G2","G1","G4","G1",1))
 
@@ -39,7 +39,7 @@ class AppDatabaseTest {
         val application = mockk<Application>()
         val appModule = mockk<AppModule>()
     //quiz
-        val quiz1 = Quiz("Joe","Best Quize","people Around the World","General",23)
+        val quiz1 = Quiz("Joe","Best Quize","people Around the World","General","Easy")
     //Questions
         val questions1 : Questions = Questions(1,"What's your group", "G1","G2","G3","G4","G1")
 
@@ -56,7 +56,7 @@ class AppDatabaseTest {
            val appModule = mockk<AppModule>()
 
          //quiz
-              val quiz1 = Quiz("Joe","Best Quize","people Around the World","General",23)
+              val quiz1 = Quiz("Joe","Best Quize","people Around the World","General","Easy")
             //Questions
                 val questions1 : Questions = Questions(1,"What's your group", "G1","G2","G3","G4","G1")
            every { dao.insertQuiz(quiz1) }returns 0 //inserts quiz
@@ -72,7 +72,7 @@ class AppDatabaseTest {
                 val application = mockk<Application>()
                 val appModule = mockk<AppModule>()
               //quiz
-                 val quiz1 = Quiz("Joe","Best Quize","people Around the World","General",23)
+                 val quiz1 = Quiz("Joe","Best Quize","people Around the World","General","Easy")
                //Questions
                 //Observable<List<Quiz>>
 
@@ -88,7 +88,7 @@ class AppDatabaseTest {
                     val application = mockk<Application>()
                     val appModule = mockk<AppModule>()
                   //quiz
-                     val quiz1 = Quiz("Joe","Best Quize","people Around the World","General",23)
+                     val quiz1 = Quiz("Joe","Best Quize","people Around the World","General","Easy")
                    //Questions
                        val questions1 : Questions = Questions(1,"What's your group", "G1","G2","G3","G4","G1")
 
@@ -103,7 +103,7 @@ class AppDatabaseTest {
                 val application = mockk<Application>()
                 val appModule = mockk<AppModule>()
             //quiz
-                val quiz1 = Quiz("Joe","Best Quize","people Around the World","General",23)
+                val quiz1 = Quiz("Joe","Best Quize","people Around the World","General","Easy")
                 //Questions
                     val questions1 : Questions = Questions(1,"What's your group", "G1","G2","G3","G4","G1")
 

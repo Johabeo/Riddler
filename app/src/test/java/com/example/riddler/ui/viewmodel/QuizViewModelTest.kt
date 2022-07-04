@@ -60,7 +60,7 @@ class QuizViewModelTest {
 
 
 //quiz
-    val quiz1 = Quiz("Joe","Best Quize","people Around the World","General",23)
+    val quiz1 = Quiz("Joe","Best Quize","people Around the World","General","Easy")
 
 //trivia Questions
     val listofTrivia : List<TriviaQuestions.Question> = listOf()
@@ -78,7 +78,7 @@ class QuizViewModelTest {
         repo = repo,
         quizRepo = quizRepo,
     )
-    val fakeList : List<Quiz> = listOf<Quiz>(Quiz("G1", "fromTest","quiq for testing","general",1))
+    val fakeList : List<Quiz> = listOf<Quiz>(Quiz("G1", "fromTest","quiq for testing","general","Easy"))
 
     val fakeQuestions : List<Questions> = listOf<Questions>(Questions(1, "fromTest","G3","G2","G1","G4","G1",1))
 
@@ -90,9 +90,9 @@ class QuizViewModelTest {
 
     //List of questions
     val listOfQuestions1 : List<Questions> = listOf<Questions>(Questions(1, "fromTest","G3","G2","G1","G4","G1",1))
-    val quiz3 = Quiz("Jay","From test","Atest Question from test","General",1)
+    val quiz3 = Quiz("Jay","From test","Atest Question from test","General","Easy")
     val quiz2 = Quiz("G1","Our Team","test1",
-        "test to insert quiz",1)
+        "test to insert quiz","General",1)
     val favoriteQuiz1 = FavoriteQuiz(
         1,1,1)
     val favoriteQuiz2 = FavoriteQuiz(

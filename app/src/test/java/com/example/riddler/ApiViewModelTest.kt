@@ -2,6 +2,7 @@ package com.example.riddler
 
 import com.example.riddler.data.model.Questions
 import com.example.riddler.data.model.Quiz
+import com.squareup.okhttp.Response
 import io.mockk.*
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.CoroutineDispatcher
@@ -17,15 +18,6 @@ class ApiViewModelTest {
     val underTest = ApiViewModel(
         repo = repo,
     )
-    val quiz1 = Quiz("Joe", "Best Quize", "people Around the World", "General", 23)
+    val quiz1 = Quiz("Joe", "Best Quize", "people Around the World", "General","Easy")
     val triviaQuestions1 = TriviaQuestions(1, listOf())
-
-    @Test
-    fun toGetTrivia() {
-        val repo = mockk<TriviaRepo>()
-        val underTest = ApiViewModel(
-            repo = repo,
-        )
-
-    }
 }

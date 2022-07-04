@@ -29,9 +29,8 @@ class LobbyTest{
     @Test
     fun testLobbyPlayers(){
         val name = "name"
-        val underTest = LobbyPlayers(1, name)
+        val underTest = LobbyPlayers("12", name)
         assertEquals("name", underTest.playerName)
-        assertEquals(1, underTest.playerId)
 
     }
 
