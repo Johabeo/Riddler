@@ -3,7 +3,9 @@ package com.example.riddler.data.repo
 
 import com.example.riddler.Util.Companion.serializeToMap
 import com.example.riddler.data.model.Questions
+import com.example.riddler.data.model.UserProfile
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.firebase.functions.ktx.functions
@@ -11,11 +13,11 @@ import com.google.firebase.ktx.Firebase
 
 class GameRepository() {
     var functions = Firebase.functions
-
-     fun createLobby(id: Int, lobbySize: Int): Task<String> {
+    var user = Firebase.auth
+    fun createLobby(lobbySize: Int): Task<String> {
         // Create the arguments to the callable function.
         val data = hashMapOf(
-            "userId" to id,
+            "userId" to user.uid,
             "lobbySize" to lobbySize
         )
 
@@ -31,12 +33,12 @@ class GameRepository() {
             }
     }
 
-    fun joinLobby(gameId: String, playerId: Int, playerName: String): Task<Boolean> {
+    fun joinLobby(gameId: String): Task<Boolean> {
         // Create the arguments to the callable function.
         val data = hashMapOf(
             "gameId" to gameId,
-            "playerId" to playerId,
-            "playerName" to playerName
+            "playerId" to user.uid,
+            "playerName" to user.currentUser?.displayName
         )
 
         return functions
@@ -69,10 +71,19 @@ class GameRepository() {
             }
     }
 
-    fun submitAnswer(gameId: String, playerId: Int, answer: String): Task<HashMap<String,Any>>  {
+    fun finishGame(gameId: String) {
         val data = hashMapOf(
             "gameId" to gameId,
-            "playerId" to playerId,
+        )
+        functions
+            .getHttpsCallable("finishGame")
+            .call(data)
+    }
+
+    fun submitAnswer(gameId: String, answer: String): Task<HashMap<String,Any>>  {
+        val data = hashMapOf(
+            "gameId" to gameId,
+            "playerId" to user.uid,
             "answer" to answer
         )
         return functions

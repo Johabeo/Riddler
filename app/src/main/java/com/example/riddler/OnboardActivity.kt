@@ -15,6 +15,7 @@ import com.example.riddler.ui.view.MainActivity
 import com.example.riddler.ui.view.dashboard.DashboardActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 import javax.inject.Inject
 
@@ -28,9 +29,8 @@ class OnboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboard)
-
+        repo = FirestoreRepository()
         auth = Firebase.auth
-
         val currentUser = auth.currentUser
         if(currentUser != null){
             //auth.signOut()
@@ -72,6 +72,7 @@ class OnboardActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("firebase auth: ", "signInWithEmail:success")
                     val user = auth.currentUser
+                    Toast.makeText(this, "Sign In Successful", Toast.LENGTH_LONG).show()
                     openMainActivity()
 
 
@@ -93,11 +94,16 @@ class OnboardActivity : AppCompatActivity() {
                     Log.d("firebase auth: ", "createUserWithEmail:success")
                     val user = auth.currentUser
                     if(user != null){
+                        val profileUpdate = userProfileChangeRequest {
+                            displayName = firstName
+                        }
+                        user.updateProfile(profileUpdate)
                         val userProfile = UserProfile()
                         userProfile.firstName = firstName
                         userProfile.lastName = lastName
                         userProfile.email = email
                         repo.insertUserProfileInfo(userProfile)
+                        Toast.makeText(this, "*Account Created, Welcome Aboard", Toast.LENGTH_LONG).show()
                         openMainActivity()
                     } else {
                         //throw RuntimeException("OnboardActivity.signUp: signed up, but user is invalid")

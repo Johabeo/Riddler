@@ -13,6 +13,7 @@ data class QuizGame(
 )
 
 data class Player(
+    val playerId: String?,
     val playerName: String?,
     val score: Int?,
     val submittedAnswer: Boolean?

@@ -23,7 +23,7 @@ class DashboardQuizListAdapter(val data: ArrayList<Quiz>, val onClick : (Int) ->
         holder.title.setText(data[position].name)
         holder.description.setText(data[position].description)
         holder.category.setText(data[position].type)
-        holder.difficulty.setText("Easy")
+        holder.difficulty.setText(data[position].difficulty)
         if(position % 2 == 1){
             holder.root.setBackgroundColor(Color.parseColor("#eeeeee"))
         }
