@@ -6,10 +6,12 @@
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="Settings"
         app:showAsAction="always"
+        android:iconTint="@color/black"
         android:id="@+id/toolbar_settings"/>
     <item
         android:icon="@drawable/ic_baseline_exit_to_app_24"
         android:title="Log Out"
         app:showAsAction="always"
+        android:iconTint="@color/black"
         android:id="@+id/toolbar_logout"/>
 </menu>

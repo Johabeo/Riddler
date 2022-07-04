@@ -7,8 +7,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.riddler.OnboardActivity
@@ -112,6 +115,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.toolbar_logout -> {
+
+//                val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+//                    .setTitle("Signing Out")
+//                    .setPositiveButton("Yes") { dialog, which ->
+//                        signOut()
+//                    }
+//                    .setNegativeButton("No") { dialog, which ->
+//                        dialog.cancel()
+//                    }
+//                builder.show()
+
                 signOut()
             }
         }
@@ -123,6 +137,5 @@ class MainActivity : AppCompatActivity() {
         repository.auth.signOut()
         intent = Intent(this, OnboardActivity::class.java)
         startActivity(intent)
-        finish()
     }
 }

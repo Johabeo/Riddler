@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:padding="16dp"
+    android:background="@color/background"
     tools:context=".ui.view.DiscoverFragment">
 
     <androidx.cardview.widget.CardView
