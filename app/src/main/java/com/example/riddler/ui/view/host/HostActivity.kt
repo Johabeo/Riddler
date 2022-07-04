@@ -1,10 +1,17 @@
 package com.example.riddler.ui.view.host
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.riddler.R
 import com.example.riddler.data.repo.GameRepository
+import com.example.riddler.ui.view.MainActivity
+import com.example.riddler.ui.view.player.PlayerFinalLeaderboardFragment
+import com.example.riddler.ui.view.player.PlayerGameFragment
+import com.example.riddler.ui.view.player.PlayerLeaderboardFragment
 import com.example.riddler.ui.viewmodel.DiscoverViewModel
 import com.example.riddler.ui.viewmodel.HostViewModel
 import com.example.riddler.ui.viewmodel.PlayerViewModel
@@ -24,9 +31,15 @@ class HostActivity : AppCompatActivity() {
         setContentView(R.layout.activity_host)
         val quizVM = ViewModelProvider(this).get(QuizViewModel::class.java)
         val quizId = intent.getIntExtra("quizId", 0)
-        println(quizId)
         hostVM = ViewModelProvider(this).get(HostViewModel::class.java)
         hostVM.setCurrentQuestions(quizVM.getQuestions(quizId))
+        val leave = findViewById<Button>(R.id.hostLeave)
+
+        leave.setOnClickListener {
+            hostVM.leave()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         var fm = supportFragmentManager
         var ft = fm.beginTransaction()

@@ -1,5 +1,6 @@
 package com.example.riddler.ui.view.player
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.riddler.R
 import com.example.riddler.ui.adapters.PlayerAdapter
+import com.example.riddler.ui.view.MainActivity
 import com.example.riddler.ui.view.host.HostGameFragment
 import com.example.riddler.ui.viewmodel.HostViewModel
 import com.example.riddler.ui.viewmodel.PlayerViewModel
@@ -57,14 +60,26 @@ class PlayerLobbyFragment : Fragment() {
         val gamePin = view.findViewById<TextView>(R.id.playerLobbyGamePin)
 
         vm.lobbyState.observe(viewLifecycleOwner) {
-            if(it.gameStarted) {
-                println(vm.lobbyState.hasActiveObservers())
-                vm.joinGame()
-                loadGameFragment()
-            } else {
-                val adapter = PlayerAdapter(it.players)
-                recyclerView.adapter = adapter
-                recyclerView.setLayoutManager(LinearLayoutManager(context));
+            when (it.gameStarted) {
+                true -> {
+                    vm.joinGame()
+                    loadGameFragment()
+                }
+                else -> {
+                    val adapter = PlayerAdapter(it.players)
+                    recyclerView.adapter = adapter
+                    recyclerView.setLayoutManager(LinearLayoutManager(context));
+                }
+            }
+
+            when(it.hostQuit) {
+                true ->  {
+                    vm.leave()
+                    Toast.makeText(context, "The host has disbanded the lobby", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(context, MainActivity::class.java)
+                    startActivity(intent)
+                }
+                else -> {}
             }
         }
 

@@ -30,11 +30,13 @@ class PlayerActivity : AppCompatActivity() {
             score.text = it.toString()
         }
         switchFragment(PlayerLobbyFragment())
-//        leave.setOnClickListener {
-//            vm.leave()
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//        }
+
+        leave.setOnClickListener {
+            vm.leave()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         vm.gameState.observe(this) {
             when(it.finished) {
                 true ->  {
@@ -49,8 +51,9 @@ class PlayerActivity : AppCompatActivity() {
             when(it.hostQuit) {
                 true ->  {
                     vm.leave()
-                    switchFragment(PlayerFinalLeaderboardFragment())
                     Toast.makeText(this, "The host has disbanded the lobby", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                 }
                 else -> {}
             }

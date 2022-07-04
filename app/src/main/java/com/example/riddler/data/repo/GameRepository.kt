@@ -130,7 +130,6 @@ class GameRepository() {
 
     //lobbyType is either game or lobby
     fun leaveLobby(gameId: String, lobbyType: String) {
-        println(lobbyType)
         val data = hashMapOf(
             "gameId" to gameId,
             "playerId" to user.uid,
@@ -138,6 +137,16 @@ class GameRepository() {
         )
         functions
             .getHttpsCallable("leaveLobby")
+            .call(data)
+    }
+
+    fun hostLeave(gameId: String, lobbyType: String) {
+        val data = hashMapOf(
+            "gameId" to gameId,
+            "lobbyType" to lobbyType
+        )
+        functions
+            .getHttpsCallable("hostLeave")
             .call(data)
     }
 }

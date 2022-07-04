@@ -140,4 +140,8 @@ class HostViewModel  : ViewModel() {
         questionList = _questionList
         println(questionList)
     }
+
+    fun leave() {
+        repo.hostLeave(pin.value!!,lobbyOrGame)
+    }
 }
