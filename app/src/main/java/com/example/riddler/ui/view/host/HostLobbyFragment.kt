@@ -74,9 +74,11 @@ class HostLobbyFragment : Fragment() {
 
         }
         startGame.setOnClickListener {
-            GlobalScope.launch {
-                vm.startGame{ -> loadGameFragment() }
-            }
+
+            startGame.visibility = View.GONE
+            vm.startGame{ -> loadGameFragment() }
+            startGame.visibility = View.VISIBLE
+
         }
         vm.pin.observe(viewLifecycleOwner) {
             gamePin.text = it

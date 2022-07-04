@@ -19,6 +19,7 @@ class PlayerViewModel : ViewModel() {
     var gameState = MutableLiveData<QuizGame>()
     var totalScore = MutableLiveData<Int>()
     var currentQuestionNumber = 0
+    var lobbyType = "lobby"
     lateinit var lobbyListener: ListenerRegistration
     lateinit var gameListener: ListenerRegistration
 
@@ -60,11 +61,12 @@ class PlayerViewModel : ViewModel() {
             if (e != null) {
                 Timber.d(e)
             }
-
             if (snapshot != null && snapshot.exists()) {
                 gameState.value = snapshot.data?.toDataClass()
             }
         }
+        repo.leaveLobby(pin.value!!,lobbyType)
+        lobbyType = "game"
     }
 
     fun submitAnswer(answer: String, moveToResultFragment: (Boolean)-> Unit) {
@@ -89,6 +91,12 @@ class PlayerViewModel : ViewModel() {
             return true
         } else {
             return false
+        }
+    }
+
+    fun leave() {
+        pin.value?.let {
+            repo.leaveLobby(it,"lobby")
         }
     }
 }

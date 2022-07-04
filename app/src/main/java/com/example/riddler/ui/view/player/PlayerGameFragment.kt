@@ -79,35 +79,31 @@ class PlayerGameFragment : Fragment() {
         }.start()
 
         answer1.setOnClickListener {
-            vm.submitAnswer(answer1.text.toString()) { isCorrect -> moveToResult(isCorrect) }
             disableAnswerClick()
+            vm.submitAnswer(answer1.text.toString()) { isCorrect -> moveToResult(isCorrect) }
         }
         answer2.setOnClickListener {
-            vm.submitAnswer(answer2.text.toString()) { isCorrect -> moveToResult(isCorrect) }
             disableAnswerClick()
+            vm.submitAnswer(answer2.text.toString()) { isCorrect -> moveToResult(isCorrect) }
         }
         answer3.setOnClickListener {
-            vm.submitAnswer(answer3.text.toString()) { isCorrect -> moveToResult(isCorrect) }
             disableAnswerClick()
+            vm.submitAnswer(answer3.text.toString()) { isCorrect -> moveToResult(isCorrect) }
         }
         answer4.setOnClickListener {
-            vm.submitAnswer(answer4.text.toString()) { isCorrect -> moveToResult(isCorrect) }
             disableAnswerClick()
+            vm.submitAnswer(answer4.text.toString()) { isCorrect -> moveToResult(isCorrect) }
         }
     }
 
     fun moveToResult(isCorrect: Boolean) {
-        println("outside" + isCorrect)
         if (isCorrect) {
-            println("inside" + isCorrect)
             parentFragmentManager.beginTransaction()
-                .add(R.id.playerContainer, PlayerCorrectFragment())
-                .addToBackStack(null)
+                .replace(R.id.playerContainer, PlayerCorrectFragment())
                 .commit()
         } else {
             parentFragmentManager.beginTransaction()
-                .add(R.id.playerContainer, PlayerIncorrectFragment())
-                .addToBackStack(null)
+                .replace(R.id.playerContainer, PlayerIncorrectFragment())
                 .commit()
         }
     }

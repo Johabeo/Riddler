@@ -57,20 +57,17 @@ class PlayerLobbyFragment : Fragment() {
         val gamePin = view.findViewById<TextView>(R.id.playerLobbyGamePin)
 
         vm.lobbyState.observe(viewLifecycleOwner) {
-            try {
-                println(it.gameStarted)
-                if(it.gameStarted) {
-                    vm.joinGame()
-                    loadGameFragment()
-                } else {
-                    val adapter = PlayerAdapter(it.players)
-                    recyclerView.adapter = adapter
-                    recyclerView.setLayoutManager(LinearLayoutManager(context));
-                }
-            } catch (e: Exception) {
-                println("No players")
+            if(it.gameStarted) {
+                println(vm.lobbyState.hasActiveObservers())
+                vm.joinGame()
+                loadGameFragment()
+            } else {
+                val adapter = PlayerAdapter(it.players)
+                recyclerView.adapter = adapter
+                recyclerView.setLayoutManager(LinearLayoutManager(context));
             }
         }
+
         vm.pin.observe(viewLifecycleOwner) {
             gamePin.text = it
         }
@@ -80,5 +77,6 @@ class PlayerLobbyFragment : Fragment() {
         parentFragmentManager.beginTransaction()
             .replace(R.id.playerContainer, PlayerGameFragment())
             .commit()
+
     }
 }

@@ -7,6 +7,7 @@ data class QuizGame(
     val currentQuestion: Int?,
     val numAnswered: Int?,
     val question: Questions?,
+    val hostQuit: Boolean?,
     val displayingLeaderboard: Boolean?,
     val displayingResult: Boolean?,
     val players: List<Player>?
