@@ -52,7 +52,7 @@ class HostCreateLobbyFragment : Fragment() {
         quizNameText.text = quizName
 
         createLobby.setOnClickListener {
-            val intent = Intent(getActivity(), HostActivity::class.java)
+            val intent = Intent(activity, HostActivity::class.java)
             intent.putExtra("quizId", quizId)
             activity?.startActivity(intent)
             activity?.finish()

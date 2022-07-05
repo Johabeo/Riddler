@@ -84,7 +84,7 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
             inputPassword.helperText = "Minimum 8 Character Password"
             return false
         }
-        /*else if (!password.matches(".*[A-Z].*".toRegex())) {
+        else if (!password.matches(".*[A-Z].*".toRegex())) {
             inputPassword.helperText = "*Must Contain 1 Upper-case Character"
             return false
         }
@@ -92,14 +92,14 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
             inputPassword.helperText = "*Must Contain 1 Lower-case Character"
             return false
         }
-        else if (!password.matches(".*[@#\$%^$+=0-9].*".toRegex())) {
-            inputPassword.helperText = "*Must Contain 1 Digit or Special Character (@#\$%^\$+=)"
+        else if (!password.matches(".*[@#\$%^$+=!].*".toRegex())) {
+            inputPassword.helperText = "*Must Contain 1 Special Character (@#\$%^\$+=)"
             return false
         }
         else if (password.length < 8) {
             inputPassword.helperText = "Minimum 8 Character Password"
             return false
-        }*/
+        }
         return true
     }
 }

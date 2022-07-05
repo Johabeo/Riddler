@@ -54,4 +54,9 @@
     <string name="welcome_back">Welcome Back</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email2">Email</string>
+    <string name="password2">Password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name_optional">Last Name (Optional)</string>
 </resources>

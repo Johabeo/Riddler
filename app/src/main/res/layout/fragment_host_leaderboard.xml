@@ -13,6 +13,7 @@
         android:layout_height="60dp"
         android:gravity="center"
         android:text="@string/top_scores_host"
+        android:fontFamily="@font/montserrat_bold"
         android:textAlignment="center"
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/hostLeaderboard"

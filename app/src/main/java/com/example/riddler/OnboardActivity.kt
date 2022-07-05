@@ -29,6 +29,7 @@ class OnboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboard)
+        Log.d( "DEBUGGING", "accessed")
         repo = FirestoreRepository()
         auth = Firebase.auth
         val currentUser = auth.currentUser
@@ -38,19 +39,20 @@ class OnboardActivity : AppCompatActivity() {
             //==========================this is necessary for password validation to work
             //==========================since a password hash is generated at login time
             //==========================feel free to comment the next line after you sign in at least once
-            auth.signOut()
+            //auth.signOut()
 
 
             println(currentUser.providerData.get(0).email)
             openMainActivity()
-
         }
 
         val fragment = SignInFragment(signIn, setSignupFragment)
         supportFragmentManager
             .beginTransaction()
+            .addToBackStack("fragment")
             .replace(R.id.onboard_fragmentContainer, fragment)
             .commit()
+        Log.d("firebase auth", "new debug")
 
 
     }

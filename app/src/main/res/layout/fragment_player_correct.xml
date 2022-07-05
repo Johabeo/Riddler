@@ -3,16 +3,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.player.PlayerCorrectFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/purple_200"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:text="Correct" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".ui.view.player.PlayerCorrectFragment"
+    android:background="@drawable/ic_feeback___correct" />

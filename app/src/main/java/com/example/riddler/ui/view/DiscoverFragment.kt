@@ -35,6 +35,7 @@ import com.example.riddler.ui.view.settings.SettingsActivity
 import com.example.riddler.ui.viewmodel.DiscoverViewModel
 import com.example.riddler.ui.viewmodel.QuizViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
@@ -74,16 +75,6 @@ class DiscoverFragment : Fragment() {
         val welcomeTextView = view.findViewById<TextView>(R.id.disc_welcomeTextView)
         val userImage = view.findViewById<ImageView>(R.id.disc_userImage)
         val searchQuiz = view.findViewById<SearchView>(R.id.search_quiz)
-        val openSettingsButton = view.findViewById<FloatingActionButton>(R.id.disc_openSettingsButton)
-        val signOutButton = view.findViewById<FloatingActionButton>(R.id.disc_signOutButton)
-
-        openSettingsButton.setOnClickListener {
-            openSettings()
-        }
-
-        signOutButton.setOnClickListener {
-            signOut()
-        }
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.disc_recyclerview)
         adapter = DashboardQuizListAdapter(quizList, onQuizItemClick)

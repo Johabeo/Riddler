@@ -15,6 +15,7 @@ import com.example.riddler.data.repo.GameRepository
 import com.example.riddler.ui.view.host.HostActivity
 import com.example.riddler.ui.viewmodel.HostViewModel
 import com.example.riddler.ui.viewmodel.PlayerViewModel
+import com.google.android.material.textfield.TextInputLayout
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,11 +52,27 @@ class PlayerJoinLobbyFragment : Fragment() {
 
         val gamePinText = view.findViewById<TextView>(R.id.gamePinText)
         val vm = ViewModelProvider(requireActivity()).get(PlayerViewModel::class.java)
+        val inputPin : TextInputLayout = view.findViewById(R.id.game_pin_layout)
+
+
+//        gamePinText.setOnFocusChangeListener { _, focused ->
+//            val password = gamePinText.text.toString()
+//            if(!focused) {
+//                if (password.isEmpty()) {
+//                    inputPin.helperText = "*Game Pin Required"
+//                } else {
+//                    inputPin.helperText = ""
+//                }
+//            }
 
         joinLobbyButton.setOnClickListener {
             joinLobbyButton.visibility = View.GONE
             vm.callJoinLobby(gamePinText.text.toString()) { gameId, isSuccess -> joinLobby(gameId, isSuccess) }
         }
+
+//        joinLobbyButton.setOnClickListener {
+//            vm.callJoinLobby(gamePinText.text.toString()) { gameId -> joinLobby(gameId) }
+//        }
     }
 
     fun joinLobby(gameId: String, isSuccess: Boolean) {
