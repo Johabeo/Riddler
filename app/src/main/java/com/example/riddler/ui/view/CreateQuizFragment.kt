@@ -35,6 +35,7 @@ class CreateQuizFragment : Fragment() {
     lateinit var quizName: EditText
     lateinit var quizDescription: EditText
     lateinit var vm: QuizViewModel
+    lateinit var failedToast: Toast
     private var param1: String? = null
     private var param2: String? = null
 
@@ -89,15 +90,22 @@ class CreateQuizFragment : Fragment() {
     }
 
     fun createQuiz() {
-        var amount :Int = editNumQuestions.text.toString().toInt()
+        var amount = editNumQuestions.text.toString()
         //println("Question Num is $amount")
         var categoryNum = categoryDropdown.selectedItemPosition
         var categoryName = categoryDropdown.selectedItem.toString()
         //println("Category Num is $category")
         var difficulty = difficultyDropdown.selectedItem.toString()
         var quizNameText = quizName.text.toString()
-        var quizDescriptiontText = quizDescription.text.toString()
-        vm.createQuizFromApi(10, categoryNum, categoryName, difficulty, quizNameText, quizDescriptiontText)
+        var quizDescriptionText = quizDescription.text.toString()
+        val isValid = validate(amount, quizNameText, quizDescriptionText)
+
+        if (isValid)
+            vm.createQuizFromApi(10, categoryNum, categoryName, difficulty, quizNameText, quizDescriptionText)
+        else {
+            failedToast = Toast.makeText(context, "Invalid quiz details", Toast.LENGTH_SHORT)
+            failedToast.show()
+        }
     }
 
     fun bindViews(view: View) {
@@ -109,6 +117,18 @@ class CreateQuizFragment : Fragment() {
             quizName = findViewById<EditText>(R.id.editQuizName)
             quizDescription = findViewById<EditText>(R.id.editDescription)
         }
+    }
+
+    fun validate(amount: String, quizName: String, quizDescription: String): Boolean {
+        if (amount == "")
+            return false
+        else if (amount.toInt() < 5 || amount.toInt() > 50)
+            return false
+
+        if (quizName == "" || quizDescription == "")
+            return false
+
+        return true
     }
 
 }

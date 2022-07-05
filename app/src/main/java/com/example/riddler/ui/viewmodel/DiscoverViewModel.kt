@@ -32,4 +32,8 @@ class DiscoverViewModel @Inject constructor (val quizRepo: QuizRepository,
     fun fetchUserProfileInfo(){
         firebaseRepository.fetchUserProfileInfo()
     }
+
+    fun searchQuiz(searchQuery: String): Observable<List<Quiz>> {
+        return quizRepo.search(searchQuery)
+    }
 }
