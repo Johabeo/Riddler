@@ -7,33 +7,19 @@
     android:background="@color/background"
     tools:context=".ui.view.DiscoverFragment">
 
-    <ImageView
-        android:id="@+id/disc_userImage"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/avatar_background"
-        android:backgroundTint="#A5D6A7"
-        android:elevation="5dp"
-        android:padding="10dp"
-        android:src="@drawable/av_07"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/disc_welcomeTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_bold"
-        android:layout_marginTop="16dp"
-        android:text="Welcome, User!"
+        android:fontFamily="@font/montserrat_bold_italic"
+      android:layout_marginTop="16dp"
+        android:text="Test Their Knowledge"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/disc_userImage"
-        app:layout_constraintTop_toTopOf="@+id/disc_userImage"
-        app:layout_constraintBottom_toBottomOf="@+id/disc_userImage"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/search_quiz"/>
 
     <SearchView
         android:id="@+id/search_quiz"
@@ -46,18 +32,16 @@
         android:queryBackground="@android:color/transparent"
         android:queryHint="Enter Quiz Title..."
         app:layout_constraintEnd_toEndOf="@+id/disc_welcomeTextView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/disc_userImage"
-        app:layout_constraintTop_toBottomOf="@+id/disc_userImage" />
+        app:layout_constraintStart_toStartOf="@+id/disc_welcomeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/disc_welcomeTextView"
+        app:layout_constraintBottom_toTopOf="@+id/scrollview" />
 
     <ScrollView
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="200dp"
-        android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_quiz">
 
@@ -70,66 +54,9 @@
                 android:id="@+id/disc_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:itemCount="1"
+                tools:itemCount="4"
                 tools:listitem="@layout/listitem_quiz_dashboard" />
+
         </LinearLayout>
     </ScrollView>
-
-
-    <!--    <androidx.cardview.widget.CardView-->
-    <!--        android:id="@+id/disc_playerQuizzesCardView"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:layout_marginBottom="8dp"-->
-    <!--        app:cardElevation="5dp"-->
-    <!--        app:contentPaddingBottom="16dp"-->
-    <!--        app:contentPaddingTop="16dp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/disc_welcomeTextView">-->
-
-    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent">-->
-
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/textView6"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginStart="16dp"-->
-    <!--                android:text="Your quizzes"-->
-    <!--                android:textSize="16sp"-->
-    <!--                android:textStyle="bold"-->
-    <!--                app:layout_constraintBottom_toTopOf="@+id/disc_recyclerview"-->
-    <!--                app:layout_constraintStart_toStartOf="parent"-->
-    <!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-
-    <!--&lt;!&ndash;            <Button&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:id="@+id/disc_addButton"&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:layout_marginEnd="16dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;                android:text="Add"&ndash;&gt;-->
-    <!--&lt;!&ndash;                app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;                app:layout_constraintTop_toTopOf="parent" />&ndash;&gt;-->
-
-    <!--            <androidx.recyclerview.widget.RecyclerView-->
-    <!--                android:id="@+id/disc_recyclerview"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--                app:layout_constraintEnd_toEndOf="parent"-->
-    <!--                app:layout_constraintHorizontal_bias="0.0"-->
-    <!--                app:layout_constraintStart_toStartOf="parent"-->
-    <!--                app:layout_constraintTop_toBottomOf="@+id/search_quiz"-->
-    <!--                app:layout_constraintVertical_bias="0.0"-->
-    <!--                tools:itemCount="1"-->
-    <!--                tools:listitem="@layout/listitem_quiz_dashboard" />-->
-    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-    <!--    </androidx.cardview.widget.CardView>-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>

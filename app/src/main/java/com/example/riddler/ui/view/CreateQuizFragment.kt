@@ -94,9 +94,9 @@ class CreateQuizFragment : Fragment() {
         var amount = editNumQuestions.text.toString()
         //println("Question Num is $amount")
         var categoryNum = categoryDropdown.listSelection
-        var categoryName = categoryDropdown.listSelection.toString()
+        var categoryName = categoryDropdown.text.toString()
         //println("Category Num is $category")
-        var difficulty = difficultyDropdown.listSelection.toString()
+        var difficulty = difficultyDropdown.text.toString()
         var quizNameText = quizName.text.toString()
         var quizDescriptionText = quizDescription.text.toString()
         val isValid = validate(amount, quizNameText, quizDescriptionText)
