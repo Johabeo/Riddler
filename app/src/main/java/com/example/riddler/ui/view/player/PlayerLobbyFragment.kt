@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.riddler.R
@@ -68,7 +69,7 @@ class PlayerLobbyFragment : Fragment() {
                 else -> {
                     val adapter = PlayerAdapter(it.players)
                     recyclerView.adapter = adapter
-                    recyclerView.setLayoutManager(LinearLayoutManager(context));
+                    recyclerView.setLayoutManager(GridLayoutManager(context,3));
                 }
             }
 
