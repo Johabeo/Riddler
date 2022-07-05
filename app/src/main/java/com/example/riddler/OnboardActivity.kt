@@ -29,21 +29,30 @@ class OnboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboard)
+        Log.d( "DEBUGGING", "accessed")
         repo = FirestoreRepository()
         auth = Firebase.auth
         val currentUser = auth.currentUser
         if(currentUser != null){
+
+            //==========================for this commit, I'll force sign out the user
+            //==========================this is necessary for password validation to work
+            //==========================since a password hash is generated at login time
+            //==========================feel free to comment the next line after you sign in at least once
             //auth.signOut()
+
+
             println(currentUser.providerData.get(0).email)
             openMainActivity()
-
         }
 
         val fragment = SignInFragment(signIn, setSignupFragment)
         supportFragmentManager
             .beginTransaction()
+            .addToBackStack("fragment")
             .replace(R.id.onboard_fragmentContainer, fragment)
             .commit()
+        Log.d("firebase auth", "new debug")
 
 
     }
@@ -72,6 +81,12 @@ class OnboardActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("firebase auth: ", "signInWithEmail:success")
                     val user = auth.currentUser
+                    val pwdHash = Util.computeSha256(password)
+                    val prefs = getSharedPreferences("prefs", MODE_PRIVATE)
+                    with(prefs.edit()){
+                        putString("pwdHash", pwdHash)
+                        apply()
+                    }
                     Toast.makeText(this, "Sign In Successful", Toast.LENGTH_LONG).show()
                     openMainActivity()
 
@@ -102,7 +117,14 @@ class OnboardActivity : AppCompatActivity() {
                         userProfile.firstName = firstName
                         userProfile.lastName = lastName
                         userProfile.email = email
+                        userProfile.profilePic = 1
                         repo.insertUserProfileInfo(userProfile)
+                        val pwdHash = Util.computeSha256(password)
+                        val prefs = getSharedPreferences("prefs", MODE_PRIVATE)
+                        with(prefs.edit()){
+                            putString("pwdHash", pwdHash)
+                            apply()
+                        }
                         Toast.makeText(this, "*Account Created, Welcome Aboard", Toast.LENGTH_LONG).show()
                         openMainActivity()
                     } else {

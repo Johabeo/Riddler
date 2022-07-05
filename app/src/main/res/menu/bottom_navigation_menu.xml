@@ -2,13 +2,16 @@
     <item
         android:id="@+id/discover"
         android:enabled="true"
+        android:icon="@drawable/icon_selection_discover"
         android:title="@string/discover"/>
     <item
-        android:id="@+id/join"
+        android:id="@+id/play"
         android:enabled="true"
-        android:title="@string/join"/>
+        android:icon="@drawable/icon_selection_play"
+        android:title="Play"/>
     <item
         android:id="@+id/create"
         android:enabled="true"
+        android:icon="@drawable/icon_selection_create"
         android:title="@string/create"/>
 </menu>

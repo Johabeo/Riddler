@@ -30,11 +30,12 @@ class CreateQuizFragment : Fragment() {
 
     lateinit var createQuizButton: Button
     lateinit var editNumQuestions: EditText
-    lateinit var categoryDropdown: Spinner
-    lateinit var difficultyDropdown: Spinner
+    lateinit var categoryDropdown: AutoCompleteTextView
+    lateinit var difficultyDropdown: AutoCompleteTextView
     lateinit var quizName: EditText
     lateinit var quizDescription: EditText
     lateinit var vm: QuizViewModel
+    lateinit var failedToast: Toast
     private var param1: String? = null
     private var param2: String? = null
 
@@ -70,6 +71,7 @@ class CreateQuizFragment : Fragment() {
 
 
         createQuizButton.setOnClickListener {
+            Toast.makeText(activity, "Quiz Created", Toast.LENGTH_LONG).show()
             createQuiz()
         }
 
@@ -80,35 +82,54 @@ class CreateQuizFragment : Fragment() {
         val category = resources.getStringArray(R.array.category)
 
         val categoryAdapter: ArrayAdapter<String> = ArrayAdapter(requireActivity(),
-            android.R.layout.simple_spinner_dropdown_item, category)
+            R.layout.exposed_drop_item, category)
         val difficultyAdapter: ArrayAdapter<String> = ArrayAdapter(requireActivity(),
-            android.R.layout.simple_spinner_dropdown_item, difficulties)
+            R.layout.exposed_drop_item, difficulties)
 
-        categoryDropdown.adapter = categoryAdapter
-        difficultyDropdown.adapter = difficultyAdapter
+        categoryDropdown.setAdapter(categoryAdapter)
+        difficultyDropdown.setAdapter(difficultyAdapter)
     }
 
     fun createQuiz() {
-        var amount :Int = editNumQuestions.text.toString().toInt()
+        var amount = editNumQuestions.text.toString()
         //println("Question Num is $amount")
-        var categoryNum = categoryDropdown.selectedItemPosition
-        var categoryName = categoryDropdown.selectedItem.toString()
+        var categoryNum = categoryDropdown.listSelection
+        var categoryName = categoryDropdown.listSelection.toString()
         //println("Category Num is $category")
-        var difficulty = difficultyDropdown.selectedItem.toString()
+        var difficulty = difficultyDropdown.listSelection.toString()
         var quizNameText = quizName.text.toString()
-        var quizDescriptiontText = quizDescription.text.toString()
-        vm.createQuizFromApi(10, categoryNum, categoryName, difficulty, quizNameText, quizDescriptiontText)
+        var quizDescriptionText = quizDescription.text.toString()
+        val isValid = validate(amount, quizNameText, quizDescriptionText)
+
+        if (isValid)
+            vm.createQuizFromApi(10, categoryNum, categoryName, difficulty, quizNameText, quizDescriptionText)
+        else {
+            failedToast = Toast.makeText(context, "Invalid quiz details", Toast.LENGTH_SHORT)
+            failedToast.show()
+        }
     }
 
     fun bindViews(view: View) {
         with (view) {
             createQuizButton = findViewById<Button>(R.id.createQuiz)
             editNumQuestions = findViewById<EditText>(R.id.editNumQuestions)
-            categoryDropdown = findViewById<Spinner>(R.id.categoryDropdown)
-            difficultyDropdown = findViewById<Spinner>(R.id.difficultyDropdown)
+            categoryDropdown = findViewById<AutoCompleteTextView>(R.id.categoryDropdown)
+            difficultyDropdown = findViewById<AutoCompleteTextView>(R.id.difficultyDropdown)
             quizName = findViewById<EditText>(R.id.editQuizName)
             quizDescription = findViewById<EditText>(R.id.editDescription)
         }
+    }
+
+    fun validate(amount: String, quizName: String, quizDescription: String): Boolean {
+        if (amount == "")
+            return false
+        else if (amount.toInt() < 5 || amount.toInt() > 50)
+            return false
+
+        if (quizName == "" || quizDescription == "")
+            return false
+
+        return true
     }
 
 }

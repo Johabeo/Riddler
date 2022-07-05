@@ -4,37 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.player.PlayerGameFragment">
-    <TextView
+    tools:context=".ui.view.player.PlayerGameFragment"
+    android:background="@drawable/ic_game_background"
+    android:padding="16dp">
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/playerQuestions"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="300dp"
-        android:layout_marginBottom="584dp"
-        android:background="#FFD180"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="16dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/black"
         android:textAlignment="center"
         android:gravity="center"
         android:textSize="30sp"
-        android:text="@string/hello_blank_fragment"
+        android:fontFamily="@font/montserrat_semi_bold"
+        android:text="This is the question prompt?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="30"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="@id/playerQuestions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:text="30"
+            android:textColor="@color/black"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@id/playerQuestions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/playerAnswer1"
@@ -44,24 +60,25 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="#F50057"
+
+        android:backgroundTint="#C1FFCD"
         app:cardCornerRadius="16dp"
+        app:cardPreventCornerOverlap="true"
         app:layout_constraintBottom_toTopOf="@id/playerAnswer3"
         app:layout_constraintEnd_toStartOf="@+id/playerAnswer2"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerQuestions"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/playerQuestions">
 
         <TextView
             android:id="@+id/playerAnswer1Text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:fontFamily="@font/montserrat_semi_bold"
             android:gravity="center"
-            android:text="Test"
+            android:text="mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
             android:textAlignment="center"
             android:textSize="24sp" />
-
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -72,7 +89,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="#00B0FF"
+        android:backgroundTint="#BDEAF5"
         app:cardCornerRadius="16dp"
         app:layout_constraintBottom_toTopOf="@id/playerAnswer4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,10 +101,13 @@
             android:id="@+id/playerAnswer2Text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textColor="@color/black"
             android:gravity="center"
-            android:text="Test"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:text="there should be a 32 character limit"
             android:textAlignment="center"
             android:textSize="24sp" />
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -98,7 +118,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#1DE9B6"
+        android:backgroundTint="#FFDAD4"
         app:cardCornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/playerAnswer4"
@@ -111,7 +131,9 @@
             android:id="@+id/playerAnswer3Text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textColor="@color/black"
             android:gravity="center"
+            android:fontFamily="@font/montserrat_semi_bold"
             android:text="Test"
             android:textAlignment="center"
             android:textSize="24sp" />
@@ -125,7 +147,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#FFEA00"
+        android:backgroundTint="#E8DDFF"
         app:cardCornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,6 +159,8 @@
         <TextView
             android:id="@+id/playerAnswer4Text"
             android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:fontFamily="@font/montserrat_semi_bold"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Test"

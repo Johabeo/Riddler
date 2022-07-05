@@ -6,21 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".ui.view.player.PlayerActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/player_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:elevation="4dp"
+        android:background="#6622FF"
+        app:menu="@menu/game_toolbar_menu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/playerContainer"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@id/constraintLayoutPlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/player_toolbar" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutPlayer"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/teal_200"
+        android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +43,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Score: "
+            android:textColor="@color/white"
             android:textSize="24sp"
+            android:fontFamily="@font/montserrat_semi_bold"
             app:layout_constraintBottom_toBottomOf="@id/constraintLayoutPlayer"
             app:layout_constraintEnd_toStartOf="@+id/score"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -47,7 +60,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="6dp"
+            android:textColor="@color/white"
             android:text="0"
+            android:fontFamily="@font/montserrat_semi_bold"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@id/constraintLayoutPlayer"
             app:layout_constraintEnd_toEndOf="@id/constraintLayoutPlayer"

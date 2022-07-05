@@ -3,7 +3,9 @@ package com.example.riddler.data.repo
 import androidx.lifecycle.MutableLiveData
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.data.model.UserProfile
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.ktx.Firebase
@@ -76,6 +78,10 @@ class FirestoreRepository() {
                     update["firstName"] = userProfile.firstName
                     update["lastName"] = userProfile.lastName
                     update["profilePic"] = userProfile.profilePic
+                    val profileUpdate = userProfileChangeRequest {
+                        displayName = userProfile.firstName
+                    }
+                    auth.currentUser?.updateProfile(profileUpdate)
                     db.collection("users").document(doc.id).set(update, SetOptions.merge())
                     //update live data if any changes
                     fetchUserProfileInfo()
@@ -96,9 +102,71 @@ class FirestoreRepository() {
         return auth.currentUser != null
     }
 
+    //check user credentials
+    //if successful, updateUserEmail or updateUserPassword will immediately be called
+    //if unsuccessful, an error will be displayed in the change email/password dialog
+    fun verifyCredentials(email: String, password: String) : Boolean{
+        var result = false
+        val credential = EmailAuthProvider.getCredential(email, password)
+        auth.currentUser!!.reauthenticate(credential)
+            .addOnSuccessListener {
+                result = true
+            }
+            .addOnFailureListener {
+                result = false
+            }
 
+        return result
+    }
 
-    //TODO use rxkotlin and validation
+    //reauthenticate, update email, update user profile, refresh user profile
+    fun updateUserEmail(oldEmail: String, newEmail: String, password: String){
+        var result = false
+        val credential = EmailAuthProvider.getCredential(oldEmail, password)
+        auth.currentUser!!.reauthenticate(credential)
+            .addOnSuccessListener {
+                auth.currentUser!!.updateEmail(newEmail)
+                    .addOnSuccessListener {
+                        db.collection("users")
+                            .whereEqualTo("email", oldEmail)
+                            .get()
+                            .addOnCompleteListener {
+                                val doc = it.result.documents.firstOrNull()
+                                if (doc != null) {
+                                    val update: MutableMap<String, Any> = HashMap()
+                                    update["email"] = newEmail
+                                    db.collection("users").document(doc.id).set(update, SetOptions.merge())
+                                    fetchUserProfileInfo()
+                                }
+                            }
+                        result = true
+                        //fetchUserProfileInfo()
+                    }.addOnFailureListener {
+                        result = false
+                    }
+            }
+            .addOnFailureListener {
+                result = false
+            }
+    }
+
+    fun updateUserPassword(email: String, oldPassword: String, newPassword: String) : Boolean {
+        var result = false
+        val credential = EmailAuthProvider.getCredential(email, oldPassword)
+        auth.currentUser!!.reauthenticate(credential)
+            .addOnSuccessListener {
+                auth.currentUser!!.updatePassword(newPassword)
+                    .addOnSuccessListener {
+                        result = true
+                        fetchUserProfileInfo()
+                    }
+                    .addOnFailureListener {
+                        result = false
+                    }
+            }
+        return result
+    }
+
     fun getAllQuizByUser(user: String) : List<Quiz> {
         var quizList : ArrayList<Quiz> = ArrayList<Quiz>()
 
@@ -118,7 +186,6 @@ class FirestoreRepository() {
         return quizList
     }
 
-    //TODO use rxkotlin and validation
     fun getAllQuiz() : List<Quiz> {
         var quizList : ArrayList<Quiz> = ArrayList<Quiz>()
 
