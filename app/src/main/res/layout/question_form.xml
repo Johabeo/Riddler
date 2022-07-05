@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp">
+
+    <EditText
+        android:id="@+id/editTextQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Question..."
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <EditText
+        android:id="@+id/editTextCorrectAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginLeft="24dp"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:hint="Correct Answer..." />
+
+    <EditText
+        android:id="@+id/editTextFirstAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginLeft="24dp"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:hint="First Answer..." />
+
+    <EditText
+        android:id="@+id/editTextSecondAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginLeft="24dp"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:hint="Second Answer..." />
+
+    <EditText
+        android:id="@+id/editTextThirdAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginLeft="24dp"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:hint="Third Answer..." />
+
+    <EditText
+        android:id="@+id/editTextFourthAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginLeft="24dp"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:hint="Fourth Answer..." />
+</LinearLayout>
