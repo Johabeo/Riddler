@@ -68,13 +68,16 @@ class HostViewModel  : ViewModel() {
                         val e = task.exception
                         Timber.d(e)
                         loadGame(false)
+                        println(123)
                     } else {
+                        println(1234)
                         lobbyOrGame = "game"
                         createGameInstance()
                         loadGame(true)
                     }
                 }
         }catch (e : Exception) {
+            println(12345)
             loadGame(false)
             Timber.d(e)
         }

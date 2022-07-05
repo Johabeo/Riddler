@@ -62,7 +62,7 @@ class HostLobbyFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.playerList)
         val gamePin = view.findViewById<TextView>(R.id.lobbyGamePin)
-        startGame = view.findViewById<Button>(R.id.lobbyStartGame)
+        startGame = view.findViewById(R.id.lobbyStartGame)
         val numPlayers = view.findViewById<TextView>(R.id.num_players_in_lobby)
         val vm = ViewModelProvider(requireActivity()).get(HostViewModel::class.java)
         vm.callCreateLobby()
@@ -72,7 +72,7 @@ class HostLobbyFragment : Fragment() {
                 numPlayers.text = "${it.players.size}/${it.size}"
                 val adapter = PlayerAdapter(it.players)
                 recyclerView.adapter = adapter
-                recyclerView.setLayoutManager(GridLayoutManager(context,3));
+                recyclerView.setLayoutManager(LinearLayoutManager(context))
             } catch (e: Exception) {
                 Timber.d(e)
             }
@@ -80,6 +80,7 @@ class HostLobbyFragment : Fragment() {
         }
 
         startGame.setOnClickListener {
+            println("clicked")
             startGame.visibility = View.GONE
             vm.startGame{ loadSuccess -> loadGameFragment(loadSuccess) }
         }

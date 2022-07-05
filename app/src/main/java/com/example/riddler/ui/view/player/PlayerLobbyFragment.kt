@@ -69,7 +69,7 @@ class PlayerLobbyFragment : Fragment() {
                 else -> {
                     val adapter = PlayerAdapter(it.players)
                     recyclerView.adapter = adapter
-                    recyclerView.setLayoutManager(GridLayoutManager(context,3));
+                    recyclerView.setLayoutManager(LinearLayoutManager(context))
                 }
             }
 
