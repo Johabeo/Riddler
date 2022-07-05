@@ -4,9 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background_host_lobby"
-    android:padding="16dp"
+    android:background="#BA1B1B"
+
     tools:context=".ui.view.host.HostLobbyFragment">
+
+    <ImageView
+        android:id="@+id/corner4"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_group_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ImageView
         android:id="@+id/background"
@@ -24,6 +35,7 @@
         android:id="@+id/mini_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Quiz:"
         android:textColor="@color/white"
@@ -36,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
+        android:layout_margin="16dp"
         app:cardElevation="5dp"
         app:contentPadding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"

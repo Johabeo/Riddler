@@ -4,4 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.view.player.PlayerIncorrectFragment"
-    android:background="@drawable/ic_feedback___wrong" />
+    android:background="#6622FF"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+    android:id="@+id/corner4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:adjustViewBounds="true"
+    android:scaleType="centerInside"
+    android:src="@drawable/ic_rectangle_13"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+<ImageView
+    android:id="@+id/corner2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:adjustViewBounds="true"
+    android:scaleType="centerInside"
+    android:src="@drawable/ic_group_16"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+    android:id="@+id/second_corner"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:adjustViewBounds="true"
+    android:scaleType="centerInside"
+    android:src="@drawable/ic_ellipse_33"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
