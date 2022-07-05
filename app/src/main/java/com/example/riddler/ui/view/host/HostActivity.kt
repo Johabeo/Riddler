@@ -3,8 +3,10 @@ package com.example.riddler.ui.view.host
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import com.example.riddler.R
 import com.example.riddler.data.repo.GameRepository
@@ -33,18 +35,29 @@ class HostActivity : AppCompatActivity() {
         val quizId = intent.getIntExtra("quizId", 0)
         hostVM = ViewModelProvider(this).get(HostViewModel::class.java)
         hostVM.setCurrentQuestions(quizVM.getQuestions(quizId))
-        val leave = findViewById<Button>(R.id.hostLeave)
 
-        leave.setOnClickListener {
-            hostVM.leave()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        setSupportActionBar(findViewById(R.id.host_toolbar))
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+            title = ""
         }
 
         var fm = supportFragmentManager
         var ft = fm.beginTransaction()
         ft.replace(R.id.hostContainer, HostLobbyFragment())
         ft.commit()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                hostVM.leave()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

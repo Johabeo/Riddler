@@ -32,7 +32,8 @@
         <activity
             android:name=".ui.view.player.PlayerActivity"
             android:exported="false"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+            />
         <activity
             android:name=".TriviaQuizActivity"
             android:exported="false"

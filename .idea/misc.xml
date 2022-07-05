@@ -4,7 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_dashboard2.xml" value="0.13072916666666667" />
-        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_host.xml" value="0.1" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_host.xml" value="0.144" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_player.xml" value="0.2" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/bottom_navigation_menu.xml" value="0.109375" />
@@ -18,7 +18,13 @@
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_player_join_lobby.xml" value="0.152" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_player_lobby.xml" value="0.2" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/game_toolbar.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/player_cards.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1703125" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/menu/game_menu.xml" value="0.16927083333333334" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/menu/game_toolbar_items.xml" value="0.1703125" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/menu/game_toolbar_menu.xml" value="0.1703125" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/menu/toolbar_menu.xml" value="0.1703125" />
         <entry key="..\:/prog/Android/Riddler/app/src/main/res/drawable/avatar_background.xml" value="0.1575" />
         <entry key="..\:/prog/Android/Riddler/app/src/main/res/drawable/bottom_nav_rectangle.xml" value="0.1595" />
         <entry key="..\:/prog/Android/Riddler/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1" />
