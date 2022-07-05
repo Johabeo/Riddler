@@ -6,9 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.view.MainActivity">
 
-<include
-    android:id = "@id/toolbar"
-    layout="@layout/toolbar" />
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@id/toolbar"
+        layout="@layout/toolbar"
+        android:background="#F4FFF1"
+        android:elevation="16dp"
+        app:titleTextColor="#F4FFF1"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container"
@@ -16,16 +23,18 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="0dp"
-        android:outlineProvider="none"
-        app:backgroundTint="@color/background"
+        android:elevation="16dp"
+        app:elevation="16dp"
+        app:backgroundTint="#F4FFF1"
         app:labelVisibilityMode="labeled"
         app:itemRippleColor="#E1F6E0"
         app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"

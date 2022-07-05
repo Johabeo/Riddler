@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:elevation="4dp"
-        android:background="@color/design_default_color_primary"
+        android:background="#BA1B1B"
         app:menu="@menu/game_toolbar_menu"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -105,10 +105,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        /*if(item.itemId == R.id.toolbar_settings){
-            intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
-        }*/
         when (item.itemId) {
             R.id.toolbar_settings -> {
                 intent = Intent(this, SettingsActivity::class.java)
@@ -117,17 +113,16 @@ class MainActivity : AppCompatActivity() {
 
             R.id.toolbar_logout -> {
 
-//                val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-//                    .setTitle("Signing Out")
-//                    .setPositiveButton("Yes") { dialog, which ->
-//                        signOut()
-//                    }
-//                    .setNegativeButton("No") { dialog, which ->
-//                        dialog.cancel()
-//                    }
-//                builder.show()
-
-                signOut()
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+                    .setTitle("Signing Out")
+                    .setMessage("Are you Sure You Want to Sign Out?")
+                    .setPositiveButton("Yes") { dialog, which ->
+                        signOut()
+                    }
+                    .setNegativeButton("No") { dialog, which ->
+                        dialog.cancel()
+                    }
+                builder.show()
             }
         }
 
@@ -145,7 +140,6 @@ class MainActivity : AppCompatActivity() {
         config.setLocale(l)
         config.setLayoutDirection(l)
         //window.decorView.layoutDirection = if(lang == "ar")  View.LAYOUT_DIRECTION_RTL else View.LAYOUT_DIRECTION_LTR
-
         baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
         recreate()
     }

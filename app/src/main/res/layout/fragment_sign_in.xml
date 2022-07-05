@@ -61,7 +61,6 @@
         app:layout_constraintBottom_toTopOf="@+id/password_layout"
         app:layout_constraintEnd_toEndOf="@+id/background"
         app:layout_constraintStart_toStartOf="@+id/background"
-        app:layout_constraintTag=""
         app:layout_constraintTop_toBottomOf="@+id/heading"
         app:startIconDrawable="@drawable/ic_akar_icons_person"
         app:startIconTint="@color/black">

@@ -20,6 +20,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/mini_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Quiz:"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/game_pin_layout"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/game_pin_layout"
         android:layout_width="match_parent"
@@ -41,25 +52,14 @@
                 android:id="@+id/playerLobbyGamePin"
                 android:layout_width="match_parent"
                 android:layout_height="96dp"
-                android:background="#2196F3"
                 android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="Quiz Title"
                 android:textAlignment="center"
                 android:textIsSelectable="true"
                 android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/mini_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Quiz:"
-                android:textColor="@color/white"
-                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

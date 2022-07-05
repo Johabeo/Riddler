@@ -39,7 +39,7 @@ class OnboardActivity : AppCompatActivity() {
             //==========================this is necessary for password validation to work
             //==========================since a password hash is generated at login time
             //==========================feel free to comment the next line after you sign in at least once
-            auth.signOut()
+            //auth.signOut()
 
 
             println(currentUser.providerData.get(0).email)
@@ -49,11 +49,9 @@ class OnboardActivity : AppCompatActivity() {
         val fragment = SignInFragment(signIn, setSignupFragment)
         supportFragmentManager
             .beginTransaction()
+            .addToBackStack("fragment")
             .replace(R.id.onboard_fragmentContainer, fragment)
-//            .addToBackStack("fragment")
             .commit()
-//            .replace(R.id.onboard_fragmentContainer, fragment)
-//            .commit()
         Log.d("firebase auth", "new debug")
 
 
