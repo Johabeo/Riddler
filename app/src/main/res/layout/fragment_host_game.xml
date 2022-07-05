@@ -51,8 +51,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <TextView
-        android:id="@+id/timer"
+        android:id="@+id/host_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_semi_bold"
@@ -64,11 +65,27 @@
         app:layout_constraintEnd_toEndOf="@+id/hostQuestions"
         app:layout_constraintTop_toTopOf="@+id/hostQuestions" />
 
+<!--    <TextView-->
+<!--        android:id="@+id/host_timer"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/montserrat_semi_bold"-->
+<!--        android:text="30"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:elevation ="8dp"-->
+<!--        android:textSize="48sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.915"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.964" />-->
+
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Waiting for players..."
+        android:text="@string/waiting_for_players"
         android:textSize="32sp"
         android:textColor="@color/white"
         android:fontFamily="@font/montserrat_bold"

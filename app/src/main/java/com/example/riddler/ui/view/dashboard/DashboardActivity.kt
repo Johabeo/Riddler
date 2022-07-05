@@ -28,7 +28,7 @@ import com.example.riddler.ui.viewmodel.DashboardViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class DashboardActivity : AppCompatActivity() {
+class ashboardActivity : AppCompatActivity() {
     lateinit var data : ArrayList<Quiz>
     lateinit var adapter: DashboardQuizListAdapter
     val auth = Firebase.auth

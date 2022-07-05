@@ -36,6 +36,8 @@ class CreateQuizFragment : Fragment() {
     lateinit var quizDescription: EditText
     lateinit var vm: QuizViewModel
     lateinit var failedToast: Toast
+    lateinit var difficulties: List<String>
+    lateinit var category: List<String>
     private var param1: String? = null
     private var param2: String? = null
 
@@ -53,6 +55,9 @@ class CreateQuizFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_create_quiz, container, false)
         bindViews(view)
+
+        difficulties = resources.getStringArray(R.array.difficulty).toList()
+        category = resources.getStringArray(R.array.category).toList()
         vm = ViewModelProvider(this).get(QuizViewModel::class.java)
         createAdapters()
         // Inflate the layout for this fragment
@@ -78,8 +83,6 @@ class CreateQuizFragment : Fragment() {
     }
 
     fun createAdapters() {
-        val difficulties = resources.getStringArray(R.array.difficulty)
-        val category = resources.getStringArray(R.array.category)
 
         val categoryAdapter: ArrayAdapter<String> = ArrayAdapter(requireActivity(),
             R.layout.exposed_drop_item, category)
@@ -92,10 +95,8 @@ class CreateQuizFragment : Fragment() {
 
     fun createQuiz() {
         var amount = editNumQuestions.text.toString()
-        //println("Question Num is $amount")
-        var categoryNum = categoryDropdown.listSelection
         var categoryName = categoryDropdown.text.toString()
-        //println("Category Num is $category")
+        var categoryNum = category.indexOf(categoryName) + 9
         var difficulty = difficultyDropdown.text.toString()
         var quizNameText = quizName.text.toString()
         var quizDescriptionText = quizDescription.text.toString()

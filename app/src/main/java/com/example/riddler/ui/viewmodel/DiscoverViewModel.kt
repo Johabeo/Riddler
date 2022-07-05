@@ -1,7 +1,9 @@
 package com.example.riddler.ui.viewmodel
 
+import android.graphics.pdf.PdfDocument
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.data.repo.FirestoreRepository
 import com.example.riddler.data.repo.QuizRepository
@@ -16,11 +18,14 @@ class DiscoverViewModel @Inject constructor (val quizRepo: QuizRepository,
                         val firebaseRepository: FirestoreRepository): ViewModel() {
 
     val userProfile = firebaseRepository.userProfile
+    var query = ""
+    var page = 1
+    val OFFSET = 0
+    val LIMIT = 10
 
     fun getQuiz(): Observable<List<Quiz>> {
-        return getQuiz(100,0)
+        return getQuiz(LIMIT*page,OFFSET)
     }
-
     fun getQuiz(limit: Int, offset: Int): Observable<List<Quiz>> {
         return quizRepo.getQuizzes(limit, offset)
     }
@@ -34,6 +39,18 @@ class DiscoverViewModel @Inject constructor (val quizRepo: QuizRepository,
     }
 
     fun searchQuiz(searchQuery: String): Observable<List<Quiz>> {
-        return quizRepo.search(searchQuery)
+        page = 1
+        query = searchQuery
+        return quizRepo.search(searchQuery, LIMIT*page, OFFSET)
+    }
+
+    fun loadMore(): Observable<List<Quiz>> {
+        page++
+        if (query == "") {
+            return quizRepo.getQuizzes(LIMIT*page,OFFSET)
+        } else {
+            return quizRepo.search(query, LIMIT*page, OFFSET)
+        }
+
     }
 }

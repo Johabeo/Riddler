@@ -146,6 +146,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/hind_regular"
             android:hint="Number of Questions"
+            android:inputType="number"
             android:imeOptions="actionDone"
             android:singleLine="true"
             android:textColor="@color/black" />

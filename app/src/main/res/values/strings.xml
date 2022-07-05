@@ -59,4 +59,13 @@
     <string name="password2">Password</string>
     <string name="first_name">First Name</string>
     <string name="last_name_optional">Last Name (Optional)</string>
+    <string name="waiting_for_players">Waiting for players...</string>
+    <string name="start">Start</string>
+    <string name="quiz">Quiz:</string>
+    <string name="you_re_in">You\'re In!</string>
+    <string name="waiting_for_the_host_to_start">waiting for the host to start..</string>
+    <string name="create_lobby">Create Lobby</string>
+    <string name="texthint">Enter Quiz Title...</string>
+    <string name="ready_set">Ready? Set?</string>
+    <string name="game_pin">Game Pin</string>
 </resources>

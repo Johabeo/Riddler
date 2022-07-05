@@ -25,10 +25,11 @@ class HostViewModel  : ViewModel() {
     var lobbyState = MutableLiveData<Lobby>()
     var gameState = MutableLiveData<QuizGame>()
     var lobbyOrGame = "lobby"
+    var lobbySize = 16
     lateinit var lobbyListener: ListenerRegistration
     lateinit var gameListener: ListenerRegistration
 
-    fun callCreateLobby(lobbySize: Int) {
+    fun callCreateLobby() {
         // [START call_add_numbers]
         repo.createLobby(lobbySize)
             .addOnCompleteListener { task ->
@@ -55,7 +56,7 @@ class HostViewModel  : ViewModel() {
         }
     }
 
-    fun startGame(loadGame: () -> Unit) {
+    fun startGame(loadGame: (Boolean) -> Unit) {
         val gameId = pin.value
         if (gameId.isNullOrEmpty()) {
             return
@@ -66,12 +67,18 @@ class HostViewModel  : ViewModel() {
                     if (!task.isSuccessful) {
                         val e = task.exception
                         Timber.d(e)
+                        loadGame(false)
+                        println(123)
+                    } else {
+                        println(1234)
+                        lobbyOrGame = "game"
+                        createGameInstance()
+                        loadGame(true)
                     }
-                    lobbyOrGame = "game"
-                    createGameInstance()
-                    loadGame()
                 }
         }catch (e : Exception) {
+            println(12345)
+            loadGame(false)
             Timber.d(e)
         }
     }
@@ -143,5 +150,9 @@ class HostViewModel  : ViewModel() {
 
     fun leave() {
         repo.hostLeave(pin.value!!,lobbyOrGame)
+    }
+
+    fun setHostLobbySize(size: Int) {
+        lobbySize = size
     }
 }
