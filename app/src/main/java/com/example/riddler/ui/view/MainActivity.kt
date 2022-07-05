@@ -155,11 +155,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun updateElements(l: Locale){
-        val config : Configuration = baseContext.resources.configuration
-        config.setLocale(l)
-        config.setLayoutDirection(l)
-        //window.decorView.layoutDirection = if(lang == "ar")  View.LAYOUT_DIRECTION_RTL else View.LAYOUT_DIRECTION_LTR
-        baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
         recreate()
     }
 }

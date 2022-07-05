@@ -1,6 +1,7 @@
 package com.example.riddler.ui.view.settings
 
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,10 +18,11 @@ import com.example.riddler.ui.viewmodel.SettingsViewModel
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     @Inject
     lateinit var vm : SettingsViewModel
 
@@ -29,6 +31,7 @@ class SettingsActivity : AppCompatActivity() {
     lateinit var lastNameEditText: EditText
     lateinit var emailLabel: TextView
     lateinit var avatarPicture : ImageView
+    lateinit var languageSpinner: Spinner
     var profilePic = 0
     lateinit var preferences: SharedPreferences
 
@@ -45,6 +48,9 @@ class SettingsActivity : AppCompatActivity() {
         lastNameEditText = findViewById(R.id.set_lastNameEditText)
         emailLabel = findViewById(R.id.set_emailTextView)
         avatarPicture = findViewById(R.id.set_avatarPic)
+        languageSpinner = findViewById(R.id.set_languageSpinner)
+
+        languageSpinner.onItemSelectedListener = this
 
         vm.userProfile.observe(this){
             firstNameEditText.setText(it.firstName)
@@ -244,6 +250,29 @@ class SettingsActivity : AppCompatActivity() {
 
         alertDialog = builder.create()
         alertDialog.show()
+
+    }
+
+    //switch language
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        var localeStr =
+            when(p2){
+                0 -> Locale.getDefault().language
+                1 -> "en"
+                2 -> "es"
+                3 -> "ru"
+                4 -> "zh-CN"
+                else -> "en"
+            }
+        val locale = Locale(localeStr)
+        val config : Configuration = baseContext.resources.configuration
+        config.setLocale(locale)
+        config.setLayoutDirection(locale)
+        //window.decorView.layoutDirection = if(lang == "ar")  View.LAYOUT_DIRECTION_RTL else View.LAYOUT_DIRECTION_LTR
+        baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
 
     }
 }
