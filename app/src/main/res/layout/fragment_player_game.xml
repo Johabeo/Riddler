@@ -9,7 +9,7 @@
     android:padding="16dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/playerQuestions"
+        android:id="@+id/questions_card"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         app:cardBackgroundColor="@color/white"
@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
     <TextView
+        android:id="@+id/playerQuestions"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp"
@@ -46,7 +47,7 @@
             android:text="30"
             android:textColor="@color/black"
             android:textSize="48sp"
-            app:layout_constraintBottom_toBottomOf="@id/playerQuestions"
+            app:layout_constraintBottom_toBottomOf="@id/questions_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -67,7 +68,7 @@
         app:layout_constraintBottom_toTopOf="@id/playerAnswer3"
         app:layout_constraintEnd_toStartOf="@+id/playerAnswer2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerQuestions">
+        app:layout_constraintTop_toBottomOf="@+id/questions_card">
 
         <TextView
             android:id="@+id/playerAnswer1Text"
@@ -94,7 +95,7 @@
         app:layout_constraintBottom_toTopOf="@id/playerAnswer4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/playerAnswer1"
-        app:layout_constraintTop_toBottomOf="@+id/playerQuestions"
+        app:layout_constraintTop_toBottomOf="@+id/questions_card"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView

@@ -23,7 +23,7 @@ import org.junit.Assert.*
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class UnitTestDataTest {
+class UnitTestData {
 
     //Dao
     val quizDao = mockk<QuizDao>()
@@ -55,7 +55,7 @@ class UnitTestDataTest {
     val hostActivity = mockk<HostActivity>()
 
 //quiz
-    val quiz1 = Quiz("Joe","Best Quize","people Around the World","General",23)
+    val quiz1 = Quiz("Joe","Best Quize","people Around the World","General","Easy")
 //Questions
     val questions1 : Questions = Questions(1,"What's your group", "G1","G2","G3","G4","G1")
 //Question
