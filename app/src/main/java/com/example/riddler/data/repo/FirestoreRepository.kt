@@ -97,8 +97,6 @@ class FirestoreRepository() {
     }
 
 
-
-    //TODO use rxkotlin and validation
     fun getAllQuizByUser(user: String) : List<Quiz> {
         var quizList : ArrayList<Quiz> = ArrayList<Quiz>()
 
@@ -118,7 +116,6 @@ class FirestoreRepository() {
         return quizList
     }
 
-    //TODO use rxkotlin and validation
     fun getAllQuiz() : List<Quiz> {
         var quizList : ArrayList<Quiz> = ArrayList<Quiz>()
 
