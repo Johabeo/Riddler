@@ -20,19 +20,28 @@ class DashboardViewModelTest {
     )
 
     @Test
-    fun testGetRepo() {
+    fun `test that testGetRepo() gets call from underTest`() {
         coEvery { underTest.fetchUserProfileInfo() } returns Unit
+        underTest.fetchUserProfileInfo()
+        coVerify { underTest.fetchUserProfileInfo() }
 
     }
 
     @Test
-    fun getQuizList() {
+    fun `test that getQuizList() gets call from underTest`() {
         coEvery { repo.getQuiz() }returns Unit
+        repo.getQuiz()
+        coVerify { repo.getQuiz() }
+
     }
 
 
     @Test
-    fun fetchUserProfileInfo() {
+    fun `fetchUserProfileInfo() gets called from underTest`() {
         coEvery { underTest.fetchUserProfileInfo() } returns Unit
+        underTest.fetchUserProfileInfo()
+        coVerify { underTest.fetchUserProfileInfo() }
+
     }
+
 }
