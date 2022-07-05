@@ -4,6 +4,7 @@ data class Lobby(
     val host: String,
     val pin: String,
     val size: Int,
+    val hostQuit: Boolean?,
     val gameStarted: Boolean,
     val players: List<LobbyPlayers>
 )

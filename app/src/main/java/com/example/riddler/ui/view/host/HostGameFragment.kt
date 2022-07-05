@@ -46,13 +46,15 @@ class HostGameFragment : Fragment() {
         val next = view.findViewById<Button>(R.id.hostGameNext)
         val vm = ViewModelProvider(requireActivity()).get(HostViewModel::class.java)
         vm.gameState.observe(viewLifecycleOwner) {
-            next.visibility = View.GONE
             question.text = it.question?.question
             playersSubmitted.text = "${it.numAnswered.toString()}/${it.players!!.size}"
+
         }
 
         next.setOnClickListener {
+            next.visibility = View.GONE
             vm.moveNext { gameFinished -> displayLeaderboard(gameFinished) }
+            next.visibility = View.VISIBLE
         }
     }
 

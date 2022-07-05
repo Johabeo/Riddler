@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.FirebaseFunctionsException
+import com.google.firebase.functions.HttpsCallableResult
 import com.google.firebase.functions.ktx.functions
 import com.google.firebase.ktx.Firebase
 
@@ -124,6 +125,28 @@ class GameRepository() {
 
         functions
             .getHttpsCallable("displayLeaderboard")
+            .call(data)
+    }
+
+    //lobbyType is either game or lobby
+    fun leaveLobby(gameId: String, lobbyType: String) {
+        val data = hashMapOf(
+            "gameId" to gameId,
+            "playerId" to user.uid,
+            "lobbyType" to lobbyType
+        )
+        functions
+            .getHttpsCallable("leaveLobby")
+            .call(data)
+    }
+
+    fun hostLeave(gameId: String, lobbyType: String) {
+        val data = hashMapOf(
+            "gameId" to gameId,
+            "lobbyType" to lobbyType
+        )
+        functions
+            .getHttpsCallable("hostLeave")
             .call(data)
     }
 }

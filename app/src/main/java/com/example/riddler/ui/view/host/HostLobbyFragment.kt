@@ -20,6 +20,7 @@ import com.example.riddler.ui.viewmodel.HostViewModel
 import com.example.riddler.ui.viewmodel.PlayerViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.lang.Exception
 
 // TODO: Rename parameter arguments, choose names that match
@@ -69,14 +70,16 @@ class HostLobbyFragment : Fragment() {
                 recyclerView.adapter = adapter
                 recyclerView.setLayoutManager(LinearLayoutManager(context));
             } catch (e: Exception) {
-                println("No players")
+                Timber.d(e)
             }
 
         }
         startGame.setOnClickListener {
-            GlobalScope.launch {
-                vm.startGame{ -> loadGameFragment() }
-            }
+
+            startGame.visibility = View.GONE
+            vm.startGame{ -> loadGameFragment() }
+//            startGame.visibility = View.VISIBLE
+
         }
         vm.pin.observe(viewLifecycleOwner) {
             gamePin.text = it

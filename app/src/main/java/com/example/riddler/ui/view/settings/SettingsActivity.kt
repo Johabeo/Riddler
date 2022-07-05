@@ -15,6 +15,7 @@ import com.example.riddler.data.model.UserProfile
 import com.example.riddler.ui.adapters.AvatarPickerAdapter
 import com.example.riddler.ui.viewmodel.SettingsViewModel
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

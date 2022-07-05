@@ -24,6 +24,7 @@ class HostViewModel  : ViewModel() {
     var currentQuestion = 0
     var lobbyState = MutableLiveData<Lobby>()
     var gameState = MutableLiveData<QuizGame>()
+    var lobbyOrGame = "lobby"
     lateinit var lobbyListener: ListenerRegistration
     lateinit var gameListener: ListenerRegistration
 
@@ -54,7 +55,7 @@ class HostViewModel  : ViewModel() {
         }
     }
 
-    suspend fun startGame(loadGame: () -> Unit) {
+    fun startGame(loadGame: () -> Unit) {
         val gameId = pin.value
         if (gameId.isNullOrEmpty()) {
             return
@@ -66,6 +67,7 @@ class HostViewModel  : ViewModel() {
                         val e = task.exception
                         Timber.d(e)
                     }
+                    lobbyOrGame = "game"
                     createGameInstance()
                     loadGame()
                 }
@@ -137,5 +139,9 @@ class HostViewModel  : ViewModel() {
     fun setCurrentQuestions(_questionList: List<Questions>) {
         questionList = _questionList
         println(questionList)
+    }
+
+    fun leave() {
+        repo.hostLeave(pin.value!!,lobbyOrGame)
     }
 }
