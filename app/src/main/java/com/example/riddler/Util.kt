@@ -7,6 +7,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.Exception
 import java.util.*
+import java.security.MessageDigest
 
 class Util {
     companion object {
@@ -48,6 +49,17 @@ class Util {
         inline fun <I, reified O> I.convert(): O {
             val json = gson.toJson(this)
             return gson.fromJson(json, object : TypeToken<O>() {}.type)
+        }
+
+        //this function computes the SHA256 sum of a string
+        //used to store the password hash in the settings
+        //the hash is used to compare user-entered password with the one stored as hash, used in
+        //email and password change screens, since Firebase.auth.reauthenticate() could potentially
+        //invalidate token if password doesn't match - don't want to kick the user out if they make a typo.
+        fun computeSha256(s: String) : String {
+            val bytes = MessageDigest.getInstance("SHA-256")
+                .digest(s.toByteArray())
+            return bytes.joinToString("") { "%02x".format(it) }
         }
     }
 }
