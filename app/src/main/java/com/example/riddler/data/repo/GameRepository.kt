@@ -71,6 +71,15 @@ class GameRepository() {
             }
     }
 
+    fun finishGame(gameId: String) {
+        val data = hashMapOf(
+            "gameId" to gameId,
+        )
+        functions
+            .getHttpsCallable("finishGame")
+            .call(data)
+    }
+
     fun submitAnswer(gameId: String, answer: String): Task<HashMap<String,Any>>  {
         val data = hashMapOf(
             "gameId" to gameId,

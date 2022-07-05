@@ -62,6 +62,7 @@ class HostLeaderboardFragment : Fragment() {
         }
 
         next.setOnClickListener {
+            next.visibility = View.GONE
             vm.callNextQuestion { next() }
         }
     }

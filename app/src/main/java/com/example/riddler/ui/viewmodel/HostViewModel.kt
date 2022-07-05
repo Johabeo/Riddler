@@ -94,7 +94,7 @@ class HostViewModel  : ViewModel() {
         try {
             val qNumber = gameState.value!!.currentQuestion!!
             if (qNumber >= questionList.size) {
-                //TODO display final leaderboard/move this somewhere else
+                finishGame()
                 return
             }
 
@@ -111,9 +111,27 @@ class HostViewModel  : ViewModel() {
             Timber.d(e)
         }
     }
-
+    fun moveNext(nextFrag: (Boolean) -> Unit)  {
+        val qNumber = gameState.value?.currentQuestion?.let {
+            if (it >= questionList.size) {
+                finishGame()
+                nextFrag(true)
+                return
+            }
+        }
+        displayLeaderboard()
+        nextFrag(false)
+    }
+    fun finishGame() {
+        pin.value?.let {
+            repo.finishGame(it)
+            gameListener.remove()
+        }
+    }
     fun displayLeaderboard() {
-        repo.displayLeaderboard(pin.value!!)
+        pin.value?.let {
+            repo.displayLeaderboard(it)
+        }
     }
 
     fun setCurrentQuestions(_questionList: List<Questions>) {

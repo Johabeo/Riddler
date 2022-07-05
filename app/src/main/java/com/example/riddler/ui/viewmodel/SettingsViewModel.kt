@@ -23,4 +23,16 @@ class SettingsViewModel @Inject constructor(val repo: FirestoreRepository) : Vie
         repo.updateUserProfileInfo(profile)
     }
 
+    fun verifyCredentials(email: String, password: String) : Boolean{
+        return repo.verifyCredentials(email, password)
+    }
+
+    fun updateUserEmail(oldEmail: String, newEmail: String, password: String){
+        repo.updateUserEmail(oldEmail, newEmail, password)
+    }
+
+    fun updateUserPassword(email: String, oldPassword: String, password: String){
+        repo.updateUserPassword(email, oldPassword, password)
+    }
+
 }

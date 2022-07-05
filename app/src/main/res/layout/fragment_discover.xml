@@ -11,9 +11,9 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/disc_playerQuizzesCardView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         app:cardElevation="5dp"
         app:contentPaddingBottom="16dp"
@@ -21,7 +21,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/disc_userImage">
+        app:layout_constraintTop_toBottomOf="@+id/disc_welcomeTextView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6"
                 app:layout_constraintVertical_bias="0.0"
@@ -55,14 +55,15 @@
 
     <ImageView
         android:id="@+id/disc_userImage"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/avatar_background"
         android:backgroundTint="#A5D6A7"
         android:elevation="5dp"
         android:padding="10dp"
         android:src="@drawable/av_07"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,12 +71,31 @@
         android:id="@+id/disc_welcomeTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Welcome, User!"
+        android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/disc_userImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/disc_userImage"
-        app:layout_constraintTop_toTopOf="@+id/disc_userImage" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/disc_userImage" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/disc_openSettingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_settings_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/disc_signOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_exit_to_app_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/disc_openSettingsButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

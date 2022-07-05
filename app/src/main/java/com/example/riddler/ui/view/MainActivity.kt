@@ -31,8 +31,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -137,5 +138,15 @@ class MainActivity : AppCompatActivity() {
         repository.auth.signOut()
         intent = Intent(this, OnboardActivity::class.java)
         startActivity(intent)
+    }
+
+    fun updateElements(l: Locale){
+        val config : Configuration = baseContext.resources.configuration
+        config.setLocale(l)
+        config.setLayoutDirection(l)
+        //window.decorView.layoutDirection = if(lang == "ar")  View.LAYOUT_DIRECTION_RTL else View.LAYOUT_DIRECTION_LTR
+
+        baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
+        recreate()
     }
 }
