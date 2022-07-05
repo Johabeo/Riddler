@@ -4,11 +4,13 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.riddler.R
 import com.example.riddler.data.model.Quiz
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DashboardQuizListAdapter(val data: ArrayList<Quiz>, val onClick : (Int) -> Unit) : RecyclerView.Adapter<QuizItemViewHolder>() {
 
@@ -24,9 +26,81 @@ class DashboardQuizListAdapter(val data: ArrayList<Quiz>, val onClick : (Int) ->
         holder.description.setText(data[position].description)
         holder.category.setText(data[position].type)
         holder.difficulty.setText(data[position].difficulty)
-        if(position % 2 == 1){
-            holder.root.setBackgroundColor(Color.parseColor("#eeeeee"))
-        }
+
+//        when (holder.description.text) {
+//            "General Knowledge" -> {
+//                holder.R.id.imageView
+//            }
+//            "Books" -> {
+//
+//            }
+//            "Film" -> {
+//
+//            }
+//            "Music" -> {
+//
+//            }
+//            "Musical & Theatres" -> {
+//
+//            }
+//            "Television" -> {
+//
+//            }
+//            "Video Games" -> {
+//
+//            }
+//            "Board Games" -> {
+//
+//            }
+//            "Science and Nature" -> {
+//
+//            }
+//            "Computers" -> {
+//
+//            }
+//            "Mathematics" -> {
+//
+//            }
+//            "Mythology" -> {
+//
+//            }
+//            "Sports" -> {
+//
+//            }
+//            "Geography" -> {
+//
+//            }
+//            "History" -> {
+//
+//            }
+//            "Politics" -> {
+//
+//            }
+//            "Art" -> {
+//
+//            }
+//            "Celebrities" -> {
+//
+//            }
+//            "Animals" -> {
+//
+//            }
+//            "Vehicles" -> {
+//
+//            }
+//            "Comics" -> {
+//
+//            }
+//            "Gadgets" -> {
+//
+//            }
+//            "Anime & Manga" -> {
+//
+//            }
+//            "Cartoons & Animation" -> {
+//
+//            }
+//        }
     }
 
     override fun getItemCount(): Int {
