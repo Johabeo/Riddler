@@ -17,8 +17,6 @@ import javax.inject.Inject
 @HiltViewModel
 class QuizViewModel @Inject constructor(val repo: TriviaRepo, val quizRepo: QuizRepository): ViewModel()  {
 
-
-
     fun createQuizFromApi(amount: Int, category: Int, difficulty: String, quiz: Quiz) {
         CoroutineScope(Dispatchers.IO).launch {
             var res= repo.getAllTriviaQuestions(amount, category, difficulty)
@@ -53,4 +51,14 @@ class QuizViewModel @Inject constructor(val repo: TriviaRepo, val quizRepo: Quiz
     fun getQuestions(quizId: Int) : List<Questions> {
         return quizRepo.getQuizQuestion(quizId)
     }
+
+    fun insertQuiz(quiz: Quiz) {
+        quizRepo.insertQuiz(quiz)
+    }
+
+    fun insertQuestion(question: Questions) {
+        quizRepo.insertQuestions(question)
+    }
+
+
 }
