@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -72,7 +73,7 @@ class DiscoverFragment : Fragment() {
 
         val welcomeTextView = view.findViewById<TextView>(R.id.disc_welcomeTextView)
         val userImage = view.findViewById<ImageView>(R.id.disc_userImage)
-
+        val searchQuiz = view.findViewById<SearchView>(R.id.search_quiz)
         val openSettingsButton = view.findViewById<FloatingActionButton>(R.id.disc_openSettingsButton)
         val signOutButton = view.findViewById<FloatingActionButton>(R.id.disc_signOutButton)
 
@@ -98,6 +99,56 @@ class DiscoverFragment : Fragment() {
                 }
             )
 
+        searchQuiz.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query.isNullOrEmpty()) {
+                    vm.getQuiz()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeBy(
+                            onNext = {
+                                updateAdapter(it)
+
+                            }
+                        )
+                    return false
+                }
+                vm.searchQuiz(query)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeBy(
+                        onNext = {
+                            updateAdapter(it)
+                        }
+                    )
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText.isNullOrEmpty()) {
+                    vm.getQuiz()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeBy(
+                            onNext = {
+                                updateAdapter(it)
+
+                            }
+                        )
+                    return false
+                }
+                vm.searchQuiz(newText)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeBy(
+                        onNext = {
+                            updateAdapter(it)
+                        }
+                    )
+                return true
+            }
+
+        })
         vm.userProfile.observe(requireActivity()) {
             val str = "${resources.getString(R.string.welcome_user)}, $it!"
             userImage.setImageResource(Avatars.avatarsList.get(it.profilePic))

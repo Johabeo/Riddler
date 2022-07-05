@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
@@ -34,17 +35,28 @@
                 android:text="Your quizzes"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/disc_recyclerview"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/disc_addButton"
+            <SearchView
+                android:id="@+id/search_quiz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="Add"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/textView6"
                 app:layout_constraintTop_toTopOf="parent" />
+
+<!--            <Button-->
+<!--                android:id="@+id/disc_addButton"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:text="Add"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/disc_recyclerview"
@@ -54,7 +66,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/disc_addButton"
+                app:layout_constraintTop_toBottomOf="@+id/search_quiz"
                 app:layout_constraintVertical_bias="0.0"
                 tools:itemCount="1"
                 tools:listitem="@layout/listitem_quiz_dashboard" />

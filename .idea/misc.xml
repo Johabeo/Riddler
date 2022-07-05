@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_dashboard2.xml" value="0.13072916666666667" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_host.xml" value="0.1" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_player.xml" value="0.2" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/bottom_navigation_menu.xml" value="0.109375" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_discover.xml" value="0.4" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_host_create_lobby.xml" value="0.2" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_host_game.xml" value="0.2" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_host_lobby.xml" value="0.176" />

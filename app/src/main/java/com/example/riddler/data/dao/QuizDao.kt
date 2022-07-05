@@ -28,10 +28,10 @@ interface QuizDao {
 //    fun insertFavoriteQuiz(favoriteQuiz: FavoriteQuiz)
 
     @Insert
-    fun insertQuestions(questions: Questions)\
+    fun insertQuestions(questions: Questions)
 
-    @Query("select * from quiz " +
-            "join quiz_fts on quiz.id = quiz_fts.id" +
+    @Query("select * from Quiz " +
+            "join quiz_fts on Quiz.id = quiz_fts.id" +
             " where quiz_fts match :searchQuery")
     fun search(searchQuery: String) : Observable<List<Quiz>>
 }

@@ -5,6 +5,7 @@ import com.example.riddler.data.model.Quiz
 import com.example.riddler.data.model.UserProfile
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.ktx.Firebase
@@ -77,6 +78,10 @@ class FirestoreRepository() {
                     update["firstName"] = userProfile.firstName
                     update["lastName"] = userProfile.lastName
                     update["profilePic"] = userProfile.profilePic
+                    val profileUpdate = userProfileChangeRequest {
+                        displayName = userProfile.firstName
+                    }
+                    auth.currentUser?.updateProfile(profileUpdate)
                     db.collection("users").document(doc.id).set(update, SetOptions.merge())
                     //update live data if any changes
                     fetchUserProfileInfo()
