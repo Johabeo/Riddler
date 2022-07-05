@@ -93,10 +93,6 @@ class QuizViewModelTest {
     val quiz3 = Quiz("Jay","From test","Atest Question from test","General","Easy")
     val quiz2 = Quiz("G1","Our Team","test1",
         "test to insert quiz","General",1)
-    val favoriteQuiz1 = FavoriteQuiz(
-        1,1,1)
-    val favoriteQuiz2 = FavoriteQuiz(
-        2,1,1)
 
 
     @Test

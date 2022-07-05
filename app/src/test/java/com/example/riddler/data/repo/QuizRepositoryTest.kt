@@ -3,7 +3,6 @@ package com.example.riddler.data.repo
 import androidx.lifecycle.LiveData
 import com.example.riddler.data.dao.QuizDao
 import com.example.riddler.data.database.AppDatabase
-import com.example.riddler.data.model.FavoriteQuiz
 import com.example.riddler.data.model.Questions
 import com.example.riddler.data.model.Quiz
 import io.mockk.*
@@ -34,15 +33,13 @@ class QuizRepositoryTest() {
     val quiz = Quiz("Jay","From test","Atest Question from test","General","Easy")
     val quiz2 = Quiz("G1","Our Team","test1",
         "test to insert quiz","Easy")
-    val favoriteQuiz1 = FavoriteQuiz(
-    1,1,1)
-    val favoriteQuiz2 = FavoriteQuiz(
-        2,1,1)
+    val quiz3 = Quiz("G1","Our Team","test1",
+        "test to insert quiz","Easy")
 
 
 
     @Test
-    fun `test if function getFavoriteQuizzes() will return a list of quizzes`() {
+    fun `test if function getMyQuizzes() will return a list of quizzes`() {
         val dao = mockk<QuizDao>()
         val underTest = QuizRepository(
             dao = dao,
@@ -50,7 +47,7 @@ class QuizRepositoryTest() {
         val observableFakeList =
             Observable.fromArray(fakeList)
 
-        coEvery {  underTest.getFavoriteQuizzes(1) } returns observableFakeList
+        coEvery {  underTest.getMyQuizzes(1) } returns observableFakeList
         val result = observableFakeList.blockingFirst()
         assertEquals(fakeList[0].id, result[0].id)
 
@@ -81,16 +78,17 @@ class QuizRepositoryTest() {
     }
 
     @Test
-    fun `test to see if insertFavoriteQuiz() will insert a favorite quiz`() {
+    fun `test to see if insertQuiz() will inserts a quiz`() {
         val appDatabase = mockk<AppDatabase>()
 
         val dao = mockk<QuizDao>()
         val underTest = QuizRepository(
             dao = dao,
         )
-        every { underTest.insertFavoriteQuiz(favoriteQuiz1)}returns Unit
-        underTest.insertFavoriteQuiz(favoriteQuiz1)
-        verify { dao.insertFavoriteQuiz(favoriteQuiz1) }
+        every { underTest.insertQuiz(quiz)}returns 0
+           val result = underTest.insertQuiz(quiz)
+        assertEquals(0, result)
+
 
     }
 
