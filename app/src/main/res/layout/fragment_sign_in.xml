@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/background"
-        android:layout_width="419dp"
-        android:layout_height="382dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         android:src="@drawable/ic_select_player_rafiki"
@@ -36,12 +36,11 @@
         android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/welcome_back"
         android:textColor="@color/black"
         android:textSize="40sp"
-
+        app:layout_constraintBottom_toTopOf="@+id/onboarding_signup_emailInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +51,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:textColorHint="@color/black"
         app:boxStrokeColor="@color/black"
@@ -60,8 +58,10 @@
         app:helperTextEnabled="true"
         app:helperTextTextColor="@color/queryErrorText"
         app:hintTextColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/password_layout"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTag=""
         app:layout_constraintTop_toBottomOf="@+id/heading"
         app:startIconDrawable="@drawable/ic_akar_icons_person"
         app:startIconTint="@color/black">
@@ -83,16 +83,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
         android:textColorHint="@color/black"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="2dp"
         app:helperTextTextColor="@color/queryErrorText"
         app:hintTextColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/onboarding_signin_signinButon"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintStart_toStartOf="@+id/background"
         app:layout_constraintTop_toBottomOf="@+id/onboarding_signup_emailInputLayout"
+        app:layout_constraintVertical_bias="1"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/black"
         app:startIconDrawable="@drawable/ic_lock"
@@ -114,8 +116,7 @@
     <Button
         android:id="@+id/onboarding_signin_signinButon"
         android:layout_width="200dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="40dp"
         android:background="@drawable/button_rounded"
         android:elevation="8dp"
         android:fontFamily="@font/montserrat_bold"
@@ -125,8 +126,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_layout"
-        app:layout_constraintVertical_bias="0.953" />
+        app:layout_constraintTop_toBottomOf="@+id/password_layout" />
 
     <TextView
         android:id="@+id/textView3"
@@ -144,14 +144,21 @@
         android:id="@+id/onboard_signin_signupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
         android:focusable="true"
         android:fontFamily="@font/montserrat_bold_italic"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textColor="@color/alternativeText"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/onboarding_signin_signinButon" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="onboard_signin_signupButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
