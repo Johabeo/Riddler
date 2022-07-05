@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.activityViewModels
 import com.example.riddler.R
 import com.example.riddler.ui.viewmodel.PlayerViewModel

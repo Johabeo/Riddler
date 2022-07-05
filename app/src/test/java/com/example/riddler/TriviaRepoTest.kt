@@ -14,12 +14,12 @@ class TriviaRepoTest{
     )
     @Test
     fun toGetAllTriviaQuestionsFromRepo(){
-        coEvery { underTest.getAllTriviaQuestions(1,1,"Hard") } just Runs
-
+        coEvery { underTest.getAllTriviaQuestions(1,1,"Hard") } just runs
     }
     @Test
-    fun testGetAllTriviaQuestionsFromApiInterface(){
+     fun testGetAllTriviaQuestionsFromApiInterface(){
         coEvery { inter.getAllTriviaQuestions(1,1,"Hard") } just Runs
+
     }
 
     @Test

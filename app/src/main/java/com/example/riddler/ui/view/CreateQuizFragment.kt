@@ -99,12 +99,11 @@ class CreateQuizFragment : Fragment() {
         var difficulty = difficultyDropdown.text.toString()
         var quizNameText = quizName.text.toString()
         var quizDescriptionText = quizDescription.text.toString()
-        val isValid = validate(amount, quizNameText, quizDescriptionText)
+        val isValid = validate(amount, quizNameText, quizDescriptionText, categoryName, difficulty)
 
         if (isValid)
             vm.createQuizFromApi(10, categoryNum, categoryName, difficulty, quizNameText, quizDescriptionText)
         else {
-            failedToast = Toast.makeText(context, "Invalid quiz details", Toast.LENGTH_SHORT)
             failedToast.show()
         }
     }
@@ -120,14 +119,27 @@ class CreateQuizFragment : Fragment() {
         }
     }
 
-    fun validate(amount: String, quizName: String, quizDescription: String): Boolean {
-        if (amount == "")
+    fun validate(amount: String, quizName: String, quizDescription: String, categoryName: String, difficulty: String): Boolean {
+        if (amount == "") {
+            failedToast = Toast.makeText(context, "Enter a valid amount", Toast.LENGTH_SHORT)
             return false
-        else if (amount.toInt() < 5 || amount.toInt() > 50)
+        } else if (amount.toInt() < 5 || amount.toInt() > 50) {
+            failedToast = Toast.makeText(context, "Amount must be between 5 and 50", Toast.LENGTH_SHORT)
             return false
+        }
+        if (quizName == "" || quizDescription == "") {
+            failedToast = Toast.makeText(context, "Must have a valid quiz name or description", Toast.LENGTH_SHORT)
+            return false
+        }
+        if (categoryName == "") {
+            failedToast = Toast.makeText(context, "Select a valid category", Toast.LENGTH_SHORT)
+            return false
+        }
+        if (difficulty == "") {
+            failedToast = Toast.makeText(context, "Select a valid difficulty", Toast.LENGTH_SHORT)
+            return false
+        }
 
-        if (quizName == "" || quizDescription == "")
-            return false
 
         return true
     }

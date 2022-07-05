@@ -169,8 +169,7 @@
             android:id="@+id/categoryDropdown"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="none"
-            android:text="Category" />
+            android:inputType="none"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -192,8 +191,7 @@
             android:id="@+id/difficultyDropdown"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="none"
-            android:text="Difficulty" />
+            android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
