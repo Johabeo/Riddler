@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.riddler.R
@@ -71,7 +72,7 @@ class HostLobbyFragment : Fragment() {
                 numPlayers.text = "${it.players.size}/${it.size}"
                 val adapter = PlayerAdapter(it.players)
                 recyclerView.adapter = adapter
-                recyclerView.setLayoutManager(LinearLayoutManager(context));
+                recyclerView.setLayoutManager(GridLayoutManager(context,3));
             } catch (e: Exception) {
                 Timber.d(e)
             }

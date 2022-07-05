@@ -9,7 +9,7 @@ import com.example.riddler.data.model.Questions
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.data.model.QuizFTS
 
-@Database(entities = [Quiz::class, Questions::class, QuizFTS::class], version = 6, exportSchema = false)
+@Database(entities = [Quiz::class, Questions::class, QuizFTS::class], version = 7, exportSchema = false)
 abstract class AppDatabase : RoomDatabase(){
     abstract fun quizDao(): QuizDao
     companion object {

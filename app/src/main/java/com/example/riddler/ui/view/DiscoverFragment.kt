@@ -6,9 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.SearchView
-import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.riddler.OnboardActivity
 import com.example.riddler.R
-import com.example.riddler.data.model.Avatars
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.ui.adapters.DashboardQuizListAdapter
 import com.example.riddler.ui.view.host.HostCreateLobbyFragment
@@ -30,6 +28,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class DiscoverFragment : Fragment() {
@@ -72,6 +71,26 @@ class DiscoverFragment : Fragment() {
                     updateAdapter(it)
                 }
             )
+
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1)) {
+                    vm.loadMore()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeBy(
+                            onNext = {
+                                updateAdapter(it)
+
+                            },
+                            onError = {
+                                Timber.d(it)
+                            }
+                        )
+                }
+            }
+        })
         searchQuiz.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query.isNullOrEmpty()) {
@@ -82,6 +101,9 @@ class DiscoverFragment : Fragment() {
                             onNext = {
                                 updateAdapter(it)
 
+                            },
+                            onError = {
+                                Timber.d(it)
                             }
                         )
                     return false
@@ -92,6 +114,9 @@ class DiscoverFragment : Fragment() {
                     .subscribeBy(
                         onNext = {
                             updateAdapter(it)
+                        },
+                        onError = {
+                            Timber.d(it)
                         }
                     )
                 return true
@@ -106,6 +131,9 @@ class DiscoverFragment : Fragment() {
                             onNext = {
                                 updateAdapter(it)
 
+                            },
+                            onError = {
+                                Timber.d(it)
                             }
                         )
                     return false
@@ -116,6 +144,9 @@ class DiscoverFragment : Fragment() {
                     .subscribeBy(
                         onNext = {
                             updateAdapter(it)
+                        },
+                        onError = {
+                            Timber.d(it)
                         }
                     )
                 return true
