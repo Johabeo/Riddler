@@ -46,34 +46,39 @@
         android:queryBackground="@android:color/transparent"
         android:queryHint="Enter Quiz Title..."
         app:layout_constraintEnd_toEndOf="@+id/disc_welcomeTextView"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/disc_userImage"
         app:layout_constraintTop_toBottomOf="@+id/disc_userImage" />
 
-    <ScrollView
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:paddingTop="200dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/search_quiz">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/disc_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:paddingTop="200dp"
-        android:paddingBottom="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_quiz">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/disc_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:itemCount="1"
-                tools:listitem="@layout/listitem_quiz_dashboard" />
-        </LinearLayout>
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@id/search_quiz"
+        app:layout_constraintVertical_bias="0.0"
+        tools:itemCount="1"
+        tools:listitem="@layout/listitem_quiz_dashboard" />
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
 
 
     <!--    <androidx.cardview.widget.CardView-->
