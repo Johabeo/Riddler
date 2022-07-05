@@ -8,6 +8,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -16,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.riddler.OnboardActivity
 import com.example.riddler.R
+import com.example.riddler.data.model.Avatars
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.data.repo.FirestoreRepository
 import com.example.riddler.data.repo.GameRepository
@@ -24,6 +27,7 @@ import com.example.riddler.ui.view.host.HostLobbyFragment
 import com.example.riddler.ui.view.player.PlayerActivity
 import com.example.riddler.ui.view.player.PlayerJoinLobbyFragment
 import com.example.riddler.ui.view.settings.SettingsActivity
+import com.example.riddler.ui.viewmodel.DiscoverViewModel
 import com.example.riddler.ui.viewmodel.QuizViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
@@ -38,6 +42,9 @@ import kotlin.collections.ArrayList
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    @Inject
+    lateinit var vm : DiscoverViewModel
+
     private lateinit var functions: FirebaseFunctions
 
     @Inject
@@ -47,6 +54,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val welcomeTextView = findViewById<TextView>(R.id.disc_welcomeTextView)
+        val userImage = findViewById<ImageView>(R.id.disc_userImage)
+
         setSupportActionBar(findViewById(R.id.toolbar))
         println(Firebase.auth.uid)
         setFragment(DiscoverFragment())
@@ -75,6 +86,14 @@ class MainActivity : AppCompatActivity() {
             }
         menuBar.setOnItemSelectedListener(mOnNavigationItemSelectedListener)
         //println(TriviaRepo(RetroApiInterface.create()).getAllTriviaQuestions(10,1,"hard"))
+
+        vm.userProfile.observe(this) {
+            val str = "${resources.getString(R.string.welcome_user)}, $it!"
+            userImage.setImageResource(Avatars.avatarsList.get(it.profilePic))
+            welcomeTextView.setText(str)
+        }
+
+        vm.fetchUserProfileInfo()
     }
 
     fun setFragment(fragment: Fragment) {

@@ -11,11 +11,39 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:id="@id/toolbar"
-        layout="@layout/toolbar"
         android:background="#F4FFF1"
         android:elevation="16dp"
-        app:titleTextColor="#F4FFF1"/>
+        app:titleTextColor="#F4FFF1">
+
+    <ImageView
+        android:id="@+id/disc_userImage"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/avatar_background"
+        android:backgroundTint="#A5D6A7"
+        android:elevation="5dp"
+        android:padding="10dp"
+        android:src="@drawable/av_07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/disc_welcomeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:text="Welcome, User!"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/disc_userImage"
+        app:layout_constraintTop_toTopOf="@+id/disc_userImage"
+        app:layout_constraintBottom_toBottomOf="@+id/disc_userImage"/>
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container"

@@ -72,8 +72,6 @@ class DiscoverFragment : Fragment() {
         val pwdHash = prefs?.getString("pwdHash", "pwd hash not found")
         println(pwdHash)
 
-        val welcomeTextView = view.findViewById<TextView>(R.id.disc_welcomeTextView)
-        val userImage = view.findViewById<ImageView>(R.id.disc_userImage)
         val searchQuiz = view.findViewById<SearchView>(R.id.search_quiz)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.disc_recyclerview)
@@ -86,7 +84,6 @@ class DiscoverFragment : Fragment() {
             .subscribeBy(
                 onNext = {
                     updateAdapter(it)
-
                 }
             )
 
@@ -140,13 +137,6 @@ class DiscoverFragment : Fragment() {
             }
 
         })
-        vm.userProfile.observe(requireActivity()) {
-            val str = "${resources.getString(R.string.welcome_user)}, $it!"
-            userImage.setImageResource(Avatars.avatarsList.get(it.profilePic))
-            welcomeTextView.setText(str)
-        }
-
-        vm.fetchUserProfileInfo()
 
         //todo: fetch user's quizzes in case email changes
     }
