@@ -32,6 +32,7 @@ class PlayerGameFragment : Fragment() {
     private lateinit var answer2: TextView
     private lateinit var answer3: TextView
     private lateinit var answer4: TextView
+    var timeLimit: Long = 30000
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,9 +68,10 @@ class PlayerGameFragment : Fragment() {
             answer2.text = it.question?.secondAnswer
             answer3.text = it.question?.thirdAnswer
             answer4.text = it.question?.fourthAnswer
+            timeLimit =  System.currentTimeMillis() - it.createdTime!!
             enableAnswerClick()
         }
-        val timerT = object: CountDownTimer(30000, 1000) {
+        val timerT = object: CountDownTimer(timeLimit, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timerText.text = (millisUntilFinished/1000).toString()
             }

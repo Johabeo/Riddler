@@ -37,7 +37,8 @@ class HostLobbyFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    lateinit var createLobby : Button
+    lateinit var createLobby: Button
+    lateinit var startGame: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,12 +61,14 @@ class HostLobbyFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.playerList)
         val gamePin = view.findViewById<TextView>(R.id.lobbyGamePin)
-        val startGame = view.findViewById<Button>(R.id.lobbyStartGame)
+        startGame = view.findViewById<Button>(R.id.lobbyStartGame)
+        val numPlayers = view.findViewById<TextView>(R.id.num_players_in_lobby)
         val vm = ViewModelProvider(requireActivity()).get(HostViewModel::class.java)
-        vm.callCreateLobby(16)
+        vm.callCreateLobby()
+
         vm.lobbyState.observe(viewLifecycleOwner) {
             try {
-                println("players:" + it.players)
+                numPlayers.text = "${it.players.size}/${it.size}"
                 val adapter = PlayerAdapter(it.players)
                 recyclerView.adapter = adapter
                 recyclerView.setLayoutManager(LinearLayoutManager(context));
@@ -74,22 +77,25 @@ class HostLobbyFragment : Fragment() {
             }
 
         }
+
         startGame.setOnClickListener {
-
             startGame.visibility = View.GONE
-            vm.startGame{ -> loadGameFragment() }
-//            startGame.visibility = View.VISIBLE
-
+            vm.startGame{ loadSuccess -> loadGameFragment(loadSuccess) }
         }
+
         vm.pin.observe(viewLifecycleOwner) {
             gamePin.text = it
         }
     }
 
-    private fun loadGameFragment() {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.hostContainer, HostGameFragment())
-            .commit()
+    private fun loadGameFragment(loadSuccess: Boolean) {
+        if (loadSuccess) {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.hostContainer, HostGameFragment())
+                .commit()
+        } else {
+            startGame.visibility = View.VISIBLE
+        }
     }
 
 }

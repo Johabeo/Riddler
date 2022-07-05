@@ -2,40 +2,27 @@ package com.example.riddler.ui.view
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.content.res.TypedArray
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.riddler.OnboardActivity
 import com.example.riddler.R
-import com.example.riddler.TriviaQuizActivity
-import com.example.riddler.Util
 import com.example.riddler.data.model.Avatars
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.ui.adapters.DashboardQuizListAdapter
 import com.example.riddler.ui.view.host.HostCreateLobbyFragment
-import com.example.riddler.ui.view.player.PlayerIncorrectFragment
 import com.example.riddler.ui.view.settings.SettingsActivity
 import com.example.riddler.ui.viewmodel.DiscoverViewModel
-import com.example.riddler.ui.viewmodel.QuizViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
@@ -43,7 +30,6 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class DiscoverFragment : Fragment() {
@@ -89,7 +75,6 @@ class DiscoverFragment : Fragment() {
 
                 }
             )
-
         searchQuiz.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query.isNullOrEmpty()) {

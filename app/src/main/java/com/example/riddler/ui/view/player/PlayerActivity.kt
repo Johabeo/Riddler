@@ -34,7 +34,6 @@ class PlayerActivity : AppCompatActivity() {
         vm.totalScore.observe(this) {
             score.text = it.toString()
         }
-        switchFragment(PlayerLobbyFragment())
 
         setSupportActionBar(findViewById(R.id.player_toolbar))
         supportActionBar?.apply {

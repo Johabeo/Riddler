@@ -6,20 +6,28 @@
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_dashboard2.xml" value="0.13072916666666667" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_host.xml" value="0.144" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_onboard.xml" value="0.14375" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_player.xml" value="0.2" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_random_trivia.xml" value="0.12239583333333333" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_settings.xml" value="0.14375" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_trivia_quiz.xml" value="0.14375" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/avatarpicker_item.xml" value="0.14375" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/bottom_navigation_menu.xml" value="0.109375" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/dialog_password_change.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/dialog_pick_avatar.xml" value="0.14375" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/exposed_drop_item.xml" value="0.14375" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_create_quiz.xml" value="0.2" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_discover.xml" value="0.2" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_host_create_lobby.xml" value="0.2" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_host_final_leaderboard.xml" value="0.12239583333333333" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_host_game.xml" value="0.2" />
-        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_host_lobby.xml" value="0.176" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_host_leaderboard.xml" value="0.14375" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_host_lobby.xml" value="0.152" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_player_correct.xml" value="0.13489583333333333" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_player_game.xml" value="0.16753926701570682" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_player_incorrect.xml" value="0.13489583333333333" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_player_join_lobby.xml" value="0.152" />
+        <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_player_leaderboard.xml" value="0.14375" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_player_lobby.xml" value="0.2" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/game_toolbar.xml" value="0.16927083333333334" />

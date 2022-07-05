@@ -44,7 +44,7 @@
         android:fontFamily="@font/hind_regular"
         android:iconifiedByDefault="false"
         android:queryBackground="@android:color/transparent"
-        android:queryHint="Enter Quiz Title..."
+        android:queryHint="@string/texthint"
         app:layout_constraintEnd_toEndOf="@+id/disc_welcomeTextView"
         app:layout_constraintStart_toStartOf="@+id/disc_userImage"
         app:layout_constraintTop_toBottomOf="@+id/disc_userImage" />
