@@ -47,7 +47,7 @@ class QuizRepositoryTest() {
         val observableFakeList =
             Observable.fromArray(fakeList)
 
-        coEvery {  underTest.getMyQuizzes(1) } returns observableFakeList
+        coEvery {  underTest.getQuizzes(1,0) } returns observableFakeList
         val result = observableFakeList.blockingFirst()
         assertEquals(fakeList[0].id, result[0].id)
 
@@ -88,7 +88,6 @@ class QuizRepositoryTest() {
         every { underTest.insertQuiz(quiz)}returns 0
            val result = underTest.insertQuiz(quiz)
         assertEquals(0, result)
-
 
     }
 
