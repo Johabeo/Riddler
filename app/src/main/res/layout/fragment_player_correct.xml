@@ -11,19 +11,21 @@
     <ImageView
         android:id="@+id/corner4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:scaleType="centerInside"
+        android:scaleType="fitXY"
         android:src="@drawable/ic_rectangle_13"
+        app:layout_constraintBottom_toTopOf="@+id/corner2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/corner2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
         android:adjustViewBounds="true"
-        android:scaleType="centerInside"
+        android:scaleType="fitXY"
         android:src="@drawable/ic_group_15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,11 +35,12 @@
     <ImageView
         android:id="@+id/second_corner"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:scaleType="centerInside"
+        android:scaleType="fitXY"
         android:src="@drawable/ic_ellipse_33"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/corner2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

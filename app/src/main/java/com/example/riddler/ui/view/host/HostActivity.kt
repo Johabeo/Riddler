@@ -42,7 +42,7 @@ class HostActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.host_toolbar))
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+            setHomeAsUpIndicator(R.drawable.ic_back);
             title = ""
         }
         var fm = supportFragmentManager

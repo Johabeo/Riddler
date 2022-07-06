@@ -99,7 +99,7 @@ class SettingsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     fun updateEmail(view: View){
         var alertDialog: AlertDialog? = null
 
-        val dialogView = layoutInflater.inflate(R.layout.dialog_email_change,findViewById(R.id.set_newEmailCardView))
+        val dialogView = layoutInflater.inflate(R.layout.dialog_email_change,null)
         val newEmailLayout = dialogView.findViewById<TextInputLayout>(R.id.changeEmail_newEmailTextLayout)
         val passwordLayout = dialogView.findViewById<TextInputLayout>(R.id.changeEmail_currentPasswordTextLayout)
         val newEmailEditText = dialogView.findViewById<EditText>(R.id.changeEmail_emailEditText)

@@ -43,14 +43,14 @@
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_host_final_leaderboard.xml" value="0.21505016722408027" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_host_game.xml" value="0.21722972972972973" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_host_leaderboard.xml" value="0.21505016722408027" />
-        <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_host_lobby.xml" value="0.21505016722408027" />
-        <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_player_correct.xml" value="0.21505016722408027" />
+        <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_host_lobby.xml" value="0.30787037037037035" />
+        <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_player_correct.xml" value="0.22466216216216217" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_player_final_leaderboard.xml" value="0.21505016722408027" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_player_game.xml" value="0.21505016722408027" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_player_incorrect.xml" value="0.21722972972972973" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_player_join_lobby.xml" value="0.21722972972972973" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_player_leaderboard.xml" value="0.21722972972972973" />
-        <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_player_lobby.xml" value="0.21722972972972973" />
+        <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_player_lobby.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_sign_in.xml" value="0.20944625407166123" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/fragment_sign_up.xml" value="0.2713080168776371" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/game_toolbar.xml" value="0.21722972972972973" />
@@ -59,6 +59,7 @@
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/player_cards.xml" value="0.21722972972972973" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/toolbar.xml" value="0.21722972972972973" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/layout/trivia_list_item.xml" value="0.21505016722408027" />
+        <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.22466216216216217" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/menu/game_toolbar_menu.xml" value="0.21722972972972973" />
         <entry key="..\:/Users/JohnM/Documents/Airbending/Project 3/Riddler/app/src/main/res/menu/toolbar_menu.xml" value="0.1" />
         <entry key="..\:/Users/xuann/AndroidStudioProjects/Riddler/app/src/main/res/layout/activity_host.xml" value="0.1" />
