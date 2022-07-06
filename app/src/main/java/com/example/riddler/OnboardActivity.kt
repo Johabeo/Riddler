@@ -45,7 +45,7 @@ class OnboardActivity : AppCompatActivity() {
             openMainActivity()
         }
 
-        val fragment = SignInFragment(signIn, setSignupFragment)
+        val fragment = SignInFragment.newInstance(signIn, setSignupFragment)
         supportFragmentManager
             .beginTransaction()
             .addToBackStack("fragment")
@@ -65,7 +65,7 @@ class OnboardActivity : AppCompatActivity() {
 
 
     val setSignupFragment = fun(){
-        val signUpFragment = SignUpFragment(signUp)
+        val signUpFragment = SignUpFragment.newInstance(signUp)
         supportFragmentManager
             .beginTransaction()
             .add(R.id.onboard_fragmentContainer, signUpFragment)
