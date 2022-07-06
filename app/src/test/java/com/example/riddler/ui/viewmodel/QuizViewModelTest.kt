@@ -14,18 +14,26 @@ import com.example.riddler.data.repo.QuizRepository
 import com.example.riddler.ui.adapters.DashboardQuizListAdapter
 import com.example.riddler.ui.adapters.LeaderboardAdapter
 import com.example.riddler.ui.adapters.PlayerAdapter
-import com.example.riddler.ui.view.dashboard.DashboardActivity
 import com.example.riddler.ui.view.host.HostActivity
 import io.mockk.*
 import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.*
+import org.junit.Before
 
 import org.junit.Test
 import retrofit2.http.GET
+import retrofit2.http.Path
+
+
 
 class QuizViewModelTest {
+
+@Before
+fun setUp() {
+    MockKAnnotations.init(this, relaxUnitFun = true)
+}
 
 
 //Dao
@@ -54,7 +62,6 @@ class QuizViewModelTest {
     val playerAdapter = mockk<PlayerAdapter>()
 
 //view
-    val dashboardActivity = mockk<DashboardActivity>()
     val hostActivity = mockk<HostActivity>()
 
 
@@ -93,10 +100,6 @@ class QuizViewModelTest {
     val quiz3 = Quiz("Jay","From test","Atest Question from test","General","Easy")
     val quiz2 = Quiz("G1","Our Team","test1",
         "test to insert quiz","General",1)
-    val favoriteQuiz1 = FavoriteQuiz(
-        1,1,1)
-    val favoriteQuiz2 = FavoriteQuiz(
-        2,1,1)
 
 
     @Test
@@ -126,9 +129,9 @@ class QuizViewModelTest {
 
     @Test
     fun `test to check if GetQuiz() is working`() {
-        every { quizRepo.getMyQuizzes(1) } returns Observable.just(fakeList)
-        quizRepo.getMyQuizzes(1)
-        verify { quizRepo.getMyQuizzes(1) }
+        every { quizRepo.getQuizzes(1,0) } returns Observable.just(fakeList)
+        quizRepo.getQuizzes(1,0)
+        verify { quizRepo.getQuizzes(1,0) }
 
     }
 

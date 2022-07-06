@@ -10,7 +10,6 @@ import com.example.riddler.data.repo.QuizRepository
 import com.example.riddler.ui.adapters.DashboardQuizListAdapter
 import com.example.riddler.ui.adapters.LeaderboardAdapter
 import com.example.riddler.ui.adapters.PlayerAdapter
-import com.example.riddler.ui.view.dashboard.DashboardActivity
 import com.example.riddler.ui.view.host.HostActivity
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -51,7 +50,6 @@ class UnitTestData {
     val leaderboardAdapter = mockk<LeaderboardAdapter>()
     val playerAdapter = mockk<PlayerAdapter>()
     //view
-    val dashboardActivity = mockk<DashboardActivity>()
     val hostActivity = mockk<HostActivity>()
 
 //quiz
