@@ -4,88 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/changeEmail_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change email"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/changeEmail_newEmailTextLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeEmail_DescText">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/changeEmail_emailEditText"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/changeEmail_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="new email address"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Change Email"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="For security purposes, please veify your password below."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeEmail_newEmailTextLayout" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/changeEmail_currentPasswordTextLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/changeEmail_passwordEditText"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/changeEmail_DescText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="password"
-            android:imeOptions="actionNone"
-            android:inputType="textPassword"
-            android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Please enter a new email address.\n\nThe new email address will be your new login."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/changeEmail_title" />
 
-    <Button
-        android:id="@+id/changeEmail_changeEmailButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Change email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeEmail_currentPasswordTextLayout" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/changeEmail_newEmailTextLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:helperTextTextColor="@color/queryErrorText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/changeEmail_DescText">
 
-    <Button
-        android:id="@+id/changeEmail_CancelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeEmail_changeEmailButton" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/changeEmail_emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter new email address"
+                app:hintTextColor="#C5C7C2"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/changeEmail_DescText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Please enter a new email address.\n\nThe new email address will be used for logging in into Riddler"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeEmail_title" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="For security, please verify your password below."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/changeEmail_newEmailTextLayout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/changeEmail_currentPasswordTextLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:hintTextColor="#C5C7C2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:helperTextTextColor="@color/queryErrorText"
+            app:passwordToggleEnabled="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/changeEmail_passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter password"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:imeOptions="actionNone"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/changeEmail_changeEmailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/sharper_corners"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:text="Change Email"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/changeEmail_currentPasswordTextLayout"
+            app:layout_constraintTop_toBottomOf="@+id/changeEmail_currentPasswordTextLayout" />
+
+        <Button
+            android:id="@+id/changeEmail_CancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/queryErrorText"
+            android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:text="Cancel"
+            app:layout_constraintBottom_toBottomOf="@+id/changeEmail_changeEmailButton"
+            app:layout_constraintEnd_toEndOf="@+id/changeEmail_currentPasswordTextLayout"
+            app:layout_constraintTop_toTopOf="@+id/changeEmail_changeEmailButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

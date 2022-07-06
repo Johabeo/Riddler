@@ -4,19 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.host.HostLeaderboardFragment">
+    tools:context=".ui.view.host.HostLeaderboardFragment"
+    android:background="#BA1B1B">
 
+    <ImageView
+        android:id="@+id/corner4"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_group_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/corner5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_polygon_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/corner4"
+        app:layout_constraintBottom_toBottomOf="@+id/corner4"/>
 
     <TextView
         android:id="@+id/topScores"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_margin="32dp"
         android:text="@string/top_scores_host"
         android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/hostLeaderboard"
+        app:layout_constraintBottom_toTopOf="@+id/scrollview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,10 +51,11 @@
         android:id="@+id/hostLeaderboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:itemCount="5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topScores"
+        app:layout_constraintBottom_toTopOf="@id/hostLeaderboardNext"
         tools:listitem="@layout/leaderboard_card" />
 
     <Button
@@ -38,12 +63,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/next"
+        android:layout_margin="32dp"
+        android:textSize="24sp"
+        android:fontFamily="@font/montserrat_semi_bold"
+        app:backgroundTint="#2F312E"
+        android:background="@drawable/sharper_corners"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hostLeaderboard"
-        app:layout_constraintVertical_bias="0.717" />
+/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

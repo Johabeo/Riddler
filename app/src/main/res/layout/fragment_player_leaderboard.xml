@@ -4,14 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.player.PlayerLeaderboardFragment">
+    tools:context=".ui.view.player.PlayerLeaderboardFragment"
+    android:background="#6622FF">
+
+    <ImageView
+        android:id="@+id/corner4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_rectangle_13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/second_corner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_ellipse_33"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
         android:id="@+id/playerTopScores"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_margin="32dp"
         android:text="@string/top_scores_host"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/playerLeaderboard"
@@ -23,10 +47,13 @@
         android:id="@+id/playerLeaderboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:itemCount="5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/playerTopScores"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/leaderboard_card" />
+
 
 
 

@@ -9,7 +9,7 @@
     <string name="signup_text">Sign up with email and password</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="top_scores_host">Top Scores</string>
+    <string name="top_scores_host">Top Scores:</string>
     <string name="next">Next</string>
     <string name="generate">Generate</string>
     <string name="discover">Discover</string>

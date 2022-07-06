@@ -12,7 +12,6 @@ import com.example.riddler.data.repo.FirestoreRepository
 import com.example.riddler.ui.SignInFragment
 import com.example.riddler.ui.SignUpFragment
 import com.example.riddler.ui.view.MainActivity
-import com.example.riddler.ui.view.dashboard.DashboardActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest

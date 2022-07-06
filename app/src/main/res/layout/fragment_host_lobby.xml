@@ -5,7 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.view.host.HostLobbyFragment"
-    android:background="@drawable/ic_background_host_lobby">
+    android:background="#BA1B1B">
+
+    <ImageView
+        android:id="@+id/corner4"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_group_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/corner5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_polygon_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/corner4"
+        app:layout_constraintBottom_toBottomOf="@+id/corner4"/>
+
 
     <TextView
         android:id="@+id/header"
@@ -24,14 +47,14 @@
         android:id="@+id/num_players_in_lobby"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0/0"
         android:layout_margin="16dp"
         android:fontFamily="@font/montserrat_bold"
+        android:text="0/0"
         android:textColor="@color/white"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/game_pin_layout"/>
+        app:layout_constraintTop_toTopOf="@+id/header" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/game_pin_layout"
@@ -45,7 +68,8 @@
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header">
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintBottom_toTopOf="@+id/playerList">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/card_layout"
             android:layout_width="match_parent"
@@ -72,8 +96,20 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/playerList"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@id/subtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/game_pin_layout"
+        tools:itemCount="1"
+        tools:listitem="@layout/player_cards" />
 
     <TextView
+        android:id="@+id/subtitle"
         android:layout_width="match_parent"
         android:layout_height="96dp"
         android:text="@string/ready_set"
@@ -85,27 +121,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/playerList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/lobbyStartGame"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/game_pin_layout"
-        app:layout_constraintVertical_bias="0"
-        tools:itemCount="1"
-        tools:listitem="@layout/player_cards" />
-
     <Button
         android:id="@+id/lobbyStartGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="342dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="17dp"
         android:text="@string/start"
+        android:textSize="24sp"
         android:fontFamily="@font/montserrat_semi_bold"
         app:backgroundTint="#2F312E"
         android:background="@drawable/sharper_corners"

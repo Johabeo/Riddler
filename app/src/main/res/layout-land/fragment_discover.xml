@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     android:background="@color/background"
     tools:context=".ui.view.DiscoverFragment">
 
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_bold_italic"
       android:layout_marginTop="16dp"
+        android:visibility="gone"
         android:text="Test Their Knowledge"
         android:textAlignment="center"
         android:textSize="40sp"
@@ -31,9 +33,9 @@
         android:iconifiedByDefault="false"
         android:queryBackground="@android:color/transparent"
         android:queryHint="@string/texthint"
-        app:layout_constraintEnd_toEndOf="@+id/disc_welcomeTextView"
-        app:layout_constraintStart_toStartOf="@+id/disc_welcomeTextView"
-        app:layout_constraintTop_toBottomOf="@+id/disc_welcomeTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/scrollview" />
 
     <ScrollView
@@ -54,7 +56,7 @@
                 android:id="@+id/disc_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:itemCount="5"
+                tools:itemCount="4"
                 tools:listitem="@layout/listitem_quiz_dashboard" />
 
         </LinearLayout>

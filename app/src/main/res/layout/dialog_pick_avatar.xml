@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp">
 
     <TextView
         android:id="@+id/pickAv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pick an avatar picture"
-        android:textSize="16sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Pick an Avatar"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

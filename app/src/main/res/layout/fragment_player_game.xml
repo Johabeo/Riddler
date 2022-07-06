@@ -5,13 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.view.player.PlayerGameFragment"
-    android:background="@drawable/ic_game_background"
-    android:padding="16dp">
+    android:background="#6622FF">
+
+    <ImageView
+        android:id="@+id/corner4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_rectangle_13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/second_corner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_ellipse_33"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/questions_card"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="300dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="16dp"
         app:cardPreventCornerOverlap="true"
@@ -23,16 +44,13 @@
         android:id="@+id/playerQuestions"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_margin="16dp"
         android:textColor="@color/black"
         android:textAlignment="center"
         android:gravity="center"
         android:textSize="30sp"
         android:fontFamily="@font/montserrat_semi_bold"
-        android:text="This is the question prompt?"
+        android:text="This is the question prompt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +79,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-
         android:backgroundTint="#C1FFCD"
         app:cardCornerRadius="16dp"
         app:cardPreventCornerOverlap="true"
@@ -70,6 +87,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questions_card">
 
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_ellipse_38"/>
+
         <TextView
             android:id="@+id/playerAnswer1Text"
             android:layout_width="match_parent"
@@ -77,7 +100,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/montserrat_semi_bold"
             android:gravity="center"
-            android:text="mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
+            android:text="mmmmmmmmm"
             android:textAlignment="center"
             android:textSize="24sp" />
     </androidx.cardview.widget.CardView>
@@ -95,8 +118,13 @@
         app:layout_constraintBottom_toTopOf="@id/playerAnswer4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/playerAnswer1"
-        app:layout_constraintTop_toBottomOf="@+id/questions_card"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/questions_card">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_rectangle_20"/>
 
         <TextView
             android:id="@+id/playerAnswer2Text"
@@ -105,7 +133,7 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:fontFamily="@font/montserrat_semi_bold"
-            android:text="there should be a 32 character limit"
+            android:text="randomly generated"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -127,6 +155,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerAnswer1"
         app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_polygon_2"/>
 
         <TextView
             android:id="@+id/playerAnswer3Text"
@@ -156,6 +190,12 @@
         app:layout_constraintStart_toEndOf="@id/playerAnswer3"
         app:layout_constraintTop_toBottomOf="@+id/playerAnswer2"
         app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_rectangle_21"/>
 
         <TextView
             android:id="@+id/playerAnswer4Text"

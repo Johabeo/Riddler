@@ -2,7 +2,7 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:icon="@drawable/ic_baseline_arrow_back_24"
+        android:icon="@drawable/ic_back"
         android:title="Leave"
         app:showAsAction="always"
         android:id="@+id/leave_lobby"/>

@@ -78,8 +78,8 @@
         app:helperTextTextColor="@color/queryErrorText"
         app:hintTextColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/editDescriptionLayout"
-        app:layout_constraintEnd_toEndOf="@+id/background"
-        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -107,8 +107,8 @@
         app:helperTextTextColor="@color/queryErrorText"
         app:hintTextColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/editNumQuestionsLayout"
-        app:layout_constraintEnd_toEndOf="@+id/background"
-        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editQuizNameLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -135,9 +135,9 @@
         app:helperTextEnabled="true"
         app:helperTextTextColor="@color/queryErrorText"
         app:hintTextColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/categoryDropdownLayout"
-        app:layout_constraintEnd_toEndOf="@+id/background"
-        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDescriptionLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -162,9 +162,9 @@
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="2dp"
         app:layout_constraintBottom_toTopOf="@+id/difficultyDropdownLayout"
-        app:layout_constraintEnd_toEndOf="@+id/background"
-        app:layout_constraintStart_toStartOf="@+id/background"
-        app:layout_constraintTop_toBottomOf="@+id/editNumQuestionsLayout">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
 
         <AutoCompleteTextView
             android:id="@+id/categoryDropdown"
@@ -184,8 +184,8 @@
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="2dp"
         app:layout_constraintBottom_toTopOf="@+id/createQuiz"
-        app:layout_constraintEnd_toEndOf="@+id/background"
-        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/categoryDropdownLayout">
 
         <AutoCompleteTextView
@@ -208,8 +208,14 @@
         app:backgroundTint="@color/buttonColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/difficultyDropdownLayout" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

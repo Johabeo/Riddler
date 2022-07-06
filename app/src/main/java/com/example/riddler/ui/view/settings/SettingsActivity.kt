@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.riddler.R
@@ -98,7 +99,7 @@ class SettingsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     fun updateEmail(view: View){
         var alertDialog: AlertDialog? = null
 
-        val dialogView = layoutInflater.inflate(R.layout.dialog_email_change, null)
+        val dialogView = layoutInflater.inflate(R.layout.dialog_email_change,null)
         val newEmailLayout = dialogView.findViewById<TextInputLayout>(R.id.changeEmail_newEmailTextLayout)
         val passwordLayout = dialogView.findViewById<TextInputLayout>(R.id.changeEmail_currentPasswordTextLayout)
         val newEmailEditText = dialogView.findViewById<EditText>(R.id.changeEmail_emailEditText)
@@ -128,12 +129,12 @@ class SettingsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                 commitUpdateEmail(emailStr, passwordStr)
             } else {
                 if(!validateEmail(emailStr)){
-                    newEmailLayout.helperText = "Please enter a valid email"
+                    newEmailLayout.helperText = "*Please enter a valid email"
                 } else {
                     newEmailLayout.helperText = ""
                 }
                 if(!checkPassword(passwordStr)){
-                    passwordLayout.helperText = "Password doesn't match"
+                    passwordLayout.helperText = "*Password doesn't match"
                 } else {
                     passwordLayout.helperText = ""
                 }
@@ -175,7 +176,7 @@ class SettingsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
         val validatePassword = fun(newPassword: String, confirmPassword: String) : Boolean{
             if (newPassword.length < 8) {
-                newPasswordLayout.helperText = "Minimum 8 Character Password"
+                newPasswordLayout.helperText = "*Minimum 8 Character Password"
                 return false
             }
             else if (!newPassword.matches(".*[A-Z].*".toRegex())) {
@@ -212,7 +213,7 @@ class SettingsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                     commitUpdatePassword(email, oldPassword, newPassword)
                 }
             } else {
-                currentPasswordLayout.helperText = "Wrong password!"
+                currentPasswordLayout.helperText = "*Wrong password!"
             }
         }
         cancelButton.setOnClickListener {
