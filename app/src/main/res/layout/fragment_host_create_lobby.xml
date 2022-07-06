@@ -4,20 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_game_background"
+    android:background="#6622FF"
     tools:context=".ui.view.host.HostCreateLobbyFragment">
+
+    <ImageView
+        android:id="@+id/corner4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_rectangle_13"
+        app:layout_constraintEnd_toEndOf="@+id/createLobbyButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/second_corner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_ellipse_33"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/createLobbyButton"
+        app:layout_constraintTop_toBottomOf="@+id/hostCreateCardView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Set the Stage..."
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/hostCreateCardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/hostCreateCardView"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
+        app:contentPadding="32dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toTopOf="@id/createLobbyButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_chainStyle="spread">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -58,7 +95,7 @@
                 android:id="@+id/hostCreateQuizName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="64dp"
+                android:layout_marginBottom="56dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Quiz Name"
                 android:textColor="@color/black"
@@ -66,26 +103,20 @@
                 app:layout_constraintBottom_toTopOf="@+id/hostCreateMaxPlayerLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/hostCreateMaxPlayerLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidth="2dp"
                 app:helperTextEnabled="true"
                 app:helperTextTextColor="@color/queryErrorText"
-                app:hintTextColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/hostCreateQuizName">
 
@@ -93,11 +124,12 @@
                     android:id="@+id/hostCreateMaxPlayer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Max Player"
                     android:fontFamily="@font/hind_regular"
+                    android:hint="Enter Max Players"
                     android:inputType="number"
                     android:singleLine="true"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -111,7 +143,8 @@
         app:backgroundTint="#2F312E"
         android:background="@drawable/sharper_corners"
         android:elevation="8dp"
-        android:fontFamily="@font/montserrat_bold"
+        android:textSize="24sp"
+        android:fontFamily="@font/montserrat_semi_bold"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

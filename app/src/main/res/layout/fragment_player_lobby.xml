@@ -4,9 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background_host_lobby"
-    android:padding="16dp"
+    android:background="#BA1B1B"
+
     tools:context=".ui.view.host.HostLobbyFragment">
+
+    <ImageView
+        android:id="@+id/corner4"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_group_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/corner5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_polygon_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/corner4"
+        app:layout_constraintBottom_toBottomOf="@+id/game_pin_layout"/>
 
     <ImageView
         android:id="@+id/background"
@@ -18,12 +40,14 @@
         android:src="@drawable/ic_game_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/mini_header"/>
 
     <TextView
         android:id="@+id/mini_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/quiz"
         android:textColor="@color/white"
@@ -35,6 +59,7 @@
         android:id="@+id/game_pin_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:contentPadding="12dp"
@@ -51,14 +76,15 @@
             <TextView
                 android:id="@+id/playerLobbyGamePin"
                 android:layout_width="match_parent"
-                android:layout_height="96dp"
+                android:layout_height="0dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
-                android:textColor="@color/black"
                 android:text="Quiz Title"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textIsSelectable="true"
                 android:textSize="36sp"
+                app:layout_constraintBottom_toTopOf="@+id/header"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +107,7 @@
                 android:id="@+id/subheader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/hind_bold"
+                android:fontFamily="@font/hind_semi_bold"
                 android:gravity="center"
                 android:text="@string/waiting_for_the_host_to_start"
                 android:textColor="@color/black"
@@ -94,6 +120,7 @@
                 android:id="@+id/playerLobbyList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

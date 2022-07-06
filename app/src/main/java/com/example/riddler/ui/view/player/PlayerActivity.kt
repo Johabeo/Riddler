@@ -38,7 +38,7 @@ class PlayerActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.player_toolbar))
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+            setHomeAsUpIndicator(R.drawable.ic_back);
             title = ""
         }
 

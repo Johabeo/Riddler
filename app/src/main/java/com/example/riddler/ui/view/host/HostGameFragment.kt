@@ -1,6 +1,7 @@
 package com.example.riddler.ui.view.host
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.riddler.R
 import com.example.riddler.ui.viewmodel.HostViewModel
+import kotlinx.android.synthetic.main.fragment_host_game.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -22,6 +24,8 @@ class HostGameFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private val TIME_LIMIT = 30
+    var timeLimit: Long = 30000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,20 +46,33 @@ class HostGameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val question = view.findViewById<TextView>(R.id.hostQuestions)
+        val timerText = view.findViewById<TextView>(R.id.host_timer)
         val playersSubmitted = view.findViewById<TextView>(R.id.playersSubmitted)
         val next = view.findViewById<Button>(R.id.hostGameNext)
         val vm = ViewModelProvider(requireActivity()).get(HostViewModel::class.java)
         vm.gameState.observe(viewLifecycleOwner) {
             question.text = it.question?.question
             playersSubmitted.text = "${it.numAnswered.toString()}/${it.players!!.size}"
-
+            timeLimit =  System.currentTimeMillis() - it.createdTime!!
         }
 
         next.setOnClickListener {
-            next.visibility = View.GONE
             vm.moveNext { gameFinished -> displayLeaderboard(gameFinished) }
-            next.visibility = View.VISIBLE
+            disableNextClick()
         }
+
+        val timerT = object: CountDownTimer(timeLimit, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                timerText.text = (millisUntilFinished/1000).toString()
+                if(timerText.text == "0"){
+                        enableNextClick()
+                }
+            }
+
+            override fun onFinish() {
+                timerText.text = "0"
+            }
+        }.start()
     }
 
     fun displayLeaderboard(gameFinished: Boolean) {
@@ -68,6 +85,14 @@ class HostGameFragment : Fragment() {
                 .replace(R.id.hostContainer, HostLeaderboardFragment())
                 .commit()
         }
+    }
+
+    fun disableNextClick() {
+        hostGameNext.visibility = View.GONE
+    }
+
+    fun enableNextClick() {
+        hostGameNext.visibility = View.VISIBLE
     }
 
 }
