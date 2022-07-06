@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_group_59"
+        android:src="@drawable/ic_group_70"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
