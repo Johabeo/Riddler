@@ -50,7 +50,7 @@
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Settings"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/set_userProfileCardView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
