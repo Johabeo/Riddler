@@ -74,10 +74,6 @@ class PlayerGameFragment : Fragment() {
         val timerT = object: CountDownTimer(timeLimit, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timerText.text = (millisUntilFinished/1000).toString()
-//                if(timerText.text == "0"){
-//                    disableAnswerClick()
-//                    moveToResult(false)
-//                }
             }
 
             override fun onFinish() {
