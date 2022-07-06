@@ -13,12 +13,14 @@ import android.widget.Toast
 import com.example.riddler.R
 import com.google.android.material.textfield.TextInputLayout
 
-class SignUpFragment(val signUp : (String, String, String, String) -> Unit) : Fragment() {
+class SignUpFragment() : Fragment() {
 
 
     lateinit var inputEmail: TextInputLayout
     lateinit var inputPassword: TextInputLayout
     lateinit var inputFirstName: TextInputLayout
+
+    lateinit var signUp : (String, String, String, String) -> Unit
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,5 +116,17 @@ class SignUpFragment(val signUp : (String, String, String, String) -> Unit) : Fr
             return false
         }
         return true
+    }
+
+    fun setParams(signUp : (String, String, String, String) -> Unit){
+        this.signUp = signUp
+    }
+
+    companion object {
+        fun newInstance(signUp : (String, String, String, String) -> Unit) : SignUpFragment{
+            val fragment = SignUpFragment()
+            fragment.setParams(signUp)
+            return fragment
+        }
     }
 }

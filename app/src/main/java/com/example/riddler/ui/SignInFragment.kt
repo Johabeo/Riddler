@@ -14,10 +14,13 @@ import com.example.riddler.R
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 
-class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragment : () -> Unit) : Fragment() {
+class SignInFragment() : Fragment() {
 
     lateinit var inputPassword : TextInputLayout
     lateinit var inputEmail : TextInputLayout
+
+    lateinit var signIn : (String, String) -> Unit
+    lateinit var setSignUpFragment : () -> Unit
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,5 +100,18 @@ class SignInFragment(val signIn : (String, String) -> Unit, val setSignUpFragmen
             return false
         }
         return true
+    }
+
+    fun setParams(signIn : (String, String) -> Unit, setSignUpFragment : () -> Unit){
+        this.signIn = signIn
+        this.setSignUpFragment = setSignUpFragment
+    }
+
+    companion object{
+        fun newInstance(signIn : (String, String) -> Unit, setSignUpFragment : () -> Unit) : SignInFragment {
+            val fragment = SignInFragment()
+            fragment.setParams(signIn, setSignUpFragment)
+            return fragment
+        }
     }
 }
