@@ -26,7 +26,8 @@ class HostGameFragment : Fragment() {
     private var param2: String? = null
     private val TIME_LIMIT = 30
     var timeLimit: Long = 30000
-
+    private lateinit var next: Button
+    private var timerEnd = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -39,38 +40,46 @@ class HostGameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_host_game, container, false)
+        val view = inflater.inflate(R.layout.fragment_host_game, container, false)
+        next = view.findViewById(R.id.hostGameNext)
+        return view
     }
 
+    override fun onResume() {
+        disableNextClick()
+        super.onStart()
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val question = view.findViewById<TextView>(R.id.hostQuestions)
         val timerText = view.findViewById<TextView>(R.id.host_timer)
         val playersSubmitted = view.findViewById<TextView>(R.id.playersSubmitted)
-        val next = view.findViewById<Button>(R.id.hostGameNext)
         val vm = ViewModelProvider(requireActivity()).get(HostViewModel::class.java)
+
         vm.gameState.observe(viewLifecycleOwner) {
+            if (it.numAnswered!! >= it.players!!.size || timerEnd) {
+                enableNextClick()
+            }
             question.text = it.question?.question
             playersSubmitted.text = "${it.numAnswered.toString()}/${it.players!!.size}"
             timeLimit =  System.currentTimeMillis() - it.createdTime!!
         }
 
         next.setOnClickListener {
-            vm.moveNext { gameFinished -> displayLeaderboard(gameFinished) }
             disableNextClick()
+            vm.moveNext { gameFinished -> displayLeaderboard(gameFinished) }
         }
 
         val timerT = object: CountDownTimer(timeLimit, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timerText.text = (millisUntilFinished/1000).toString()
-                if(timerText.text == "0"){
-                        enableNextClick()
-                }
+                timerEnd = false
             }
 
             override fun onFinish() {
                 timerText.text = "0"
+                timerEnd = true
             }
         }.start()
     }
@@ -88,11 +97,11 @@ class HostGameFragment : Fragment() {
     }
 
     fun disableNextClick() {
-        hostGameNext.visibility = View.GONE
+        next.visibility = View.GONE
     }
 
     fun enableNextClick() {
-        hostGameNext.visibility = View.VISIBLE
+        next.visibility = View.VISIBLE
     }
 
 }
