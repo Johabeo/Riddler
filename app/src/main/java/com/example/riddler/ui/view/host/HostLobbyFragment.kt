@@ -80,7 +80,6 @@ class HostLobbyFragment : Fragment() {
         }
 
         startGame.setOnClickListener {
-            println("clicked")
             startGame.visibility = View.GONE
             vm.startGame{ loadSuccess -> loadGameFragment(loadSuccess) }
         }
