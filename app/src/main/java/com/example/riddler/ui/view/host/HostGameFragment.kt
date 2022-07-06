@@ -2,6 +2,7 @@ package com.example.riddler.ui.view.host
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.Html
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -61,7 +62,7 @@ class HostGameFragment : Fragment() {
             if (it.numAnswered!! >= it.players!!.size || timerEnd) {
                 enableNextClick()
             }
-            question.text = it.question?.question
+            question.text =  Html.fromHtml(it.question?.question).toString()
             playersSubmitted.text = "${it.numAnswered.toString()}/${it.players!!.size}"
             timeLimit =  System.currentTimeMillis() - it.createdTime!!
         }

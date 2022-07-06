@@ -2,6 +2,7 @@ package com.example.riddler.ui.view.player
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.Html
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -63,11 +64,11 @@ class PlayerGameFragment : Fragment() {
         disableAnswerClick()
 
         vm.gameState.observe(viewLifecycleOwner) {
-            question.text = it.question?.question
-            answer1.text = it.question?.firstAnswer
-            answer2.text = it.question?.secondAnswer
-            answer3.text = it.question?.thirdAnswer
-            answer4.text = it.question?.fourthAnswer
+            question.text = Html.fromHtml(it.question?.question).toString()
+            answer1.text = Html.fromHtml(it.question?.firstAnswer).toString()
+            answer2.text = Html.fromHtml(it.question?.secondAnswer).toString()
+            answer3.text = Html.fromHtml(it.question?.thirdAnswer).toString()
+            answer4.text = Html.fromHtml(it.question?.fourthAnswer).toString()
             timeLimit =  System.currentTimeMillis() - it.createdTime!!
             enableAnswerClick()
         }
