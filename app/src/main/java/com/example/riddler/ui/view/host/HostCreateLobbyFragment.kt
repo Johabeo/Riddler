@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.setFragmentResultListener
 import com.example.riddler.R
 import com.example.riddler.data.model.Quiz
@@ -28,6 +29,7 @@ class HostCreateLobbyFragment : Fragment() {
     private var quizId: Int? = null
     lateinit var createLobby: Button
     lateinit var quiz: Quiz
+    lateinit var validateToast: Toast
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -48,15 +50,32 @@ class HostCreateLobbyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         createLobby = view.findViewById<Button>(R.id.createLobbyButton)
         val quizNameText = view.findViewById<TextView>(R.id.hostCreateQuizName)
-        println(quizName)
+        val lobbySize = view.findViewById<TextView>(R.id.hostCreateMaxPlayer)
         quizNameText.text = quizName
 
         createLobby.setOnClickListener {
-            val intent = Intent(activity, HostActivity::class.java)
-            intent.putExtra("quizId", quizId)
-            activity?.startActivity(intent)
-            activity?.finish()
+            val lobbySizeText = lobbySize.text.toString()
+            if (validate(lobbySizeText)) {
+                val intent = Intent(activity, HostActivity::class.java)
+                intent.putExtra("quizId", quizId)
+                intent.putExtra("lobbySize", lobbySizeText.toInt())
+                activity?.startActivity(intent)
+                activity?.finish()
+            } else {
+                validateToast.show()
+            }
         }
 
+    }
+
+    fun validate(lobbySize: String): Boolean {
+        if (lobbySize == "") {
+            validateToast = Toast.makeText(context, "Please enter a lobby size", Toast.LENGTH_SHORT)
+            return false
+        } else if (lobbySize.toInt() < 1 || lobbySize.toInt() > 16) {
+            validateToast = Toast.makeText(context, "Lobby size must be between 1 and 16", Toast.LENGTH_SHORT)
+            return false
+        }
+        return true
     }
 }

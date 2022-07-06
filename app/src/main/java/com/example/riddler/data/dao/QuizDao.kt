@@ -32,6 +32,6 @@ interface QuizDao {
 
     @Query("select * from Quiz " +
             "join quiz_fts on Quiz.id = quiz_fts.id" +
-            " where quiz_fts match :searchQuery")
-    fun search(searchQuery: String) : Observable<List<Quiz>>
+            " where quiz_fts match :searchQuery limit :limit offset :offset")
+    fun search(searchQuery: String, limit: Int, offset: Int) : Observable<List<Quiz>>
 }

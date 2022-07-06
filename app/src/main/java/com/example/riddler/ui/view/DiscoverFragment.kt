@@ -2,40 +2,25 @@ package com.example.riddler.ui.view
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.content.res.TypedArray
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.SearchView
-import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.riddler.OnboardActivity
 import com.example.riddler.R
-import com.example.riddler.TriviaQuizActivity
-import com.example.riddler.Util
-import com.example.riddler.data.model.Avatars
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.ui.adapters.DashboardQuizListAdapter
 import com.example.riddler.ui.view.host.HostCreateLobbyFragment
-import com.example.riddler.ui.view.player.PlayerIncorrectFragment
 import com.example.riddler.ui.view.settings.SettingsActivity
 import com.example.riddler.ui.viewmodel.DiscoverViewModel
-import com.example.riddler.ui.viewmodel.QuizViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
@@ -43,7 +28,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
+
 
 @AndroidEntryPoint
 class DiscoverFragment : Fragment() {
@@ -72,8 +57,6 @@ class DiscoverFragment : Fragment() {
         val pwdHash = prefs?.getString("pwdHash", "pwd hash not found")
         println(pwdHash)
 
-        val welcomeTextView = view.findViewById<TextView>(R.id.disc_welcomeTextView)
-        val userImage = view.findViewById<ImageView>(R.id.disc_userImage)
         val searchQuiz = view.findViewById<SearchView>(R.id.search_quiz)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.disc_recyclerview)
@@ -86,10 +69,28 @@ class DiscoverFragment : Fragment() {
             .subscribeBy(
                 onNext = {
                     updateAdapter(it)
-
                 }
             )
 
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1)) {
+                    vm.loadMore()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeBy(
+                            onNext = {
+                                updateAdapter(it)
+
+                            },
+                            onError = {
+                                Timber.d(it)
+                            }
+                        )
+                }
+            }
+        })
         searchQuiz.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query.isNullOrEmpty()) {
@@ -100,6 +101,9 @@ class DiscoverFragment : Fragment() {
                             onNext = {
                                 updateAdapter(it)
 
+                            },
+                            onError = {
+                                Timber.d(it)
                             }
                         )
                     return false
@@ -110,6 +114,9 @@ class DiscoverFragment : Fragment() {
                     .subscribeBy(
                         onNext = {
                             updateAdapter(it)
+                        },
+                        onError = {
+                            Timber.d(it)
                         }
                     )
                 return true
@@ -124,6 +131,9 @@ class DiscoverFragment : Fragment() {
                             onNext = {
                                 updateAdapter(it)
 
+                            },
+                            onError = {
+                                Timber.d(it)
                             }
                         )
                     return false
@@ -134,19 +144,15 @@ class DiscoverFragment : Fragment() {
                     .subscribeBy(
                         onNext = {
                             updateAdapter(it)
+                        },
+                        onError = {
+                            Timber.d(it)
                         }
                     )
                 return true
             }
 
         })
-        vm.userProfile.observe(requireActivity()) {
-            val str = "${resources.getString(R.string.welcome_user)}, $it!"
-            userImage.setImageResource(Avatars.avatarsList.get(it.profilePic))
-            welcomeTextView.setText(str)
-        }
-
-        vm.fetchUserProfileInfo()
 
         //todo: fetch user's quizzes in case email changes
     }

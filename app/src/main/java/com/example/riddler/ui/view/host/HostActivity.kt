@@ -3,6 +3,7 @@ package com.example.riddler.ui.view.host
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
@@ -33,8 +34,10 @@ class HostActivity : AppCompatActivity() {
         setContentView(R.layout.activity_host)
         val quizVM = ViewModelProvider(this).get(QuizViewModel::class.java)
         val quizId = intent.getIntExtra("quizId", 0)
+        val lobbySize = intent.getIntExtra("lobbySize", 16)
         hostVM = ViewModelProvider(this).get(HostViewModel::class.java)
         hostVM.setCurrentQuestions(quizVM.getQuestions(quizId))
+        hostVM.setHostLobbySize(lobbySize)
 
         setSupportActionBar(findViewById(R.id.host_toolbar))
         supportActionBar?.apply {
@@ -42,7 +45,6 @@ class HostActivity : AppCompatActivity() {
             setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
             title = ""
         }
-
         var fm = supportFragmentManager
         var ft = fm.beginTransaction()
         ft.replace(R.id.hostContainer, HostLobbyFragment())
