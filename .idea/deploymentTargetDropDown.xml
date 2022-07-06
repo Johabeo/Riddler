@@ -6,12 +6,12 @@
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="SERIAL_NUMBER" />
-            <value value="R58RB3JBCRE" />
+            <type value="VIRTUAL_DEVICE_PATH" />
+            <value value="C:\Users\JohnM\.android\avd\Pixel_4a_API_33_1.avd" />
           </Key>
         </deviceKey>
       </Target>
     </runningDeviceTargetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2022-07-06T11:37:24.471821500Z" />
+    <timeTargetWasSelectedWithDropDown value="2022-07-06T12:31:23.929517900Z" />
   </component>
 </project>

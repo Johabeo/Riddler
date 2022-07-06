@@ -54,13 +54,11 @@ class HostGameFragment : Fragment() {
             question.text = it.question?.question
             playersSubmitted.text = "${it.numAnswered.toString()}/${it.players!!.size}"
             timeLimit =  System.currentTimeMillis() - it.createdTime!!
-            disableNextClick()
         }
 
         next.setOnClickListener {
-            next.visibility = View.GONE
             vm.moveNext { gameFinished -> displayLeaderboard(gameFinished) }
-            next.visibility = View.VISIBLE
+            disableNextClick()
         }
 
         val timerT = object: CountDownTimer(timeLimit, 1000) {
