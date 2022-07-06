@@ -98,7 +98,7 @@ class SignUpFragment(val signUp : (String, String, String, String) -> Unit) : Fr
         }
         //firebase will perform a check on password strength, but for now we'll check the length
         else if (password.length < 8) {
-            inputPassword.helperText = "Minimum 8 Character Password"
+            inputPassword.helperText = "*Minimum 8 Character Password"
             return false
         }
         else if (!password.matches(".*[A-Z].*".toRegex())) {
