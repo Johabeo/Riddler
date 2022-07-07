@@ -15,30 +15,30 @@
     <string name="join">Присоединиться</string>
     <string name="create">Создать</string>
     <string-array name="category">
-        <item>Общее</item>
-        <item>Книги</item>
-        <item>Фильмы</item>
-        <item>Музыка</item>
-        <item>Театр</item>
-        <item>Телевидение</item>
-        <item>Комп. игры</item>
-        <item>Настольные игры</item>
-        <item>Наука</item>
-        <item>Компьютеры</item>
-        <item>Математика</item>
-        <item>Мифология</item>
-        <item>Спорт</item>
-        <item>География</item>
-        <item>История</item>
-        <item>Политика</item>
-        <item>Исскуство</item>
-        <item>Знаменитости</item>
-        <item>Животные</item>
-        <item>Авто</item>
-        <item>Комиксы</item>
-        <item>Гаджеты</item>
-        <item>Аниме и манга</item>
-        <item>Мультфильмы</item>
+        <item>General Knowledge</item>
+        <item>Books</item>
+        <item>Film</item>
+        <item>Music</item>
+        <item>Musicals &amp; Theatres</item>
+        <item>Television</item>
+        <item>Video Games</item>
+        <item>Board Games</item>
+        <item>Science &amp; Nature</item>
+        <item>Computers</item>
+        <item>Mathematics</item>
+        <item>Mythology</item>
+        <item>Sports</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Politics</item>
+        <item>Art</item>
+        <item>Celebrities</item>
+        <item>Animals</item>
+        <item>Vehicles</item>
+        <item>Comics</item>
+        <item>Gadgets</item>
+        <item>Anime &amp; Manga</item>
+        <item>Cartoons &amp; Animation</item>
     </string-array>
 
 
