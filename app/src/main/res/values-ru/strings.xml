@@ -1,44 +1,44 @@
 <resources>
     <string name="sign_in_btn">Войти</string>
-    <string name="sign_out_btn">выход</string>
-    <string name="have_account">Иметь аккаунт? Нужен аккаунт?</string>
+    <string name="sign_out_btn">Выход</string>
+    <string name="have_account">Есть акаунт? Нужен акаунт?</string>
     <string name="welcome_user">Добро пожаловать</string>
-    <string name="need_account">Подписаться</string>
+    <string name="need_account">Зарегистрироваться</string>
     <string name="back">Назад</string>
     <string name="signup_text">Зарегистрируйтесь с электронной почтой и паролем</string>
     <string name="hello_blank_fragment">Привет пустой фрагмент</string>
     <string name="top_scores_host">Лучшие результаты:</string>
-    <string name="next">Следующий</string>
+    <string name="next">Далее</string>
     <string name="generate">Создать</string>
-    <string name="discover">Обнаружить</string>
+    <string name="discover">Обзор</string>
     <string name="host">Хозяин</string>
     <string name="join">Присоединиться</string>
     <string name="create">Создавать</string>
     <string-array name="category">
-        <item>General Knowledge</item>
-        <item>Books</item>
-        <item>Film</item>
-        <item>Music</item>
-        <item>Musicals &amp; Theatres</item>
-        <item>Television</item>
-        <item>Video Games</item>
-        <item>Board Games</item>
-        <item>Science &amp; Nature</item>
-        <item>Computers</item>
-        <item>Mathematics</item>
-        <item>Mythology</item>
-        <item>Sports</item>
-        <item>Geography</item>
-        <item>History</item>
-        <item>Politics</item>
-        <item>Art</item>
-        <item>Celebrities</item>
-        <item>Animals</item>
-        <item>Vehicles</item>
-        <item>Comics</item>
-        <item>Gadgets</item>
-        <item>Anime &amp; Manga</item>
-        <item>Cartoons &amp; Animation</item>
+        <item>Общее</item>
+        <item>Книги</item>
+        <item>Фильмы</item>
+        <item>Музыка</item>
+        <item>Театр</item>
+        <item>Телевидение</item>
+        <item>Комп. игры</item>
+        <item>Настольные игры</item>
+        <item>Наука</item>
+        <item>Компьютеры</item>
+        <item>Математика</item>
+        <item>Мифология</item>
+        <item>Спорт</item>
+        <item>География</item>
+        <item>История</item>
+        <item>Политика</item>
+        <item>Исскуство</item>
+        <item>Знаменитости</item>
+        <item>Животные</item>
+        <item>Авто</item>
+        <item>Комиксы</item>
+        <item>Гаджеты</item>
+        <item>Аниме и манга</item>
+        <item>Мультфильмы</item>
     </string-array>
 
 
@@ -58,13 +58,13 @@
     <string name="first_name">Имя</string>
     <string name="last_name_optional">Фамилия (необязательно)</string>
     <string name="waiting_for_players">Жду игроков...</string>
-    <string name="start">Начинать</string>
-    <string name="quiz">Контрольный опрос:</string>
-    <string name="you_re_in">Ты в!</string>
+    <string name="start">Начать</string>
+    <string name="quiz">Викторина:</string>
+    <string name="you_re_in">Ты в системе!</string>
     <string name="waiting_for_the_host_to_start">Ожидание запуска хоста..</string>
     <string name="create_lobby">Создать лобби</string>
     <string name="texthint">Введите название викторины...</string>
-    <string name="ready_set">Готовый? Установлен?</string>
+    <string name="ready_set">Приготовились?</string>
     <string name="game_pin">Игровой значок</string>
     <string name="username">Имя пользователя</string>
     <string name="category">Категория:</string>
@@ -73,7 +73,7 @@
     <string name="user_profile">Профиль пользователя</string>
     <string name="name">Имя</string>
     <string name="last_name">Фамилия</string>
-    <string name="update">Обновлять</string>
+    <string name="update">Обновить</string>
     <string name="update_password">Обновить пароль</string>
     <string name="save_profile_settings">Сохранить настройки профиля</string>
     <string name="avatar_picture">Изображение аватара</string>
@@ -99,5 +99,5 @@
     <string name="quiz_description">Описание викторины</string>
     <string name="number_of_questions">Количество вопросов</string>
     <string name="enter_game_pin">Введите игровой пин</string>
-    <string name="submit">Представлять на рассмотрение</string>
+    <string name="submit">Отправить</string>
 </resources>
