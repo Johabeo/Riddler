@@ -1,0 +1,103 @@
+<resources>
+    <string name="sign_in_btn">Iniciar sesión</string>
+    <string name="sign_out_btn">desconectar</string>
+    <string name="have_account">¿Tener una cuenta? ¿Necesito una cuenta?</string>
+    <string name="welcome_user">Bienvenidos</string>
+    <string name="need_account">Inscribirse</string>
+    <string name="back">atrás</string>
+    <string name="signup_text">Regístrese con correo electrónico y contraseña</string>
+    <string name="hello_blank_fragment">Hola fragmento en blanco</string>
+    <string name="top_scores_host">Puntuaciones máximas:</string>
+    <string name="next">próximo</string>
+    <string name="generate">Generar</string>
+    <string name="discover">Descubrir</string>
+    <string name="host">Anfitrión</string>
+    <string name="join">Unirse</string>
+    <string name="create">Crear</string>
+    <string-array name="category">
+        <item>General Knowledge</item>
+        <item>Books</item>
+        <item>Film</item>
+        <item>Music</item>
+        <item>Musicals &amp; Theatres</item>
+        <item>Television</item>
+        <item>Video Games</item>
+        <item>Board Games</item>
+        <item>Science &amp; Nature</item>
+        <item>Computers</item>
+        <item>Mathematics</item>
+        <item>Mythology</item>
+        <item>Sports</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Politics</item>
+        <item>Art</item>
+        <item>Celebrities</item>
+        <item>Animals</item>
+        <item>Vehicles</item>
+        <item>Comics</item>
+        <item>Gadgets</item>
+        <item>Anime &amp; Manga</item>
+        <item>Cartoons &amp; Animation</item>
+    </string-array>
+
+
+    <string-array name="difficulty">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+    <string name="don_t_have_an_account">¿No tienes una cuenta?</string>
+    <string name="log_in">Iniciar sesión</string>
+    <string name="welcome_back">Bienvenido de nuevo</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Clave</string>
+    <string name="sign_up">Inscribirse</string>
+    <string name="email2">Correo electrónico</string>
+    <string name="password2">Clave</string>
+    <string name="first_name">Primer nombre</string>
+    <string name="last_name_optional">Apellido (Opcional)</string>
+    <string name="waiting_for_players">Esperando jugadores...</string>
+    <string name="start">comienzo</string>
+    <string name="quiz">Prueba:</string>
+    <string name="you_re_in">¡Estas en!</string>
+    <string name="waiting_for_the_host_to_start">Esperando a que el anfitrión comience...</string>
+    <string name="create_lobby">Crear vestíbulo</string>
+    <string name="texthint">Introduzca el título de la prueba...</string>
+    <string name="ready_set">¿Listo? ¿Establecer?</string>
+    <string name="game_pin">Pin del juego</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="category">Categoría:</string>
+    <string name="difficulty">Dificultad:</string>
+    <string name="settings">Ajustes</string>
+    <string name="user_profile">Perfil del usuario</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="update">Actualizar</string>
+    <string name="update_password">Actualiza contraseña</string>
+    <string name="save_profile_settings">Guardar la configuración del perfil</string>
+    <string name="avatar_picture">imagen de avatar</string>
+    <string name="app_language">Idioma de la aplicación</string>
+    <string name="test_their_knowledge">Pon a prueba su conocimiento</string>
+    <string name="set_the_stage">Preparar el escenario...</string>
+    <string name="quiz_name">Nombre del cuestionario</string>
+    <string name="enter_max_players">Ingrese jugadores máximos</string>
+    <string name="standings">Posiciones</string>
+    <string name="change_password">Cambia la contraseña</string>
+    <string name="enter_current_password">Introducir la contraseña actual</string>
+    <string name="the_new_password_must_contain_at_least_8_characters_at_least_one_capital_letter_at_least_one_lowercase_letter_and_at_least_one_number">La nueva contraseña debe contener al menos 8 caracteres, al menos una letra mayúscula, al menos una letra minúscula y al menos un número.</string>
+    <string name="enter_new_password">Ingrese nueva clave</string>
+    <string name="confirm_new_password">Confirmar nueva contraseña</string>
+    <string name="cancel">Cancelar</string>
+    <string name="change_email">Cambiar e-mail</string>
+    <string name="please_enter_a_new_email_address_n_nthe_new_email_address_will_be_your_new_login">Ingrese una nueva dirección de correo electrónico.\n\nLa nueva dirección de correo electrónico será su nuevo inicio de sesión.</string>
+    <string name="enter_new_email_address">Introduce una nueva dirección de correo electrónico</string>
+    <string name="for_security_please_verify_your_password_below">Por seguridad, verifique su contraseña a continuación.</string>
+    <string name="enter_password">Introducir la contraseña</string>
+    <string name="pick_an_avatar">Elige un avatar</string>
+    <string name="quiz_generator">Generador de cuestionarios</string>
+    <string name="quiz_description">Descripción del cuestionario</string>
+    <string name="number_of_questions">numero de preguntas</string>
+    <string name="enter_game_pin">Introducir pin de juego</string>
+    <string name="submit">Enviar</string>
+</resources>

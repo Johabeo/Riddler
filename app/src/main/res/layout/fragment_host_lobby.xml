@@ -80,7 +80,6 @@
         android:layout_height="96dp"
         android:textColor="@color/black"
         android:fontFamily="@font/montserrat_bold"
-        android:text="GAME PIN"
         android:textIsSelectable="true"
         android:textAlignment="center"
         android:gravity="center"

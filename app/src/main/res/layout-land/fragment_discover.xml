@@ -15,7 +15,7 @@
         android:fontFamily="@font/montserrat_bold_italic"
       android:layout_marginTop="16dp"
         android:visibility="gone"
-        android:text="Test Their Knowledge"
+        android:text="@string/test_their_knowledge"
         android:textAlignment="center"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"

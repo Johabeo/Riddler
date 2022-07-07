@@ -1,5 +1,6 @@
 package com.example.riddler.ui.view.settings
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +16,10 @@ import com.example.riddler.Util
 import com.example.riddler.data.model.Avatars
 import com.example.riddler.data.model.UserProfile
 import com.example.riddler.ui.adapters.AvatarPickerAdapter
+import com.example.riddler.ui.view.MainActivity
+import com.example.riddler.ui.view.player.PlayerActivity
 import com.example.riddler.ui.viewmodel.SettingsViewModel
+import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,15 +48,13 @@ class SettingsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         preferences = getSharedPreferences("prefs", MODE_PRIVATE)
-
         firstNameEditText = findViewById(R.id.set_firstNameEditText)
         lastNameEditText = findViewById(R.id.set_lastNameEditText)
         emailLabel = findViewById(R.id.set_emailTextView)
         avatarPicture = findViewById(R.id.set_avatarPic)
         languageSpinner = findViewById(R.id.set_languageSpinner)
-
+        setSpinnerPosition(languageSpinner)
         languageSpinner.onItemSelectedListener = this
-
         vm.userProfile.observe(this){
             firstNameEditText.setText(it.firstName)
             lastNameEditText.setText(it.lastName)
@@ -93,6 +95,10 @@ class SettingsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             profile.profilePic = profilePic
             vm.updateUserProfile(profile)
             Toast.makeText(this, "Updating user settings...", Toast.LENGTH_SHORT).show()
+
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -253,7 +259,12 @@ class SettingsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         alertDialog.show()
 
     }
-
+    fun setSpinnerPosition(spinner: Spinner) {
+        val localeList = listOf("", "en", "es", "ru", "zh")
+        val localeStr = resources.configuration.locale.language
+        val index = if(localeList.indexOf(localeStr) == -1) 0 else localeList.indexOf(localeStr)
+        spinner.setSelection(index)
+    }
     //switch language
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         var localeStr =
@@ -262,15 +273,18 @@ class SettingsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                 1 -> "en"
                 2 -> "es"
                 3 -> "ru"
-                4 -> "zh-CN"
+                4 -> "zh"
                 else -> "en"
             }
         val locale = Locale(localeStr)
-        val config : Configuration = baseContext.resources.configuration
-        config.setLocale(locale)
-        config.setLayoutDirection(locale)
-        //window.decorView.layoutDirection = if(lang == "ar")  View.LAYOUT_DIRECTION_RTL else View.LAYOUT_DIRECTION_LTR
-        baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
+        if (locale != resources.configuration.locale) {
+            val config: Configuration = baseContext.resources.configuration
+            config.setLocale(locale)
+            config.setLayoutDirection(locale)
+            //window.decorView.layoutDirection = if(lang == "ar")  View.LAYOUT_DIRECTION_RTL else View.LAYOUT_DIRECTION_LTR
+            baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+            recreate()
+        }
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {

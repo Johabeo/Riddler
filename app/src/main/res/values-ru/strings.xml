@@ -1,0 +1,103 @@
+<resources>
+    <string name="sign_in_btn">Войти</string>
+    <string name="sign_out_btn">выход</string>
+    <string name="have_account">Иметь аккаунт? Нужен аккаунт?</string>
+    <string name="welcome_user">Добро пожаловать</string>
+    <string name="need_account">Подписаться</string>
+    <string name="back">Назад</string>
+    <string name="signup_text">Зарегистрируйтесь с электронной почтой и паролем</string>
+    <string name="hello_blank_fragment">Привет пустой фрагмент</string>
+    <string name="top_scores_host">Лучшие результаты:</string>
+    <string name="next">Следующий</string>
+    <string name="generate">Создать</string>
+    <string name="discover">Обнаружить</string>
+    <string name="host">Хозяин</string>
+    <string name="join">Присоединиться</string>
+    <string name="create">Создавать</string>
+    <string-array name="category">
+        <item>General Knowledge</item>
+        <item>Books</item>
+        <item>Film</item>
+        <item>Music</item>
+        <item>Musicals &amp; Theatres</item>
+        <item>Television</item>
+        <item>Video Games</item>
+        <item>Board Games</item>
+        <item>Science &amp; Nature</item>
+        <item>Computers</item>
+        <item>Mathematics</item>
+        <item>Mythology</item>
+        <item>Sports</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Politics</item>
+        <item>Art</item>
+        <item>Celebrities</item>
+        <item>Animals</item>
+        <item>Vehicles</item>
+        <item>Comics</item>
+        <item>Gadgets</item>
+        <item>Anime &amp; Manga</item>
+        <item>Cartoons &amp; Animation</item>
+    </string-array>
+
+
+    <string-array name="difficulty">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+    <string name="don_t_have_an_account">Нет учетной записи?</string>
+    <string name="log_in">Авторизоваться</string>
+    <string name="welcome_back">Добро пожаловать</string>
+    <string name="email">Эл. адрес</string>
+    <string name="password">Пароль</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="email2">Эл. адрес</string>
+    <string name="password2">Пароль</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name_optional">Фамилия (необязательно)</string>
+    <string name="waiting_for_players">Жду игроков...</string>
+    <string name="start">Начинать</string>
+    <string name="quiz">Контрольный опрос:</string>
+    <string name="you_re_in">Ты в!</string>
+    <string name="waiting_for_the_host_to_start">Ожидание запуска хоста..</string>
+    <string name="create_lobby">Создать лобби</string>
+    <string name="texthint">Введите название викторины...</string>
+    <string name="ready_set">Готовый? Установлен?</string>
+    <string name="game_pin">Игровой значок</string>
+    <string name="username">Имя пользователя</string>
+    <string name="category">Категория:</string>
+    <string name="difficulty">Сложность:</string>
+    <string name="settings">Настройки</string>
+    <string name="user_profile">Профиль пользователя</string>
+    <string name="name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="update">Обновлять</string>
+    <string name="update_password">Обновить пароль</string>
+    <string name="save_profile_settings">Сохранить настройки профиля</string>
+    <string name="avatar_picture">Изображение аватара</string>
+    <string name="app_language">Язык приложения</string>
+    <string name="test_their_knowledge">Проверьте их знания</string>
+    <string name="set_the_stage">Установите сцену...</string>
+    <string name="quiz_name">Название викторины</string>
+    <string name="enter_max_players">Введите максимальное количество игроков</string>
+    <string name="standings">Положение</string>
+    <string name="change_password">Изменить пароль</string>
+    <string name="enter_current_password">Введите текущий пароль</string>
+    <string name="the_new_password_must_contain_at_least_8_characters_at_least_one_capital_letter_at_least_one_lowercase_letter_and_at_least_one_number">Новый пароль должен содержать не менее 8 символов, не менее одной заглавной буквы, не менее одной строчной буквы и не менее одной цифры.</string>
+    <string name="enter_new_password">Введите новый пароль</string>
+    <string name="confirm_new_password">Подтвердите новый пароль</string>
+    <string name="cancel">Отмена</string>
+    <string name="change_email">Сменить имейл</string>
+    <string name="please_enter_a_new_email_address_n_nthe_new_email_address_will_be_your_new_login">Пожалуйста, введите новый адрес электронной почты.\n\nНовый адрес электронной почты будет вашим новым логином.</string>
+    <string name="enter_new_email_address">Введите новый адрес электронной почты</string>
+    <string name="for_security_please_verify_your_password_below">В целях безопасности подтвердите свой пароль ниже.</string>
+    <string name="enter_password">Введите пароль</string>
+    <string name="pick_an_avatar">Выберите аватар</string>
+    <string name="quiz_generator">Генератор викторин</string>
+    <string name="quiz_description">Описание викторины</string>
+    <string name="number_of_questions">Количество вопросов</string>
+    <string name="enter_game_pin">Введите игровой пин</string>
+    <string name="submit">Представлять на рассмотрение</string>
+</resources>

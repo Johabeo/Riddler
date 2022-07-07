@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Riddler</string>
+    <string name="app_name" translatable="false">Riddler</string>
     <string name="sign_in_btn">Sign in</string>
     <string name="sign_out_btn">Sign out</string>
     <string name="have_account">Have an account? Need an account?</string>
@@ -7,7 +7,6 @@
     <string name="need_account">Sign up</string>
     <string name="back">Back</string>
     <string name="signup_text">Sign up with email and password</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="top_scores_host">Top Scores:</string>
     <string name="next">Next</string>
@@ -63,9 +62,43 @@
     <string name="start">Start</string>
     <string name="quiz">Quiz:</string>
     <string name="you_re_in">You\'re In!</string>
-    <string name="waiting_for_the_host_to_start">waiting for the host to start..</string>
+    <string name="waiting_for_the_host_to_start">Waiting for the host to start..</string>
     <string name="create_lobby">Create Lobby</string>
     <string name="texthint">Enter Quiz Title...</string>
     <string name="ready_set">Ready? Set?</string>
     <string name="game_pin">Game Pin</string>
+    <string name="username">Username</string>
+    <string name="category">Category:</string>
+    <string name="difficulty">Difficulty:</string>
+    <string name="settings">Settings</string>
+    <string name="user_profile">User Profile</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last name</string>
+    <string name="update">Update</string>
+    <string name="update_password">Update Password</string>
+    <string name="save_profile_settings">Save profile settings</string>
+    <string name="avatar_picture">Avatar picture</string>
+    <string name="app_language">App Language</string>
+    <string name="test_their_knowledge">Test Their Knowledge</string>
+    <string name="set_the_stage">Set the Stage...</string>
+    <string name="quiz_name">Quiz Name</string>
+    <string name="enter_max_players">Enter Max Players</string>
+    <string name="standings">Standings</string>
+    <string name="change_password">Change password</string>
+    <string name="enter_current_password">Enter current password</string>
+    <string name="the_new_password_must_contain_at_least_8_characters_at_least_one_capital_letter_at_least_one_lowercase_letter_and_at_least_one_number">The new password must contain at least 8 characters, at least one capital letter, at least one lowercase letter, and at least one number.</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="confirm_new_password">Confirm new password</string>
+    <string name="cancel">Cancel</string>
+    <string name="change_email">Change Email</string>
+    <string name="please_enter_a_new_email_address_n_nthe_new_email_address_will_be_your_new_login">Please enter a new email address.\n\nThe new email address will be your new login.</string>
+    <string name="enter_new_email_address">Enter new email address</string>
+    <string name="for_security_please_verify_your_password_below">For security, please verify your password below.</string>
+    <string name="enter_password">Enter password</string>
+    <string name="pick_an_avatar">Pick an Avatar</string>
+    <string name="quiz_generator">Quiz Generator</string>
+    <string name="quiz_description">Quiz Description</string>
+    <string name="number_of_questions">Number of Questions</string>
+    <string name="enter_game_pin">Enter Game Pin</string>
+    <string name="submit">Submit</string>
 </resources>

@@ -88,7 +88,7 @@
                     android:autoSizeTextType="uniform"
                     android:fontFamily="@font/montserrat_semi_bold"
                     android:gravity="center"
-                    android:hint="Enter Game Pin"
+                    android:hint="@string/enter_game_pin"
                     android:imeOptions="actionDone"
                     android:singleLine="true"
                     android:textColor="@color/black" />
@@ -104,7 +104,7 @@
                 android:autoSizeTextType="uniform"
                 android:background="@drawable/sharper_corners"
                 android:fontFamily="@font/montserrat_semi_bold"
-                android:text="Submit"
+                android:text="@string/submit"
                 app:backgroundTint="#2F312E"
                 app:layout_constraintBottom_toBottomOf="@+id/game_pin_layout" />
 

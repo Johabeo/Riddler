@@ -12,7 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Change Email"
+            android:text="@string/change_email"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
             android:layout_marginTop="8dp"
             android:textSize="16sp"
             android:fontFamily="@font/montserrat_regular"
-            android:text="Please enter a new email address.\n\nThe new email address will be your new login."
+            android:text="@string/please_enter_a_new_email_address_n_nthe_new_email_address_will_be_your_new_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/changeEmail_title" />
@@ -43,7 +43,7 @@
                 android:id="@+id/changeEmail_emailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter new email address"
+                android:hint="@string/enter_new_email_address"
                 app:hintTextColor="#C5C7C2"
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:inputType="textEmailAddress" />
@@ -56,7 +56,7 @@
             android:layout_marginTop="24dp"
             android:textSize="16sp"
             android:fontFamily="@font/montserrat_regular"
-            android:text="For security, please verify your password below."
+            android:text="@string/for_security_please_verify_your_password_below"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/changeEmail_newEmailTextLayout" />
 
@@ -76,7 +76,7 @@
                 android:id="@+id/changeEmail_passwordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter password"
+                android:hint="@string/enter_password"
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:imeOptions="actionNone"
                 android:inputType="textPassword"
@@ -90,7 +90,7 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/sharper_corners"
             android:fontFamily="@font/montserrat_semi_bold"
-            android:text="Change Email"
+            android:text="@string/change_email"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/changeEmail_currentPasswordTextLayout"
             app:layout_constraintTop_toBottomOf="@+id/changeEmail_currentPasswordTextLayout" />
@@ -102,7 +102,7 @@
             android:textColor="@color/queryErrorText"
             android:backgroundTint="@android:color/transparent"
             android:fontFamily="@font/montserrat_semi_bold"
-            android:text="Cancel"
+            android:text="@string/cancel"
             app:layout_constraintBottom_toBottomOf="@+id/changeEmail_changeEmailButton"
             app:layout_constraintEnd_toEndOf="@+id/changeEmail_currentPasswordTextLayout"
             app:layout_constraintTop_toTopOf="@+id/changeEmail_changeEmailButton" />
