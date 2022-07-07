@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="Settings"
+                android:text="@string/settings"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/set_userProfileCardView"
@@ -75,7 +75,7 @@
                         android:id="@+id/set_userProfileTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="User Profile"
+                        android:text="@string/user_profile"
                         android:textSize="16sp"
                         android:fontFamily="@font/montserrat_bold"
                         android:textStyle="bold"
@@ -88,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="First name"
+                        android:text="@string/first_name"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/set_avatarPic" />
 
@@ -100,7 +100,7 @@
                         android:layout_marginStart="8dp"
                         android:inputType="textPersonName"
                         android:fontFamily="@font/hind_semi_bold"
-                        android:text="Name"
+                        android:text="@string/name"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/set_firstNameLabel" />
@@ -111,7 +111,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="Last name"
+                        android:text="@string/last_name"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/set_firstNameEditText" />
 
@@ -122,7 +122,7 @@
                         android:ems="10"
                         android:layout_marginStart="8dp"
                         android:inputType="textPersonName"
-                        android:text="Name"
+                        android:text="@string/name"
                         android:fontFamily="@font/hind_semi_bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="Email"
+                        android:text="@string/email"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/set_lastNameEditText" />
 
@@ -159,7 +159,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="Password"
+                        android:text="@string/password"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/set_updateEmailButton" />
 
@@ -169,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:onClick="updateEmail"
                         android:fontFamily="@font/montserrat_semi_bold"
-                        android:text="Update"
+                        android:text="@string/update"
 
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/set_emailLabel" />
@@ -179,7 +179,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="updatePassword"
-                        android:text="Update"
+                        android:text="@string/update"
                         android:fontFamily="@font/montserrat_semi_bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/set_passwordLabel" />
@@ -189,7 +189,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="Update Password"
+                        android:text="@string/update_password"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:fontFamily="@font/hind_bold"
@@ -206,7 +206,7 @@
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:onClick="updateUserProfile"
                         android:background="@drawable/sharper_corners"
-                        android:text="Save profile settings"
+                        android:text="@string/save_profile_settings"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/set_updatePasswordButton" />
@@ -231,7 +231,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="Avatar picture"
+                        android:text="@string/avatar_picture"
                         app:layout_constraintEnd_toEndOf="@+id/set_avatarPic"
                         app:layout_constraintStart_toStartOf="@+id/set_avatarPic"
                         app:layout_constraintTop_toBottomOf="@+id/set_userProfileTitle" />
@@ -242,7 +242,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:onClick="pickAvatarPicture"
-                        android:text="Update"
+                        android:text="@string/update"
                         app:layout_constraintBottom_toBottomOf="@+id/set_avatarPic"
                         app:layout_constraintEnd_toEndOf="@+id/set_updateEmailButton"
                         app:layout_constraintStart_toStartOf="@+id/set_updateEmailButton"
@@ -271,7 +271,7 @@
                         android:id="@+id/set_languageTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="App Language"
+                        android:text="@string/app_language"
                         android:textSize="16sp"
                         android:fontFamily="@font/montserrat_bold"
                         android:textStyle="bold"

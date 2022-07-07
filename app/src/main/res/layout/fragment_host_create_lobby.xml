@@ -35,8 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Set the Stage..."
+        android:text="@string/set_the_stage"
         android:textColor="@color/white"
+        android:textAlignment="center"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/hostCreateCardView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,44 +61,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:id="@+id/hostCreateTimeLimitLayout"-->
-<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="32dp"-->
-<!--                android:layout_marginTop="32dp"-->
-<!--                android:layout_marginEnd="32dp"-->
-<!--                android:textColorHint="@color/black"-->
-<!--                app:boxStrokeColor="@color/black"-->
-<!--                app:boxStrokeWidth="2dp"-->
-<!--                app:helperTextEnabled="true"-->
-<!--                app:helperTextTextColor="@color/queryErrorText"-->
-<!--                app:hintTextColor="@color/black"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/hostCreateMaxPlayerLayout"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.5"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/hostCreateQuizName">-->
-
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:id="@+id/hostCreateTimeLimit"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:hint="Time Limit"-->
-<!--                    android:fontFamily="@font/hind_regular"-->
-<!--                    android:inputType="textWebEmailAddress"-->
-<!--                    android:singleLine="true"-->
-<!--                    android:textColor="@color/black"/>-->
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
-
             <TextView
                 android:id="@+id/hostCreateQuizName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="56dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="Quiz Name"
+                android:text="@string/quiz_name"
                 android:textColor="@color/black"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toTopOf="@+id/hostCreateMaxPlayerLayout"
@@ -125,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/hind_regular"
-                    android:hint="Enter Max Players"
+                    android:hint="@string/enter_max_players"
                     android:inputType="number"
                     android:singleLine="true"
                     android:textColor="@color/black"

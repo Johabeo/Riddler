@@ -56,7 +56,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Quiz Generator"
+        android:text="@string/quiz_generator"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/editQuizNameLayout"
@@ -87,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/hind_regular"
-            android:hint="Quiz Name"
+            android:hint="@string/quiz_name"
             android:imeOptions="actionDone"
             android:singleLine="true"
             android:textColor="@color/black" />
@@ -116,7 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/hind_regular"
-            android:hint="Quiz Description"
+            android:hint="@string/quiz_description"
             android:imeOptions="actionDone"
             android:singleLine="true"
             android:textColor="@color/black" />
@@ -145,7 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/hind_regular"
-            android:hint="Number of Questions"
+            android:hint="@string/number_of_questions"
             android:inputType="number"
             android:imeOptions="actionDone"
             android:singleLine="true"
@@ -171,7 +172,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="none"
-            android:hint="Category"/>
+            android:hint="@string/category"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -194,7 +195,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="none"
-            android:hint="Difficulty"/>
+            android:hint="@string/difficulty"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
