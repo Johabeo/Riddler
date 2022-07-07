@@ -6,6 +6,8 @@ import com.example.riddler.TriviaRepo
 import com.example.riddler.data.model.Questions
 import com.example.riddler.data.model.Quiz
 import com.example.riddler.data.repo.QuizRepository
+import com.skydoves.sandwich.getOrNull
+import com.skydoves.sandwich.onSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,10 +24,10 @@ class QuizViewModel @Inject constructor(val repo: TriviaRepo, val quizRepo: Quiz
         val quiz = Quiz("asdfas",quizName, quizDescription, categoryName, difficulty)
         CoroutineScope(Dispatchers.IO).launch {
             var res= repo.getAllTriviaQuestions(amount, categoryNum, difficulty.lowercase())
-            if (res.isSuccessful) {
-               res.body()?.results?.let {
-                   insertQuestions(it, quiz)
-               }
+            res.onSuccess {
+                res.getOrNull()?.results?.let {
+                    insertQuestions(it, quiz)
+                }
             }
         }
     }

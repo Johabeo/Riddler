@@ -149,6 +149,7 @@ class HostViewModel  : ViewModel() {
     }
 
     fun leave() {
+        gameListener.remove()
         repo.hostLeave(pin.value!!,lobbyOrGame)
     }
 

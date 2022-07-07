@@ -179,6 +179,9 @@ dependencies {
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
 
+    //sandwich
+    implementation "com.github.skydoves:sandwich:1.2.5"
+
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     androidTestImplementation 'androidx.fragment:fragment-testing:1.4.1'
     androidTestImplementation 'io.mockk:mockk-android:1.10.5'

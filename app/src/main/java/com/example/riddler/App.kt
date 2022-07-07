@@ -2,8 +2,10 @@ package com.example.riddler
 
 import android.app.Application
 import android.util.Log
+import com.example.riddler.data.globalresponse.GlobalResponseOperator
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.ktx.Firebase
+import com.skydoves.sandwich.SandwichInitializer
 import dagger.hilt.android.HiltAndroidApp
 import org.jetbrains.annotations.NotNull
 import timber.log.Timber
@@ -13,6 +15,8 @@ class App : Application() {
     //all singletons should be here
     override fun onCreate() {
         super.onCreate()
+
+        SandwichInitializer.sandwichOperator = GlobalResponseOperator<Any>(this)
         if(!BuildConfig.DEBUG){
             Timber.plant(object : Timber.DebugTree(){
                 override fun createStackElementTag(element: StackTraceElement): String? {

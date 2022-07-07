@@ -1,5 +1,6 @@
 package com.example.riddler
 
+import com.skydoves.sandwich.ApiResponse
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,7 +17,7 @@ interface RetroApiInterface {
 
     @GET("api.php")
     suspend fun getAllTriviaQuestions(@Query("amount") amount:Int, @Query("category") category:Int,
-                                      @Query("difficulty") difficulty:String, @Query("type") type:String="multiple"): Response<TriviaQuestions>
+                                      @Query("difficulty") difficulty:String, @Query("type") type:String="multiple"): ApiResponse<TriviaQuestions>
 
 
 }

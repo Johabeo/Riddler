@@ -6,6 +6,7 @@ import com.example.riddler.data.dao.QuizDao
 import com.example.riddler.data.database.AppDatabase
 import com.example.riddler.data.repo.FirestoreRepository
 import com.example.riddler.data.repo.QuizRepository
+import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,6 +41,7 @@ class AppModule {
     fun getRetroApi(): RetroApiInterface{
         return  Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create())
+            .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .baseUrl("https://opentdb.com/")
             .build()
             .create(RetroApiInterface::class.java)
