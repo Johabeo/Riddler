@@ -103,7 +103,7 @@ class CreateQuizFragment : Fragment() {
         val isValid = validate(amount, quizNameText, quizDescriptionText, categoryName, difficulty)
 
         if (isValid)
-            vm.createQuizFromApi(10, categoryNum, categoryName, difficulty, quizNameText, quizDescriptionText)
+            vm.createQuizFromApi(amount.toInt(), categoryNum, categoryName, difficulty, quizNameText, quizDescriptionText)
         else {
             failedToast.show()
         }

@@ -96,6 +96,7 @@ class PlayerViewModel : ViewModel() {
 
     fun leave() {
         pin.value?.let {
+            gameListener.remove()
             repo.leaveLobby(it,lobbyType)
         }
     }
