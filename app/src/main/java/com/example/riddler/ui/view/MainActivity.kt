@@ -1,5 +1,6 @@
 package com.example.riddler.ui.view
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
@@ -35,6 +36,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
@@ -127,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.toolbar_settings -> {
                 intent = Intent(this, SettingsActivity::class.java)
-                startActivity(intent)
+                startForResult.launch(intent)
             }
 
             R.id.toolbar_logout -> {
@@ -146,6 +148,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         return true
+    }
+    val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result: ActivityResult ->
+        if (result.resultCode == AppCompatActivity.RESULT_OK) {
+            try {
+                val prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+                val userLocale = prefs?.getString("locale", "en")
+                val locale = Locale(userLocale!!)
+                //this will apply the locale and recreate the activity
+                updateElements(locale)
+            } catch (ex: Exception) {
+                Timber.log(6, ex)
+            }
+        }
     }
 
     fun signOut() {

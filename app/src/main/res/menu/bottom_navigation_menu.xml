@@ -8,7 +8,7 @@
         android:id="@+id/play"
         android:enabled="true"
         android:icon="@drawable/icon_selection_play"
-        android:title="Play"/>
+        android:title="@string/play" />
     <item
         android:id="@+id/create"
         android:enabled="true"

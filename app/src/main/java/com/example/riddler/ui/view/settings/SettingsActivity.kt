@@ -96,8 +96,9 @@ class SettingsActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             vm.updateUserProfile(profile)
             Toast.makeText(this, "Updating user settings...", Toast.LENGTH_SHORT).show()
 
-            intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            /*intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)*/
+            setResult(RESULT_OK)
             finish()
         }
     }

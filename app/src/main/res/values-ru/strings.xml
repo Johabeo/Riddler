@@ -13,7 +13,7 @@
     <string name="discover">Обзор</string>
     <string name="host">Хозяин</string>
     <string name="join">Присоединиться</string>
-    <string name="create">Создавать</string>
+    <string name="create">Создать</string>
     <string-array name="category">
         <item>Общее</item>
         <item>Книги</item>
@@ -100,4 +100,5 @@
     <string name="number_of_questions">Количество вопросов</string>
     <string name="enter_game_pin">Введите игровой пин</string>
     <string name="submit">Отправить</string>
+    <string name="play">Играть</string>
 </resources>
