@@ -1,7 +1,7 @@
 <resources>
     <string name="sign_in_btn">Iniciar sesión</string>
-    <string name="sign_out_btn">desconectar</string>
-    <string name="have_account">¿Tener una cuenta? ¿Necesito una cuenta?</string>
+    <string name="sign_out_btn">Salir</string>
+    <string name="have_account">¿Tiene una cuenta? ¿Necesita una cuenta?</string>
     <string name="welcome_user">Bienvenidos</string>
     <string name="need_account">Inscribirse</string>
     <string name="back">atrás</string>
@@ -12,7 +12,7 @@
     <string name="generate">Generar</string>
     <string name="discover">Descubrir</string>
     <string name="host">Anfitrión</string>
-    <string name="join">Unirse</string>
+    <string name="join">Participar</string>
     <string name="create">Crear</string>
     <string-array name="category">
         <item>General Knowledge</item>
@@ -47,7 +47,7 @@
         <item>Medium</item>
         <item>Hard</item>
     </string-array>
-    <string name="don_t_have_an_account">¿No tienes una cuenta?</string>
+    <string name="don_t_have_an_account">¿No tiene una cuenta?</string>
     <string name="log_in">Iniciar sesión</string>
     <string name="welcome_back">Bienvenido de nuevo</string>
     <string name="email">Correo electrónico</string>
@@ -58,13 +58,13 @@
     <string name="first_name">Primer nombre</string>
     <string name="last_name_optional">Apellido (Opcional)</string>
     <string name="waiting_for_players">Esperando jugadores...</string>
-    <string name="start">comienzo</string>
+    <string name="start">Emprezar</string>
     <string name="quiz">Prueba:</string>
-    <string name="you_re_in">¡Estas en!</string>
+    <string name="you_re_in">¡Triunfo!</string>
     <string name="waiting_for_the_host_to_start">Esperando a que el anfitrión comience...</string>
-    <string name="create_lobby">Crear vestíbulo</string>
+    <string name="create_lobby">Crear el lobby</string>
     <string name="texthint">Introduzca el título de la prueba...</string>
-    <string name="ready_set">¿Listo? ¿Establecer?</string>
+    <string name="ready_set">¡En sus marcas, listos!</string>
     <string name="game_pin">Pin del juego</string>
     <string name="username">Nombre de usuario</string>
     <string name="category">Categoría:</string>
