@@ -46,10 +46,10 @@ class HostGameFragment : Fragment() {
         return view
     }
 
-    override fun onResume() {
-        disableNextClick()
-        super.onResume()
-    }
+//    override fun onResume() {
+//        disableNextClick()
+//        super.onResume()
+//    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -59,16 +59,16 @@ class HostGameFragment : Fragment() {
         val vm = ViewModelProvider(requireActivity()).get(HostViewModel::class.java)
 
         vm.gameState.observe(viewLifecycleOwner) {
-            if (it.numAnswered!! >= it.players!!.size || timerEnd) {
-                enableNextClick()
-            }
+//            if (it.numAnswered!! >= it.players!!.size || timerEnd) {
+//                enableNextClick()
+//            }
             question.text =  Html.fromHtml(it.question?.question).toString()
             playersSubmitted.text = "${it.numAnswered.toString()}/${it.players!!.size}"
             timeLimit =  System.currentTimeMillis() - it.createdTime!!
         }
 
         next.setOnClickListener {
-            disableNextClick()
+//            disableNextClick()
             vm.moveNext { gameFinished -> displayLeaderboard(gameFinished) }
         }
 
