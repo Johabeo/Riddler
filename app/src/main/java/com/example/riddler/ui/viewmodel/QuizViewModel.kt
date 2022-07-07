@@ -36,10 +36,10 @@ class QuizViewModel @Inject constructor(val repo: TriviaRepo, val quizRepo: Quiz
         var questionList = ArrayList<Questions>()
         val id = quizRepo.insertQuiz(quiz)
         for (q in triviaQuestions) {
-            var answerList = q.incorrect_answers.toMutableList()
-            if (answerList.size < 3)
+            var answerList = q.incorrect_answers?.toMutableList()
+            if (answerList?.size!! < 3)
                 return
-            answerList.add(q.correct_answer)
+            answerList.add(q.correct_answer!!)
             answerList.shuffle()
             var question = Questions(id.toInt(),q.question,answerList[0],answerList[1],answerList[2],answerList[3], q.correct_answer)
             questionList.add(question)

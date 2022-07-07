@@ -30,7 +30,7 @@ class TriviaQuizAdapter(private var triviaList : List<TriviaQuestions.Question>)
         holder.correctAnswer.text = itemVM.correct_answer
 
         var context = holder.card.getContext()
-        var incorrectAdapter = ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, itemVM.incorrect_answers)
+        var incorrectAdapter = ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, itemVM.incorrect_answers!!)
         holder.incorrectList.adapter = incorrectAdapter
     }
 
