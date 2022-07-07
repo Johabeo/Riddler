@@ -24,9 +24,11 @@ class DiscoverViewModel @Inject constructor (val quizRepo: QuizRepository,
     val LIMIT = 10
 
     fun getQuiz(): Observable<List<Quiz>> {
+        page = 1
         return getQuiz(LIMIT*page,OFFSET)
     }
     fun getQuiz(limit: Int, offset: Int): Observable<List<Quiz>> {
+        query = ""
         return quizRepo.getQuizzes(limit, offset)
     }
 
