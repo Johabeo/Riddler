@@ -27,8 +27,21 @@
 11. While making call all the time. Live API call how is it happening. Are you going to network connector at that time? How are you making sure Network adaptor is called only once, but during internal calls it should be taken care without calling Network Adaptor multiple times (refer the above scenarios)
 12. When Network adapter calls an api endpoint and retrieves the data if the same API end point is called again will it load the data from the cache or it will call the end point again?
 13. What are the different scenarios considered from a unit testing coverage standpoint?
+    1. Makising sure that function calls are made as expected.
+    2. making sure that the right data is returned.
+    3. In scenarios where no return values were expected, we made sure that the function is called as expected.
+    4. for the data types and respective values were checked using mocked data, incase 
+    
 14. How do you get started with Unit Testing and how will you make sure the test coverage is > 70%?
+    1. for every class, create a test class.
+    2. for every function, create a test function.
+    3. it is very important to make sure that the test class is not empty.
+    4. it is very important to make sure that the test function is not empty.
+    5. collaboration is key to make sure that the test coverage is > 70%. 
+    6. Knowledge of other developers is key to make sure that the test coverage is > 70%. in terms of collaboration and getting to know other developers are doing in the project
 15. How is mocking done from fake repository or from hard coded data?
+    1. We used MockK for mocking the repository directly without using any hard coded data.
+    2. [MockK](https://mockk.io/) is a Kotlin library that allows you to mock any class or interface.
 16. Make sure the data entity and the data are mapped properly
 17. Use Dagger Hilt for dependency injection so you will not pass the Dao as a param to the constructor
 18. Timber logs - What exactly are timber logs, how to make use of it, where to use it and what should be part of it other than errors like info, warn, debug and trace logs
