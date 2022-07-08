@@ -18,14 +18,14 @@ class QuizRepositoryTest() {
         dao = dao,
     )
 
-    val fakeList : List<Quiz> = listOf<Quiz>(Quiz("G1", "fromTest","quiq for testing","general","Easy"))
+    val fakeList : List<Quiz> = listOf<Quiz>(Quiz("G1", "fromTest","quiz for testing","general","Easy"))
 
     val fakeQuestions : List<Questions> = listOf<Questions>(Questions(1, "fromTest","G3","G2","G1","G4","G1",1))
 
     var observableFakeList = Observable.fromArray(fakeList)
     val questions = Questions(
         1,"whats your group","G1"
-        ,"G2","G3","Dont know"
+        ,"G2","G3","Don't know"
         ,"G1",1)
 
     //List of questions
@@ -71,7 +71,7 @@ class QuizRepositoryTest() {
         val underTest = QuizRepository(
             dao = dao,
         )
-       every { underTest.insertQuiz(quiz2) } returns 0
+       every { underTest.insertQuiz(eq(quiz2)) } returns 0
         val result = underTest.insertQuiz(quiz2)
         assertEquals(0, result)
 
